@@ -88,6 +88,9 @@ export const metadata: Metadata = {
   icons: {
     icon: "/favicon.ico",
   },
+  verification: {
+    google: "SquMRkov6k2-OVLRw2kYtdcpCZMacVnstCJCJ4ioU2o",
+  },
 };
 
 // Datos Estructurados Schema.org para Google Knowledge Graph
@@ -145,6 +148,7 @@ export default function RootLayout({
   return (
     <html lang="es" suppressHydrationWarning className={`${geistSans.variable} ${geistMono.variable} h-full`}>
       <head>
+        <meta name="google-site-verification" content="SquMRkov6k2-OVLRw2kYtdcpCZMacVnstCJCJ4ioU2o" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
