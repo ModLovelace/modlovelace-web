@@ -84,8 +84,8 @@ export function LockerHero() {
               {/* Capa de fondo: Interior del casillero con gabinete ancho y espacioso, Modfin y proyectos */}
               <div className="absolute inset-0 w-full h-full">
                 <Image
-                  src="/images/locker-open-wide.jpg"
-                  alt="Interior amplio del casillero con proyectos, Modfin y pertenencias de Enrique Becerra (ModLovelace)"
+                  src="/images/locker-open-full.jpg"
+                  alt="Interior amplio del casillero completo con proyectos, Modfin y pertenencias de Enrique Becerra (ModLovelace)"
                   fill
                   sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 560px"
                   priority
@@ -110,8 +110,8 @@ export function LockerHero() {
                 style={{ transformStyle: "preserve-3d" }}
               >
                 <Image
-                  src="/images/locker-closed-wide.jpg"
-                  alt="Puerta cerrada del casillero amplio con stickers de proyectos"
+                  src="/images/locker-closed-full.jpg"
+                  alt="Puerta cerrada del casillero amplio completo con stickers de proyectos"
                   fill
                   sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 560px"
                   priority
