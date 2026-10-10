@@ -77,14 +77,14 @@ export function LockerHero() {
             
             <div
               onClick={toggleLocker}
-              className="relative w-full max-w-[420px] sm:max-w-[480px] lg:max-w-[540px] xl:max-w-[560px] aspect-square rounded-2xl overflow-hidden shadow-2xl border border-neutral-300 dark:border-neutral-800 bg-neutral-900 cursor-pointer group select-none transition-all duration-300 hover:shadow-2xl"
+              className="relative w-full max-w-[420px] sm:max-w-[480px] lg:max-w-[540px] xl:max-w-[560px] aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl border border-neutral-300 dark:border-neutral-800 bg-neutral-900 cursor-pointer group select-none transition-all duration-300 hover:shadow-2xl"
               style={{ perspective: "1200px" }}
               title={isOpen ? "Haz clic para cerrar la puerta" : "Haz clic para abrir el casillero"}
             >
               {/* Capa de fondo: Interior del casillero con gabinete ancho y espacioso, Modfin y proyectos */}
               <div className="absolute inset-0 w-full h-full">
                 <Image
-                  src="/images/locker-open-full.jpg"
+                  src="/images/locker-open-taller.jpg"
                   alt="Interior amplio del casillero completo con proyectos, Modfin y pertenencias de Enrique Becerra (ModLovelace)"
                   fill
                   sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 560px"
@@ -110,7 +110,7 @@ export function LockerHero() {
                 style={{ transformStyle: "preserve-3d" }}
               >
                 <Image
-                  src="/images/locker-closed-full.jpg"
+                  src="/images/locker-closed-taller.jpg"
                   alt="Puerta cerrada del casillero amplio completo con stickers de proyectos"
                   fill
                   sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 560px"
