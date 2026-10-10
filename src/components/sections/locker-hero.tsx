@@ -144,34 +144,34 @@ export function LockerHero() {
           </div>
 
           {/* COLUMNA 2: Información Ejecutiva & Proyectos */}
-          <div className="lg:col-span-6 space-y-6">
+          <div className="lg:col-span-6 space-y-4 sm:space-y-5 flex flex-col justify-between">
             
             {/* Tag de Posicionamiento */}
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-neutral-100 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 text-xs text-neutral-700 dark:text-neutral-300 font-medium">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-neutral-100 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 text-xs text-neutral-700 dark:text-neutral-300 font-medium w-fit">
               <Sparkles className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" />
               <span>Desarrollo de Software &amp; Soluciones Integrales</span>
             </div>
 
             {/* Nombre & Titular */}
-            <div className="space-y-2">
-              <h1 className="text-4xl sm:text-6xl font-bold tracking-tight text-[var(--foreground)]">
+            <div className="space-y-1.5">
+              <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-[var(--foreground)]">
                 Enrique Becerra
               </h1>
-              <p className="text-base sm:text-lg text-[var(--muted)] font-medium">
+              <p className="text-base text-[var(--muted)] font-medium">
                 Android · iOS · Web · Desktop
               </p>
             </div>
 
             {/* Propuesta de valor en lenguaje natural y humano */}
-            <p className="text-base sm:text-lg text-[var(--foreground)]/85 leading-relaxed font-normal">
+            <p className="text-sm sm:text-base text-[var(--foreground)]/85 leading-relaxed font-normal">
               Me apasiona crear aplicaciones y experiencias digitales que la gente realmente disfrute usar. Transformo ideas y necesidades cotidianas en productos sólidos, rápidos y bien cuidados para <strong>Android</strong>, <strong>iOS</strong>, <strong>Web</strong> y <strong>Desktop</strong>.
             </p>
 
             {/* BOTONES PRINCIPALES DE ALTO CONTRASTE */}
-            <div className="flex flex-wrap items-center gap-4 pt-1">
+            <div className="flex flex-wrap items-center gap-3.5 pt-0.5">
               <Link
                 href="#proyectos"
-                className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-semibold text-sm transition-all shadow-lg shadow-blue-600/25 hover:shadow-blue-500/35 hover:-translate-y-0.5 active:translate-y-0"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-semibold text-sm transition-all shadow-md shadow-blue-600/25 hover:shadow-blue-500/35 hover:-translate-y-0.5 active:translate-y-0"
               >
                 <span>Ver Proyectos Seleccionados</span>
                 <ArrowDown className="w-4 h-4" />
@@ -179,18 +179,18 @@ export function LockerHero() {
 
               <Link
                 href="#contacto"
-                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-[var(--card)] hover:bg-[var(--border)]/50 border border-[var(--border)] text-[var(--foreground)] font-medium text-sm transition-all hover:-translate-y-0.5"
+                className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-[var(--card)] hover:bg-[var(--border)]/50 border border-[var(--border)] text-[var(--foreground)] font-medium text-sm transition-all hover:-translate-y-0.5"
               >
                 <span>Iniciar Contacto</span>
                 <ArrowRight className="w-4 h-4 text-[var(--muted)]" />
               </Link>
             </div>
 
-            {/* BANDEJA DERECHA: PROYECTOS PROPIOS (Solo el gato y las flores) */}
-            <div className={`p-6 rounded-2xl bg-[var(--card)] border transition-all duration-300 space-y-4 shadow-sm ${
+            {/* BANDEJA DERECHA: PROYECTOS PROPIOS (Exactamente a la misma altura) */}
+            <div className={`p-5 sm:p-6 rounded-2xl bg-[var(--card)] border transition-all duration-300 space-y-3.5 shadow-sm ${
               isOpen ? "border-blue-500/50 ring-1 ring-blue-500/20" : "border-[var(--border)]"
             }`}>
-              <div className="flex items-center justify-between text-xs pb-3 border-b border-[var(--border)]">
+              <div className="flex items-center justify-between text-xs pb-2.5 border-b border-[var(--border)]">
                 <div className="flex items-center gap-2">
                   <span className={`w-2 h-2 rounded-full ${isOpen ? "bg-blue-500 animate-pulse" : "bg-emerald-500"}`} />
                   <span className="font-bold text-[var(--foreground)] uppercase tracking-wider font-mono text-[11px]">
@@ -202,33 +202,40 @@ export function LockerHero() {
                 </div>
               </div>
 
-              {/* Grid de 2 Proyectos Personales Exclusivos */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {/* Grid de 2 Proyectos Personales: Ambos con la misma altura exacta y alineación perfecta */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 items-stretch">
                 
                 {/* 1. Catjang-Sue (El del gato) */}
-                <div className="p-4 sm:p-5 rounded-xl bg-neutral-50 dark:bg-neutral-900/80 border border-neutral-200 dark:border-neutral-800 space-y-3 hover:border-blue-500/50 transition-colors">
-                  <div className="flex items-center justify-between gap-1">
-                    <div className="flex items-center gap-2.5">
-                      <div className="w-8 h-8 rounded-xl bg-amber-500/10 text-amber-600 dark:text-amber-400 flex items-center justify-center font-bold text-base shadow-sm">
+                <div className="p-4 rounded-xl bg-neutral-50 dark:bg-neutral-900/80 border border-neutral-200 dark:border-neutral-800 flex flex-col justify-between h-full hover:border-blue-500/50 transition-colors shadow-[0_1px_2px_rgba(0,0,0,0.04)]">
+                  <div className="space-y-2.5">
+                    {/* Fila superior: Ícono y Badge en extremos opuestos */}
+                    <div className="flex items-center justify-between">
+                      <div className="w-8 h-8 rounded-xl bg-amber-500/10 text-amber-600 dark:text-amber-400 flex items-center justify-center font-bold text-base shadow-sm shrink-0">
                         🐾
                       </div>
-                      <div>
-                        <span className="text-sm font-bold text-[var(--foreground)] block">
-                          Catjang-Sue
-                        </span>
-                        <span className="text-[10px] font-mono text-[var(--muted)]">
-                          Desktop · Linux / Mac / Win
-                        </span>
-                      </div>
+                      <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-amber-100 dark:bg-amber-950/80 text-amber-700 dark:text-amber-300 font-medium shrink-0">
+                        Open Source
+                      </span>
                     </div>
-                    <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-amber-100 dark:bg-amber-950/80 text-amber-700 dark:text-amber-300 font-medium">
-                      Open Source
-                    </span>
+
+                    {/* Título y Subtítulo con ancho completo (sin truncamiento) */}
+                    <div>
+                      <h3 className="text-sm font-bold text-[var(--foreground)] leading-tight">
+                        Catjang-Sue
+                      </h3>
+                      <p className="text-[11px] font-mono text-[var(--muted)] mt-0.5">
+                        Desktop · Linux / Mac / Win
+                      </p>
+                    </div>
+
+                    {/* Descripción con altura y espaciado consistente */}
+                    <p className="text-xs text-[var(--muted)] leading-relaxed">
+                      Mascota virtual de escritorio con física elástica, seguimiento ocular DBus en Wayland y reactividad para desarrollo.
+                    </p>
                   </div>
-                  <p className="text-xs text-[var(--muted)] leading-relaxed">
-                    Mascota de escritorio interactiva con física elástica, seguimiento ocular vía DBus en Wayland y reactividad a 5 agentes de IA.
-                  </p>
-                  <div className="flex items-center gap-4 pt-1 text-xs font-mono">
+
+                  {/* Enlaces de acción anclados a la misma línea base */}
+                  <div className="flex items-center justify-between pt-2.5 mt-3 border-t border-[var(--border)]/60 text-xs font-mono">
                     <Link
                       href="https://github.com/ModLovelace/catjang-sue"
                       target="_blank"
@@ -249,29 +256,36 @@ export function LockerHero() {
                 </div>
 
                 {/* 2. Regala Flores Amarillas (El de las flores) */}
-                <div className="p-4 sm:p-5 rounded-xl bg-neutral-50 dark:bg-neutral-900/80 border border-neutral-200 dark:border-neutral-800 space-y-3 hover:border-blue-500/50 transition-colors">
-                  <div className="flex items-center justify-between gap-1">
-                    <div className="flex items-center gap-2.5">
-                      <div className="w-8 h-8 rounded-xl bg-yellow-500/10 text-yellow-600 dark:text-yellow-400 flex items-center justify-center font-bold text-base shadow-sm">
+                <div className="p-4 rounded-xl bg-neutral-50 dark:bg-neutral-900/80 border border-neutral-200 dark:border-neutral-800 flex flex-col justify-between h-full hover:border-blue-500/50 transition-colors shadow-[0_1px_2px_rgba(0,0,0,0.04)]">
+                  <div className="space-y-2.5">
+                    {/* Fila superior: Ícono y Badge en extremos opuestos */}
+                    <div className="flex items-center justify-between">
+                      <div className="w-8 h-8 rounded-xl bg-yellow-500/10 text-yellow-600 dark:text-yellow-400 flex items-center justify-center font-bold text-base shadow-sm shrink-0">
                         🌻
                       </div>
-                      <div>
-                        <span className="text-sm font-bold text-[var(--foreground)] block">
-                          Flores Amarillas
-                        </span>
-                        <span className="text-[10px] font-mono text-[var(--muted)]">
-                          Web App Interactiva
-                        </span>
-                      </div>
+                      <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-sky-100 dark:bg-sky-950/80 text-sky-700 dark:text-sky-300 font-medium shrink-0">
+                        Producción
+                      </span>
                     </div>
-                    <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-sky-100 dark:bg-sky-950/80 text-sky-700 dark:text-sky-300 font-medium">
-                      Producción
-                    </span>
+
+                    {/* Título y Subtítulo con ancho completo (sin truncamiento) */}
+                    <div>
+                      <h3 className="text-sm font-bold text-[var(--foreground)] leading-tight">
+                        Flores Amarillas
+                      </h3>
+                      <p className="text-[11px] font-mono text-[var(--muted)] mt-0.5">
+                        Web Interactiva con Audio
+                      </p>
+                    </div>
+
+                    {/* Descripción con altura y espaciado consistente */}
+                    <p className="text-xs text-[var(--muted)] leading-relaxed">
+                      Floración procedural interactiva con sintetizador acústico en tiempo real (Web Audio API) y dedicatorias compartibles.
+                    </p>
                   </div>
-                  <p className="text-xs text-[var(--muted)] leading-relaxed">
-                    Floración procedural interactiva con sintetizador acústico en tiempo real (Web Audio API, cero MP3s) y cartas compartibles.
-                  </p>
-                  <div className="flex items-center gap-4 pt-1 text-xs font-mono">
+
+                  {/* Enlaces de acción anclados a la misma línea base */}
+                  <div className="flex items-center justify-between pt-2.5 mt-3 border-t border-[var(--border)]/60 text-xs font-mono">
                     <Link
                       href="https://regala-flores-amarillas.vercel.app"
                       target="_blank"
