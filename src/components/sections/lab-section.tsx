@@ -213,9 +213,6 @@ export function LabSection() {
               Experimentos, Bitácora &amp; Avances
             </h2>
           </div>
-          <p className="text-sm text-[var(--muted)] max-w-md leading-relaxed">
-            Investigaciones activas, soluciones a problemas complejos de bajo nivel (como Catjang en Wayland) y lecciones aprendidas en producción.
-          </p>
         </div>
 
         {/* Filtros de Categoría */}
