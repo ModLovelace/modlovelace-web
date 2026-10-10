@@ -77,17 +77,17 @@ export function LockerHero() {
             
             <div
               onClick={toggleLocker}
-              className="relative w-full max-w-[360px] sm:max-w-[420px] lg:max-w-[460px] aspect-[3/4] rounded-2xl overflow-hidden shadow-2xl border border-neutral-300 dark:border-neutral-800 bg-neutral-900 cursor-pointer group select-none transition-all duration-300 hover:shadow-2xl"
+              className="relative w-full max-w-[420px] sm:max-w-[480px] lg:max-w-[540px] xl:max-w-[560px] aspect-square rounded-2xl overflow-hidden shadow-2xl border border-neutral-300 dark:border-neutral-800 bg-neutral-900 cursor-pointer group select-none transition-all duration-300 hover:shadow-2xl"
               style={{ perspective: "1200px" }}
               title={isOpen ? "Haz clic para cerrar la puerta" : "Haz clic para abrir el casillero"}
             >
-              {/* Capa de fondo: Interior del casillero con puerta ancha abierta a la derecha y Modfin */}
+              {/* Capa de fondo: Interior del casillero con gabinete ancho y espacioso, Modfin y proyectos */}
               <div className="absolute inset-0 w-full h-full">
                 <Image
-                  src="/images/locker-open.jpg"
-                  alt="Interior completo del casillero con proyectos, Modfin y pertenencias de Enrique Becerra (ModLovelace)"
+                  src="/images/locker-open-wide.jpg"
+                  alt="Interior amplio del casillero con proyectos, Modfin y pertenencias de Enrique Becerra (ModLovelace)"
                   fill
-                  sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 460px"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 560px"
                   priority
                   className="object-cover"
                 />
@@ -100,7 +100,7 @@ export function LockerHero() {
                 />
               </div>
 
-              {/* Capa frontal: Puerta cerrada alineada con bisagras a la DERECHA y stickers de proyectos */}
+              {/* Capa frontal: Puerta cerrada amplia alineada con bisagras a la DERECHA y stickers de proyectos */}
               <div
                 className={`absolute inset-0 w-full h-full origin-right transition-all duration-500 ease-[cubic-bezier(0.2,0.8,0.2,1)] ${
                   isOpen
@@ -110,28 +110,18 @@ export function LockerHero() {
                 style={{ transformStyle: "preserve-3d" }}
               >
                 <Image
-                  src="/images/locker-closed.jpg"
-                  alt="Puerta cerrada del casillero con stickers de proyectos"
+                  src="/images/locker-closed-wide.jpg"
+                  alt="Puerta cerrada del casillero amplio con stickers de proyectos"
                   fill
-                  sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 460px"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 560px"
                   priority
                   className="object-cover"
                 />
-
-                {/* Etiqueta interactiva limpia sobre la manija */}
-                {!isOpen && (
-                  <div className="absolute bottom-[36%] left-4 sm:left-6 pointer-events-none">
-                    <span className="flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-amber-400 text-slate-950 text-xs font-bold shadow-lg border border-amber-300/80 animate-bounce">
-                      <span>Abrir</span>
-                      <span>➔</span>
-                    </span>
-                  </div>
-                )}
               </div>
             </div>
 
             {/* Subtítulo discreto debajo del casillero */}
-            <div className="mt-4 flex items-center justify-between w-full max-w-[360px] sm:max-w-[420px] lg:max-w-[460px] px-2 text-xs text-[var(--muted)]">
+            <div className="mt-4 flex items-center justify-between w-full max-w-[420px] sm:max-w-[480px] lg:max-w-[540px] xl:max-w-[560px] px-2 text-xs text-[var(--muted)]">
               <span>{isOpen ? "Puerta abierta · Modfin & stickers de proyectos" : "Casillero cerrado"}</span>
               <button
                 onClick={toggleLocker}
