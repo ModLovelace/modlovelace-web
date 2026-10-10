@@ -1,16 +1,20 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { ThemeToggle } from "./theme-toggle";
 import { siteConfig } from "@/config/site";
 import { GithubIcon, LinkedinIcon } from "@/components/icons";
 
 export function Header() {
+  const pathname = usePathname();
+  const isLabActive = pathname === "/lab" || pathname === "/blog";
+
   const navItems = [
-    { label: "Proyectos", href: "#proyectos" },
-    { label: "Lab & Blog", href: "#lab" },
-    { label: "Stack", href: "#stack" },
-    { label: "Contacto", href: "#contacto" },
+    { label: "Proyectos", href: "/#proyectos", active: false },
+    { label: "Lab & Blog", href: "/lab", active: isLabActive },
+    { label: "Stack", href: "/#stack", active: false },
+    { label: "Contacto", href: "/#contacto", active: false },
   ];
 
   return (
@@ -29,7 +33,11 @@ export function Header() {
             <Link
               key={item.href}
               href={item.href}
-              className="hover:text-[var(--foreground)] transition-colors"
+              className={`transition-colors ${
+                item.active
+                  ? "text-blue-600 dark:text-blue-400 font-semibold"
+                  : "hover:text-[var(--foreground)]"
+              }`}
             >
               {item.label}
             </Link>
