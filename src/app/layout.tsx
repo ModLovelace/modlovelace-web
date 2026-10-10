@@ -155,7 +155,7 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-full flex flex-col bg-[var(--background)] text-[var(--foreground)] transition-colors duration-150 antialiased">
-        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange={false}>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange={false}>
           <Header />
           <main className="flex-1">{children}</main>
           <Footer />

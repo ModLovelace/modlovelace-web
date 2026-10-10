@@ -6,7 +6,7 @@ export function Footer() {
 
   return (
     <footer className="border-t border-[var(--border)] mt-20 transition-colors">
-      <div className="max-w-3xl mx-auto px-5 sm:px-6 py-10 flex flex-col sm:flex-row items-baseline justify-between gap-4 text-xs font-mono text-[var(--muted)]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 flex flex-col sm:flex-row items-baseline justify-between gap-4 text-xs font-mono text-[var(--muted)]">
         <div>
           <span className="text-[var(--foreground)] font-medium">Enrique Becerra</span>
           <span className="mx-2">·</span>
@@ -37,6 +37,14 @@ export function Footer() {
             className="hover:text-[var(--foreground)] transition-colors"
           >
             YouTube ↗
+          </Link>
+          <Link
+            href={siteConfig.links.instagram}
+            target="_blank"
+            rel="noreferrer"
+            className="hover:text-[var(--foreground)] transition-colors"
+          >
+            Instagram ↗
           </Link>
           <a
             href={`mailto:${siteConfig.email}`}

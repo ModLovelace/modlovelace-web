@@ -1,106 +1,141 @@
 import Link from "next/link";
 import { siteConfig } from "@/config/site";
+import { ExternalLink, Smartphone } from "lucide-react";
+import { GithubIcon } from "@/components/icons";
 
 export function ProjectsSection() {
   return (
-    <section id="proyectos" className="py-12 sm:py-16">
-      <div className="max-w-3xl mx-auto px-5 sm:px-6">
+    <section id="proyectos" className="py-16 sm:py-24 border-t border-[var(--border)]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Encabezado editorial */}
-        <div className="flex items-baseline justify-between border-b border-[var(--border)] pb-3 mb-8">
-          <h2 className="text-xs font-mono uppercase tracking-wider text-[var(--muted)]">
-            Proyectos Seleccionados
-          </h2>
-          <span className="text-[11px] font-mono text-[var(--muted)]">
-            Código abierto &amp; Producción
-          </span>
+        {/* Encabezado plano, sobrio y profesional */}
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between pb-8 mb-8 border-b border-[var(--border)] gap-4">
+          <div className="space-y-2">
+            <div className="inline-flex items-center gap-2 text-xs font-semibold text-blue-600 dark:text-blue-400 uppercase tracking-wider">
+              <span>01 / Portafolio</span>
+            </div>
+            <h2 className="text-2xl sm:text-4xl font-bold tracking-tight text-[var(--foreground)]">
+              Proyectos Seleccionados
+            </h2>
+          </div>
+          <p className="text-sm text-[var(--muted)] max-w-md">
+            Sistemas en producción comercial, arquitecturas móviles y herramientas de software libre creadas para perdurar.
+          </p>
         </div>
 
-        {/* Lista de Proyectos Minimalista */}
-        <div className="divide-y divide-[var(--border)]">
+        {/* Grid de Proyectos Modular y Plano */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
           {siteConfig.projects.map((project, idx) => (
-            <article key={idx} className="py-7 space-y-3 group">
-              
-              {/* Encabezado del proyecto: Título + Categoría */}
-              <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1">
-                <h3 className="text-base sm:text-lg font-medium text-[var(--foreground)] group-hover:text-[#e63946] transition-colors">
+            <article
+              key={idx}
+              className="p-7 sm:p-8 rounded-2xl bg-[var(--card)] border border-[var(--border)] hover:border-neutral-400 dark:hover:border-neutral-700 transition-all flex flex-col justify-between space-y-6 shadow-sm hover:shadow-md"
+            >
+              <div className="space-y-4">
+                {/* Categoría & Estado */}
+                <div className="flex items-center justify-between gap-2">
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-neutral-100 dark:bg-neutral-800 text-[11px] font-medium text-neutral-700 dark:text-neutral-300">
+                    <span>{project.category}</span>
+                  </span>
+                  <span className="text-xs font-mono text-[var(--muted)]">
+                    {project.status}
+                  </span>
+                </div>
+
+                {/* Título */}
+                <h3 className="text-xl sm:text-2xl font-bold text-[var(--foreground)]">
                   {project.title}
                 </h3>
-                <span className="text-xs font-mono text-[var(--muted)]">
-                  {project.category} · {project.status}
-                </span>
+
+                {/* Descripción */}
+                <p className="text-sm text-[var(--muted)] leading-relaxed">
+                  {project.description}
+                </p>
+
+                {/* Aspectos destacados */}
+                <ul className="space-y-2 text-xs sm:text-sm text-[var(--foreground)]/80 pt-1">
+                  {project.highlights.map((h, hIdx) => (
+                    <li key={hIdx} className="flex items-start gap-2.5">
+                      <span className="text-blue-600 dark:text-blue-400 font-bold select-none">•</span>
+                      <span>{h}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
 
-              {/* Descripción clara y concisa */}
-              <p className="text-xs sm:text-sm text-[var(--muted)] leading-relaxed">
-                {project.description}
-              </p>
-
-              {/* Puntos destacados clave */}
-              <ul className="space-y-1 text-xs text-[var(--foreground)]/75">
-                {project.highlights.map((h, hIdx) => (
-                  <li key={hIdx} className="flex items-start gap-2">
-                    <span className="text-[#e63946] font-mono select-none">―</span>
-                    <span>{h}</span>
-                  </li>
-                ))}
-              </ul>
-
-              {/* Stack & Enlaces limpios */}
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-2 text-xs font-mono">
-                <span className="text-[11px] text-[var(--muted)]">
-                  {project.tech.join(" · ")}
-                </span>
-
-                <div className="flex items-center gap-4 text-xs shrink-0">
-                  {project.links.repo && (
-                    <Link
-                      href={project.links.repo}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="text-[var(--foreground)] hover:text-[#e63946] transition-colors"
+              {/* Stack y Botones de Acción que Resaltan */}
+              <div className="pt-5 border-t border-[var(--border)] space-y-4">
+                {/* Chips de tecnologías planas */}
+                <div className="flex flex-wrap gap-1.5">
+                  {project.tech.map((t, tIdx) => (
+                    <span
+                      key={tIdx}
+                      className="px-2.5 py-1 rounded-md bg-neutral-100 dark:bg-neutral-800/80 text-[11px] font-mono text-[var(--muted)]"
                     >
-                      GitHub (⭐) ↗
-                    </Link>
-                  )}
-                  {project.links.releases && (
-                    <Link
-                      href={project.links.releases}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="text-[var(--muted)] hover:text-[var(--foreground)] transition-colors"
-                    >
-                      Descargas ↗
-                    </Link>
-                  )}
+                      {t}
+                    </span>
+                  ))}
+                </div>
+
+                {/* Botones de Acción Claros y Notorios */}
+                <div className="flex flex-wrap items-center gap-3 pt-2">
+                  {/* Botón Principal de Demo o Releases si existe */}
                   {project.links.live && (
                     <Link
                       href={project.links.live}
                       target="_blank"
                       rel="noreferrer"
-                      className="text-[var(--muted)] hover:text-[var(--foreground)] transition-colors"
+                      className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-medium text-xs transition-all shadow-sm"
                     >
-                      Demo en vivo ↗
+                      <span>Ver Demo en vivo</span>
+                      <ExternalLink className="w-3.5 h-3.5" />
                     </Link>
                   )}
+
+                  {project.links.releases && (
+                    <Link
+                      href={project.links.releases}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-medium text-xs transition-all shadow-sm"
+                    >
+                      <span>Descargas / Releases</span>
+                      <ExternalLink className="w-3.5 h-3.5" />
+                    </Link>
+                  )}
+
                   {project.links.playStore && (
                     <Link
                       href={project.links.playStore}
                       target="_blank"
                       rel="noreferrer"
-                      className="text-[var(--muted)] hover:text-[var(--foreground)] transition-colors"
+                      className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-neutral-900 text-white dark:bg-white dark:text-neutral-950 font-medium text-xs hover:opacity-90 transition-all shadow-sm"
                     >
-                      Google Play ↗
+                      <Smartphone className="w-3.5 h-3.5" />
+                      <span>Google Play</span>
                     </Link>
                   )}
+
                   {project.links.appStore && (
                     <Link
                       href={project.links.appStore}
                       target="_blank"
                       rel="noreferrer"
-                      className="text-[var(--muted)] hover:text-[var(--foreground)] transition-colors"
+                      className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-neutral-900 text-white dark:bg-white dark:text-neutral-950 font-medium text-xs hover:opacity-90 transition-all shadow-sm"
                     >
-                      App Store ↗
+                      <span>App Store</span>
+                      <ExternalLink className="w-3.5 h-3.5" />
+                    </Link>
+                  )}
+
+                  {project.links.repo && (
+                    <Link
+                      href={project.links.repo}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-[var(--card)] hover:bg-[var(--border)]/50 border border-[var(--border)] text-[var(--foreground)] font-medium text-xs transition-colors"
+                    >
+                      <GithubIcon className="w-3.5 h-3.5" />
+                      <span>Código GitHub</span>
                     </Link>
                   )}
                 </div>

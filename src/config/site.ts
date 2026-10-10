@@ -19,14 +19,15 @@ export const siteConfig = {
   name: "Enrique Becerra",
   alias: "Mod / ModLovelace",
   domain: "modlovelace.com",
-  title: "Enrique Becerra (Mod) | Ingeniero de Software · Soluciones Móviles & Retos Complejos",
+  title: "Enrique Becerra (Mod) | Senior Software Engineer & Solutions Architect — Mobile, Web & Desktop",
   description:
-    "Ingeniero de software con amplia experiencia en tecnología, especializado en ingeniería móvil y preparado para liderar y resolver cualquier desafío técnico de extremo a extremo.",
+    "Ingeniero de software y arquitecto de soluciones con amplia experiencia resolviendo retos técnicos complejos de extremo a extremo en ecosistemas móviles (Android/iOS), web moderna y software de escritorio (Linux/Windows/macOS).",
   email: "enriquerafaelbecerrabocangel@gmail.com",
   links: {
     github: "https://github.com/ModLovelace",
     linkedin: "https://www.linkedin.com/in/enrique-becerra-bo/",
     youtube: "https://www.youtube.com/@modlovelace",
+    instagram: "https://www.instagram.com/modfin_lovelace/",
     vercel: "https://vercel.com/modlovelace",
   },
   now: {

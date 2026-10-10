@@ -9,29 +9,32 @@
   --color-border: var(--border);
   --color-card: var(--card);
   --color-card-border: var(--card-border);
-  --color-hanko: var(--hanko);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
 }
 
 :root {
-  /* Modo Claro: Papel Blanco Washi Puro */
-  --background: #fafafa;
-  --foreground: #111111;
-  --muted: #666666;
-  --border: #e8e8e8;
-  --card: #ffffff;
-  --card-border: #e8e8e8;
-  --hanko: #d90429;
+  /* Modo Claro: Acero Suave Ejecutivo, Menos Blanco, Más Profundo & Confortable */
+  --background: #eaeef3;
+  --foreground: #0f172a;
+  --muted: #526071;
+  --border: #ccd6e0;
+  --card: #f4f6f9;
+  --card-border: #ccd6e0;
+  --accent: #2563eb;       /* Azul Eléctrico Ejecutivo */
+  --accent-hover: #1d4ed8;
 }
 
 .dark {
-  /* Modo Oscuro: Tinta Sumi Pura & Carbón */
-  --background: #000000;
-  --foreground: #ededed;
-  --muted: #808080;
-  --border: #1a1a1a;
-  --card: #080808;
-  --card-border: #1a1a1a;
-  --hanko: #e63946;
+  /* Modo Oscuro: Grafito Plano Profundo & Acento de Alto Contraste */
+  --background: #090a0f;
+  --foreground: #f8fafc;
+  --muted: #94a3b8;
+  --border: #1e2430;
+  --card: #11141c;
+  --card-border: #1e2430;
+  --accent: #3b82f6;       /* Azul Eléctrico en Modo Oscuro */
+  --accent-hover: #60a5fa;
 }
 
 html {

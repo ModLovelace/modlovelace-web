@@ -8,13 +8,14 @@ import { GithubIcon, LinkedinIcon } from "@/components/icons";
 export function Header() {
   const navItems = [
     { label: "Proyectos", href: "#proyectos" },
+    { label: "Lab & Blog", href: "#lab" },
     { label: "Stack", href: "#stack" },
     { label: "Contacto", href: "#contacto" },
   ];
 
   return (
     <header className="sticky top-0 z-50 w-full backdrop-blur-md bg-[var(--background)]/90 border-b border-[var(--border)] transition-colors">
-      <div className="max-w-3xl mx-auto px-5 sm:px-6 h-14 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-14 flex items-center justify-between">
         
         {/* Brand tipográfico zen */}
         <Link href="/" className="font-mono text-xs font-medium tracking-tight text-[var(--foreground)] hover:text-[#e63946] transition-colors">
