@@ -167,7 +167,7 @@ export function LabSection({ isStandalonePage = false }: LabSectionProps) {
                       ))}
                     </div>
 
-                    <div className="flex items-center gap-5 text-xs font-mono">
+                    <div className="flex flex-wrap items-center gap-x-5 gap-y-1.5 text-xs font-mono min-w-0">
                       {entry.metrics.map((m, mIdx) => (
                         <div key={mIdx} className="flex items-center gap-1.5">
                           <span className="text-[var(--muted)]">{m.label}:</span>
@@ -216,11 +216,11 @@ export function LabSection({ isStandalonePage = false }: LabSectionProps) {
 
                     {/* Código de muestra si aplica */}
                     {entry.details.codeSnippet && (
-                      <div className="space-y-2">
+                      <div className="space-y-2 min-w-0 max-w-full">
                         <div className="flex items-center justify-between text-xs font-mono text-[var(--muted)]">
                           <span>Fragmento de Implementación:</span>
                         </div>
-                        <pre className="p-4 rounded-xl bg-neutral-950 text-neutral-200 text-xs font-mono overflow-x-auto border border-neutral-800 leading-relaxed">
+                        <pre className="max-w-full p-4 rounded-xl bg-neutral-950 text-neutral-200 text-xs font-mono overflow-x-auto border border-neutral-800 leading-relaxed">
                           <code>{entry.details.codeSnippet}</code>
                         </pre>
                       </div>

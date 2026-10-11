@@ -310,7 +310,7 @@ export function LockerHero() {
             </div>
 
             {/* Enlaces Sociales Limpios */}
-            <div className="flex items-center gap-6 pt-2 text-xs font-medium text-[var(--muted)]">
+            <div className="flex flex-wrap items-center gap-x-5 gap-y-2 pt-2 text-xs font-medium text-[var(--muted)]">
               <Link
                 href={siteConfig.links.github}
                 target="_blank"
