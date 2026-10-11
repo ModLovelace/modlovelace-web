@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { siteConfig } from "@/config/site";
@@ -9,40 +9,141 @@ import { ArrowDown, ArrowRight, Sparkles } from "lucide-react";
 
 export function LockerHero() {
   const [isOpen, setIsOpen] = useState(false);
+  const [lightOn, setLightOn] = useState(false);
+  const [stickersPopped, setStickersPopped] = useState(false);
+  const timersRef = useRef<NodeJS.Timeout[]>([]);
 
-  // Sintetizador Web Audio API para clic mecánico de cerradura (0 dependencias)
-  const toggleLocker = () => {
-    const nextState = !isOpen;
-    setIsOpen(nextState);
+  // Limpiar temporizadores al desmontar
+  useEffect(() => {
+    return () => {
+      timersRef.current.forEach(clearTimeout);
+    };
+  }, []);
 
+  // Sintetizador Web Audio API: Clic mecánico, ignición de lámpara y pop elástico de stickers
+  const playLockerSound = (action: "open" | "close") => {
     try {
       const AudioContextClass =
         window.AudioContext ||
         (window as unknown as { webkitAudioContext: typeof AudioContext })
           .webkitAudioContext;
-      if (AudioContextClass) {
-        const ctx = new AudioContextClass();
+      if (!AudioContextClass) return;
+      const ctx = new AudioContextClass();
+
+      if (action === "open") {
+        // 1. Clic metálico inicial de cerradura desenganchando (0ms)
+        const osc1 = ctx.createOscillator();
+        const gain1 = ctx.createGain();
+        osc1.type = "triangle";
+        osc1.frequency.setValueAtTime(460, ctx.currentTime);
+        osc1.frequency.exponentialRampToValueAtTime(160, ctx.currentTime + 0.1);
+        gain1.gain.setValueAtTime(0.12, ctx.currentTime);
+        gain1.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.14);
+        osc1.connect(gain1);
+        gain1.connect(ctx.destination);
+        osc1.start();
+        osc1.stop(ctx.currentTime + 0.14);
+
+        // 2. Encendido suave de tubo fluorescente (a los 380ms)
+        const osc2 = ctx.createOscillator();
+        const gain2 = ctx.createGain();
+        osc2.type = "sine";
+        osc2.frequency.setValueAtTime(130, ctx.currentTime + 0.38);
+        osc2.frequency.exponentialRampToValueAtTime(280, ctx.currentTime + 0.48);
+        gain2.gain.setValueAtTime(0.001, ctx.currentTime + 0.38);
+        gain2.gain.exponentialRampToValueAtTime(0.045, ctx.currentTime + 0.42);
+        gain2.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.58);
+        osc2.connect(gain2);
+        gain2.connect(ctx.destination);
+        osc2.start(ctx.currentTime + 0.38);
+        osc2.stop(ctx.currentTime + 0.58);
+
+        // 3. Pop elástico de pegatinas (a los 750ms)
+        const osc3 = ctx.createOscillator();
+        const gain3 = ctx.createGain();
+        osc3.type = "sine";
+        osc3.frequency.setValueAtTime(380, ctx.currentTime + 0.75);
+        osc3.frequency.exponentialRampToValueAtTime(680, ctx.currentTime + 0.86);
+        gain3.gain.setValueAtTime(0.001, ctx.currentTime + 0.75);
+        gain3.gain.exponentialRampToValueAtTime(0.035, ctx.currentTime + 0.78);
+        gain3.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.9);
+        osc3.connect(gain3);
+        gain3.connect(ctx.destination);
+        osc3.start(ctx.currentTime + 0.75);
+        osc3.stop(ctx.currentTime + 0.9);
+      } else {
+        // Cierre: Retorno suave y clac definitivo del pestillo
         const osc = ctx.createOscillator();
         const gain = ctx.createGain();
-
-        osc.type = nextState ? "triangle" : "sine";
-        osc.frequency.setValueAtTime(nextState ? 520 : 260, ctx.currentTime);
-        osc.frequency.exponentialRampToValueAtTime(
-          nextState ? 220 : 90,
-          ctx.currentTime + 0.12
-        );
-
-        gain.gain.setValueAtTime(0.12, ctx.currentTime);
-        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.18);
-
+        osc.type = "sine";
+        osc.frequency.setValueAtTime(240, ctx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(80, ctx.currentTime + 0.1);
+        gain.gain.setValueAtTime(0.06, ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.15);
         osc.connect(gain);
         gain.connect(ctx.destination);
-
         osc.start();
-        osc.stop(ctx.currentTime + 0.18);
+        osc.stop(ctx.currentTime + 0.15);
+
+        // Clac de impacto al encajar en el marco a los 650ms
+        const lockOsc = ctx.createOscillator();
+        const lockGain = ctx.createGain();
+        lockOsc.type = "triangle";
+        lockOsc.frequency.setValueAtTime(170, ctx.currentTime + 0.65);
+        lockOsc.frequency.exponentialRampToValueAtTime(45, ctx.currentTime + 0.78);
+        lockGain.gain.setValueAtTime(0.001, ctx.currentTime + 0.65);
+        lockGain.gain.exponentialRampToValueAtTime(0.09, ctx.currentTime + 0.68);
+        lockGain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.8);
+        lockOsc.connect(lockGain);
+        lockGain.connect(ctx.destination);
+        lockOsc.start(ctx.currentTime + 0.65);
+        lockOsc.stop(ctx.currentTime + 0.8);
       }
     } catch {
-      // Ignorar restricciones de audio del navegador
+      // Sin sonido si las políticas de autoplay del navegador lo bloquean
+    }
+  };
+
+  // Toggle orquestado en 3 actos secuenciales
+  const toggleLocker = () => {
+    timersRef.current.forEach(clearTimeout);
+    timersRef.current = [];
+
+    const nextState = !isOpen;
+
+    if (nextState) {
+      // ACTO 1: Apertura - La puerta se mueve hacia la derecha expandiéndose
+      setIsOpen(true);
+      playLockerSound("open");
+
+      // ACTO 2: A los 380ms, la lámpara se enciende e ilumina el interior
+      const t1 = setTimeout(() => {
+        setLightOn(true);
+      }, 380);
+
+      // ACTO 3: A los 750ms, salen las pegatinas de los proyectos destacados
+      const t2 = setTimeout(() => {
+        setStickersPopped(true);
+      }, 750);
+
+      timersRef.current.push(t1, t2);
+    } else {
+      // SECUENCIA DE CIERRE PAUSADA Y NATURAL:
+      // 1. Las pegatinas se repliegan
+      setStickersPopped(false);
+      playLockerSound("close");
+
+      // 2. La luz se apaga
+      const t1 = setTimeout(() => {
+        setLightOn(false);
+      }, 140);
+
+      // 3. La puerta vuelve hacia la izquierda
+      const t2 = setTimeout(() => {
+        setIsOpen(false);
+      }, 180);
+
+      timersRef.current.push(t1, t2);
     }
   };
 
@@ -69,45 +170,140 @@ export function LockerHero() {
           </div>
         </div>
 
-        {/* Grid principal ancho: Casillero 3D + Ficha ejecutiva (items-start para fijar la altura sin saltos) */}
+        {/* Grid principal ancho: Casillero 3D + Ficha ejecutiva */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
           
-          {/* COLUMNA 1: Casillero Estable (dimensiones constantes y fijas) */}
+          {/* COLUMNA 1: Casillero Estable con animación en 3 actos */}
           <div className="lg:col-span-6 flex flex-col items-center">
             
             <div
               onClick={toggleLocker}
               className="relative w-full max-w-[440px] sm:max-w-[500px] lg:max-w-[560px] xl:max-w-[580px] aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl border border-neutral-300 dark:border-neutral-800 bg-neutral-900 cursor-pointer group select-none transition-all duration-300 hover:shadow-2xl"
-              style={{ perspective: "1200px" }}
+              style={{ perspective: "1400px" }}
               title={isOpen ? "Haz clic para cerrar la puerta" : "Haz clic para abrir el casillero"}
             >
-              {/* Capa de fondo: Interior del casillero con gabinete ancho y espacioso, Modfin y proyectos */}
+              {/* Capa de fondo: Interior del casillero (Acto 2: Iluminación reactiva) */}
               <div className="absolute inset-0 w-full h-full">
-                <Image
-                  src="/images/locker-open-taller.jpg"
-                  alt="Interior amplio del casillero completo con proyectos, Modfin y pertenencias de Enrique Becerra (ModLovelace)"
-                  fill
-                  sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 560px"
-                  priority
-                  className="object-cover"
-                />
-
-                {/* Resplandor cálido sutil cuando está abierto */}
                 <div
-                  className={`absolute top-0 inset-x-0 h-48 bg-gradient-to-b from-amber-200/25 via-amber-300/5 to-transparent pointer-events-none transition-opacity duration-500 ${
-                    isOpen ? "opacity-100" : "opacity-0"
+                  className={`relative w-full h-full transition-all duration-700 ease-out ${
+                    lightOn
+                      ? "filter brightness-100 contrast-[1.02]"
+                      : "filter brightness-[0.3] contrast-[0.9]"
+                  }`}
+                >
+                  <Image
+                    src="/images/locker-open-taller.jpg"
+                    alt="Interior amplio del casillero completo con proyectos, Modfin y pertenencias de Enrique Becerra (ModLovelace)"
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 560px"
+                    priority
+                    className="object-cover"
+                  />
+                </div>
+
+                {/* Sombra de penumbra interior antes de que la luz se encienda */}
+                <div
+                  className={`absolute inset-0 bg-neutral-950/65 pointer-events-none transition-opacity duration-600 ease-out ${
+                    lightOn ? "opacity-0" : "opacity-100"
                   }`}
                 />
+
+                {/* Resplandor cálido de la lámpara fluorescente cuando la luz se enciende */}
+                <div
+                  className={`absolute top-0 inset-x-0 h-56 pointer-events-none transition-all duration-700 ease-out ${
+                    lightOn ? "opacity-100 scale-100" : "opacity-0 scale-95"
+                  }`}
+                >
+                  {/* Luz difusa cálida */}
+                  <div className="absolute inset-0 bg-gradient-to-b from-amber-200/35 via-amber-300/10 to-transparent" />
+                  {/* Foco de luz directo sobre la lámpara */}
+                  <div className="absolute top-2 inset-x-12 h-16 bg-gradient-to-b from-white/40 via-amber-100/25 to-transparent blur-md rounded-full" />
+                </div>
+
+                {/* ACTO 3: Salen las pegatinas de los proyectos más relevantes (Die-cut sin cajas, relieve 3D elástico) */}
+                {/* Pegatina 1: Catjang-Sue (El Gato) */}
+                <div
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    window.open("https://catjang.modlovelace.com", "_blank");
+                  }}
+                  className={`absolute transition-all duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] cursor-pointer group/cat z-20 ${
+                    stickersPopped
+                      ? "opacity-100 scale-100 translate-y-0"
+                      : "opacity-0 scale-0 translate-y-4 pointer-events-none"
+                  }`}
+                  style={{
+                    left: "64.8%",
+                    top: "43.0%",
+                    width: "10.5%",
+                    aspectRatio: "1/1",
+                    transformOrigin: "center center",
+                    transitionDelay: stickersPopped ? "0ms" : "60ms",
+                  }}
+                  title="Catjang-Sue · Mascota de Escritorio (Abrir proyecto)"
+                >
+                  <div className="relative w-full h-full transition-transform duration-300 ease-out hover:scale-125 hover:-rotate-3 active:scale-105">
+                    <Image
+                      src="/images/sticker-catjang.png"
+                      alt="Sticker Catjang-Sue"
+                      fill
+                      className="object-contain filter drop-shadow-[0_8px_14px_rgba(0,0,0,0.6)] group-hover/cat:drop-shadow-[0_12px_22px_rgba(59,130,246,0.65)]"
+                    />
+                    {/* Badge flotante tooltip */}
+                    <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 px-2.5 py-0.5 rounded-full bg-blue-600/95 text-[10px] font-mono font-semibold text-white whitespace-nowrap opacity-0 group-hover/cat:opacity-100 transition-opacity pointer-events-none shadow-lg shadow-blue-500/25 border border-blue-400/30">
+                      Catjang-Sue ↗
+                    </div>
+                  </div>
+                </div>
+
+                {/* Pegatina 2: Flores Amarillas */}
+                <div
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    window.open("https://flores.modlovelace.com", "_blank");
+                  }}
+                  className={`absolute transition-all duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] cursor-pointer group/flower z-20 ${
+                    stickersPopped
+                      ? "opacity-100 scale-100 translate-y-0"
+                      : "opacity-0 scale-0 translate-y-4 pointer-events-none"
+                  }`}
+                  style={{
+                    left: "76.0%",
+                    top: "53.5%",
+                    width: "12.5%",
+                    aspectRatio: "1/1",
+                    transformOrigin: "center center",
+                    transitionDelay: stickersPopped ? "140ms" : "0ms",
+                  }}
+                  title="Flores Amarillas · Web Interactiva (Abrir proyecto)"
+                >
+                  <div className="relative w-full h-full transition-transform duration-300 ease-out hover:scale-125 hover:rotate-3 active:scale-105">
+                    <Image
+                      src="/images/sticker-sunflower.png"
+                      alt="Sticker Flores Amarillas"
+                      fill
+                      className="object-contain filter drop-shadow-[0_8px_14px_rgba(0,0,0,0.6)] group-hover/flower:drop-shadow-[0_12px_22px_rgba(245,158,11,0.65)] scale-110"
+                    />
+                    {/* Badge flotante tooltip */}
+                    <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 px-2.5 py-0.5 rounded-full bg-amber-600/95 text-[10px] font-mono font-semibold text-white whitespace-nowrap opacity-0 group-hover/flower:opacity-100 transition-opacity pointer-events-none shadow-lg shadow-amber-500/25 border border-amber-400/30">
+                      Flores Amarillas ↗
+                    </div>
+                  </div>
+                </div>
               </div>
 
-              {/* Capa frontal: Puerta cerrada amplia alineada con bisagras a la DERECHA y stickers de proyectos */}
+              {/* ACTO 1: Puerta cerrada amplia pivotando en la bisagra real (62% 50%) hacia la DERECHA */}
               <div
-                className={`absolute inset-0 w-full h-full origin-right transition-all duration-500 ease-[cubic-bezier(0.2,0.8,0.2,1)] ${
+                className={`absolute inset-0 w-full h-full transition-all ease-[cubic-bezier(0.16,1,0.3,1)] ${
                   isOpen
-                    ? "[transform:rotateY(75deg)] opacity-0 pointer-events-none"
-                    : "[transform:rotateY(0deg)] opacity-100 shadow-xl"
+                    ? "[transform:perspective(1200px)_rotateY(74deg)_translateX(8px)_translateZ(8px)] opacity-0 pointer-events-none"
+                    : "[transform:perspective(1200px)_rotateY(0deg)_translateX(0px)_translateZ(0px)] opacity-100 shadow-xl"
                 }`}
-                style={{ transformStyle: "preserve-3d" }}
+                style={{
+                  transformOrigin: "62% 50%",
+                  transformStyle: "preserve-3d",
+                  transitionDuration: isOpen ? "900ms" : "780ms",
+                }}
               >
                 <Image
                   src="/images/locker-closed-taller.jpg"
@@ -122,7 +318,7 @@ export function LockerHero() {
 
             {/* Subtítulo discreto debajo del casillero */}
             <div className="mt-4 flex items-center justify-between w-full max-w-[440px] sm:max-w-[500px] lg:max-w-[560px] xl:max-w-[580px] px-2 text-xs text-[var(--muted)]">
-              <span>{isOpen ? "Puerta abierta · Modfin & stickers de proyectos" : "Casillero cerrado"}</span>
+              <span>{isOpen ? "Puerta abierta · Modfin & stickers interactivos" : "Casillero cerrado"}</span>
               <button
                 onClick={toggleLocker}
                 className="text-blue-600 dark:text-blue-400 hover:underline font-medium cursor-pointer"
@@ -202,7 +398,11 @@ export function LockerHero() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 items-stretch">
                 
                 {/* 1. Catjang-Sue (El del gato) */}
-                <div className="p-4 rounded-xl bg-neutral-50 dark:bg-neutral-900/80 border border-neutral-200 dark:border-neutral-800 flex flex-col justify-between h-full hover:border-blue-500/50 transition-colors shadow-[0_1px_2px_rgba(0,0,0,0.04)]">
+                <div className={`p-4 rounded-xl bg-neutral-50 dark:bg-neutral-900/80 border flex flex-col justify-between h-full transition-all duration-500 shadow-[0_1px_2px_rgba(0,0,0,0.04)] ${
+                  stickersPopped
+                    ? "border-blue-500/60 ring-1 ring-blue-500/20 shadow-md shadow-blue-500/5"
+                    : "border-neutral-200 dark:border-neutral-800 hover:border-blue-500/50"
+                }`}>
                   <div className="space-y-2.5">
                     {/* Fila superior: Ícono oficial del casillero y Badge */}
                     <div className="flex items-center justify-between">
@@ -269,7 +469,11 @@ export function LockerHero() {
                 </div>
 
                 {/* 2. Regala Flores Amarillas (El de las flores) */}
-                <div className="p-4 rounded-xl bg-neutral-50 dark:bg-neutral-900/80 border border-neutral-200 dark:border-neutral-800 flex flex-col justify-between h-full hover:border-blue-500/50 transition-colors shadow-[0_1px_2px_rgba(0,0,0,0.04)]">
+                <div className={`p-4 rounded-xl bg-neutral-50 dark:bg-neutral-900/80 border flex flex-col justify-between h-full transition-all duration-500 shadow-[0_1px_2px_rgba(0,0,0,0.04)] ${
+                  stickersPopped
+                    ? "border-amber-500/60 ring-1 ring-amber-500/20 shadow-md shadow-amber-500/5"
+                    : "border-neutral-200 dark:border-neutral-800 hover:border-blue-500/50"
+                }`}>
                   <div className="space-y-2.5">
                     {/* Fila superior: Ícono oficial del casillero y Badge */}
                     <div className="flex items-center justify-between">
@@ -328,7 +532,7 @@ export function LockerHero() {
 
               {/* Pie interactivo de la tarjeta */}
               <div className="pt-2 text-[11px] font-mono text-[var(--muted)] flex flex-wrap items-center justify-between gap-x-3 gap-y-1 border-t border-[var(--border)]">
-                <span>{isOpen ? "✨ Casillero abierto: Catjang, Flores & Modfin en cabina" : "💡 Toca el casillero para abrir y ver los detalles"}</span>
+                <span>{stickersPopped ? "✨ Pegatinas activas: Haz clic en el casillero o aquí" : isOpen ? "✨ Casillero abierto: Catjang, Flores & Modfin en cabina" : "💡 Toca el casillero para abrir y ver los detalles"}</span>
                 <button
                   onClick={toggleLocker}
                   className="text-blue-600 dark:text-blue-400 hover:underline font-medium cursor-pointer"
