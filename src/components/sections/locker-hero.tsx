@@ -277,7 +277,7 @@ export function LockerHero() {
                   {/* Enlaces de acción anclados a la misma línea base */}
                   <div className="flex items-center justify-between pt-2.5 mt-3 border-t border-[var(--border)]/60 text-xs font-mono">
                     <Link
-                      href="https://regala-flores-amarillas.vercel.app"
+                      href="https://flores.modlovelace.com"
                       target="_blank"
                       rel="noreferrer"
                       className="text-blue-600 dark:text-blue-400 hover:underline font-semibold"
@@ -298,7 +298,7 @@ export function LockerHero() {
               </div>
 
               {/* Pie interactivo de la tarjeta */}
-              <div className="pt-2 text-[11px] font-mono text-[var(--muted)] flex items-center justify-between border-t border-[var(--border)]">
+              <div className="pt-2 text-[11px] font-mono text-[var(--muted)] flex flex-wrap items-center justify-between gap-x-3 gap-y-1 border-t border-[var(--border)]">
                 <span>{isOpen ? "✨ Casillero abierto: Catjang, Flores & Modfin en cabina" : "💡 Toca el casillero para abrir y ver los detalles"}</span>
                 <button
                   onClick={toggleLocker}

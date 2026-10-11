@@ -25,11 +25,14 @@ export function ProjectsSection() {
 
         {/* Grid de Proyectos Modular y Plano */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
-          {siteConfig.projects.map((project, idx) => (
-            <article
-              key={idx}
-              className="p-7 sm:p-8 rounded-2xl bg-[var(--card)] border border-[var(--border)] hover:border-neutral-400 dark:hover:border-neutral-700 transition-all flex flex-col justify-between space-y-6 shadow-sm hover:shadow-md"
-            >
+          {siteConfig.projects.map((project, idx) => {
+            const isFlores = project.title.toLowerCase().includes("flores");
+            return (
+              <article
+                key={idx}
+                id={isFlores ? "proyectos-regala-flores" : undefined}
+                className={`p-7 sm:p-8 rounded-2xl bg-[var(--card)] border border-[var(--border)] hover:border-neutral-400 dark:hover:border-neutral-700 transition-all flex flex-col justify-between space-y-6 shadow-sm hover:shadow-md ${isFlores ? "scroll-mt-24" : ""}`}
+              >
               <div className="space-y-4">
                 {/* Categoría & Estado */}
                 <div className="flex items-center justify-between gap-2">
@@ -142,7 +145,8 @@ export function ProjectsSection() {
               </div>
 
             </article>
-          ))}
+            );
+          })}
         </div>
 
       </div>

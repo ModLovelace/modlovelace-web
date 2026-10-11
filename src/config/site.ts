@@ -105,7 +105,7 @@ export const siteConfig = {
       tech: ["React 19", "Vite", "Tailwind CSS", "Web Audio API", "Vercel"],
       links: {
         repo: "https://github.com/ModLovelace/flores-amarillas-primavera",
-        live: "https://regala-flores-amarillas.vercel.app",
+        live: "https://flores.modlovelace.com",
       },
     },
     {

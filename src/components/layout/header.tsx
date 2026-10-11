@@ -19,16 +19,16 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-50 w-full backdrop-blur-md bg-[var(--background)]/90 border-b border-[var(--border)] transition-colors">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-14 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2 sm:py-0 sm:h-14 flex flex-wrap sm:flex-nowrap items-center justify-between gap-x-4 gap-y-1.5">
         
         {/* Brand tipográfico zen */}
-        <Link href="/" className="font-mono text-xs font-medium tracking-tight text-[var(--foreground)] hover:text-[#e63946] transition-colors">
+        <Link href="/" className="shrink-0 whitespace-nowrap font-mono text-xs font-medium tracking-tight text-[var(--foreground)] hover:text-[#e63946] transition-colors">
           <span>modlovelace</span>
           <span className="text-[#e63946]">.com</span>
         </Link>
 
-        {/* Nav minimalista */}
-        <nav className="flex items-center gap-5 sm:gap-6 text-xs font-mono text-[var(--muted)]">
+        {/* Nav minimalista: en móvil pasa a su propia fila y no se parte */}
+        <nav className="order-last sm:order-none w-full sm:w-auto flex items-center justify-between sm:justify-start gap-4 sm:gap-6 text-xs font-mono text-[var(--muted)] whitespace-nowrap [&_a]:whitespace-nowrap">
           {navItems.map((item) => (
             <Link
               key={item.href}
