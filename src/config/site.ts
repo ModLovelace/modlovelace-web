@@ -88,14 +88,15 @@ export const siteConfig = {
       tech: ["Electron", "SVG Animations", "Node.js", "AI Agent Hooks", "CI/CD Actions"],
       links: {
         repo: "https://github.com/ModLovelace/catjang-sue",
+        live: "https://catjang.modlovelace.com",
         releases: "https://github.com/ModLovelace/catjang-sue/releases/latest",
       },
     },
     {
       title: "Regala Flores Amarillas",
-      category: "Web Interactiva / Experiencia",
-      status: "Producción",
-      badgeColor: "amber",
+      category: "Open Source / Web Interactiva",
+      status: "Open Source",
+      badgeColor: "emerald",
       description:
         "Experiencia web interactiva con floración procedural en 4 fases, sintetizador acústico en tiempo real con Web Audio API y generador de tarjetas virales.",
       highlights: [

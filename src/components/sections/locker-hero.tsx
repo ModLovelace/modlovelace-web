@@ -227,21 +227,31 @@ export function LockerHero() {
                   {/* Enlaces de acción anclados a la misma línea base */}
                   <div className="flex items-center justify-between pt-2.5 mt-3 border-t border-[var(--border)]/60 text-xs font-mono">
                     <Link
-                      href="https://github.com/ModLovelace/catjang-sue"
+                      href="https://catjang.modlovelace.com"
                       target="_blank"
                       rel="noreferrer"
-                      className="text-blue-600 dark:text-blue-400 hover:underline font-semibold"
+                      className="text-emerald-600 dark:text-emerald-400 hover:underline font-semibold"
                     >
-                      GitHub (⭐) ↗
+                      Web Oficial ↗
                     </Link>
-                    <Link
-                      href="https://github.com/ModLovelace/catjang-sue/releases/latest"
-                      target="_blank"
-                      rel="noreferrer"
-                      className="text-[var(--muted)] hover:text-[var(--foreground)]"
-                    >
-                      Releases ↗
-                    </Link>
+                    <div className="flex items-center gap-2.5">
+                      <Link
+                        href="https://github.com/ModLovelace/catjang-sue"
+                        target="_blank"
+                        rel="noreferrer"
+                        className="text-blue-600 dark:text-blue-400 hover:underline"
+                      >
+                        GitHub ↗
+                      </Link>
+                      <Link
+                        href="https://github.com/ModLovelace/catjang-sue/releases/latest"
+                        target="_blank"
+                        rel="noreferrer"
+                        className="text-[var(--muted)] hover:text-[var(--foreground)]"
+                      >
+                        Releases ↗
+                      </Link>
+                    </div>
                   </div>
                 </div>
 
@@ -253,8 +263,8 @@ export function LockerHero() {
                       <div className="w-8 h-8 rounded-xl bg-yellow-500/10 text-yellow-600 dark:text-yellow-400 flex items-center justify-center font-bold text-base shadow-sm shrink-0">
                         🌻
                       </div>
-                      <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-sky-100 dark:bg-sky-950/80 text-sky-700 dark:text-sky-300 font-medium shrink-0">
-                        Producción
+                      <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-950/80 text-emerald-700 dark:text-emerald-300 font-medium shrink-0">
+                        Open Source
                       </span>
                     </div>
 
