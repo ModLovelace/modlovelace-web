@@ -77,7 +77,7 @@ export function LockerHero() {
             
             <div
               onClick={toggleLocker}
-              className="relative w-full max-w-[420px] sm:max-w-[480px] lg:max-w-[540px] xl:max-w-[560px] aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl border border-neutral-300 dark:border-neutral-800 bg-neutral-900 cursor-pointer group select-none transition-all duration-300 hover:shadow-2xl"
+              className="relative w-full max-w-[440px] sm:max-w-[500px] lg:max-w-[560px] xl:max-w-[580px] aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl border border-neutral-300 dark:border-neutral-800 bg-neutral-900 cursor-pointer group select-none transition-all duration-300 hover:shadow-2xl"
               style={{ perspective: "1200px" }}
               title={isOpen ? "Haz clic para cerrar la puerta" : "Haz clic para abrir el casillero"}
             >
@@ -121,7 +121,7 @@ export function LockerHero() {
             </div>
 
             {/* Subtítulo discreto debajo del casillero */}
-            <div className="mt-4 flex items-center justify-between w-full max-w-[420px] sm:max-w-[480px] lg:max-w-[540px] xl:max-w-[560px] px-2 text-xs text-[var(--muted)]">
+            <div className="mt-4 flex items-center justify-between w-full max-w-[440px] sm:max-w-[500px] lg:max-w-[560px] xl:max-w-[580px] px-2 text-xs text-[var(--muted)]">
               <span>{isOpen ? "Puerta abierta · Modfin & stickers de proyectos" : "Casillero cerrado"}</span>
               <button
                 onClick={toggleLocker}
