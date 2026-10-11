@@ -188,7 +188,13 @@ export function LockerHero() {
                   </span>
                 </div>
                 <div className="flex items-center gap-2 text-[11px] font-mono text-blue-600 dark:text-blue-400 font-semibold">
-                  <span>🐾 El Gato &amp; 🌻 Las Flores</span>
+                  <span className="inline-flex items-center gap-1.5">
+                    <img src="/images/sticker-catjang.png" alt="Cat" className="w-3.5 h-3.5 object-contain inline" />
+                    <span>El Gato</span>
+                    <span className="text-neutral-400">&amp;</span>
+                    <img src="/images/sticker-sunflower.png" alt="Flores" className="w-3.5 h-3.5 object-contain inline" />
+                    <span>Las Flores</span>
+                  </span>
                 </div>
               </div>
 
@@ -198,17 +204,21 @@ export function LockerHero() {
                 {/* 1. Catjang-Sue (El del gato) */}
                 <div className="p-4 rounded-xl bg-neutral-50 dark:bg-neutral-900/80 border border-neutral-200 dark:border-neutral-800 flex flex-col justify-between h-full hover:border-blue-500/50 transition-colors shadow-[0_1px_2px_rgba(0,0,0,0.04)]">
                   <div className="space-y-2.5">
-                    {/* Fila superior: Ícono y Badge en extremos opuestos */}
+                    {/* Fila superior: Ícono oficial del casillero y Badge */}
                     <div className="flex items-center justify-between">
-                      <div className="w-8 h-8 rounded-xl bg-amber-500/10 text-amber-600 dark:text-amber-400 flex items-center justify-center font-bold text-base shadow-sm shrink-0">
-                        🐾
+                      <div className="w-9 h-9 rounded-xl bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700/80 flex items-center justify-center p-1 shadow-sm shrink-0 overflow-hidden">
+                        <img
+                          src="/images/sticker-catjang.png"
+                          alt="Sticker Catjang"
+                          className="w-full h-full object-contain filter drop-shadow-sm"
+                        />
                       </div>
-                      <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-amber-100 dark:bg-amber-950/80 text-amber-700 dark:text-amber-300 font-medium shrink-0">
+                      <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-950/80 text-emerald-700 dark:text-emerald-300 font-medium shrink-0">
                         Open Source
                       </span>
                     </div>
 
-                    {/* Título y Subtítulo con ancho completo (sin truncamiento) */}
+                    {/* Título y Subtítulo con ancho completo */}
                     <div>
                       <h3 className="text-sm font-bold text-[var(--foreground)] leading-tight">
                         Catjang-Sue
@@ -224,32 +234,35 @@ export function LockerHero() {
                     </p>
                   </div>
 
-                  {/* Enlaces de acción anclados a la misma línea base */}
-                  <div className="flex items-center justify-between pt-2.5 mt-3 border-t border-[var(--border)]/60 text-xs font-mono">
+                  {/* Enlaces de acción con estilo y colores 100% unificados */}
+                  <div className="flex flex-wrap items-center justify-between gap-2 pt-3 mt-3 border-t border-[var(--border)]/60 text-xs font-mono">
                     <Link
                       href="https://catjang.modlovelace.com"
                       target="_blank"
                       rel="noreferrer"
-                      className="text-emerald-600 dark:text-emerald-400 hover:underline font-semibold"
+                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-medium text-xs transition-all shadow-sm"
                     >
-                      Web Oficial ↗
+                      <span>Web Oficial</span>
+                      <span className="text-[10px] select-none">↗</span>
                     </Link>
-                    <div className="flex items-center gap-2.5">
+                    <div className="flex items-center gap-1.5">
                       <Link
                         href="https://github.com/ModLovelace/catjang-sue"
                         target="_blank"
                         rel="noreferrer"
-                        className="text-blue-600 dark:text-blue-400 hover:underline"
+                        className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg bg-neutral-200/60 hover:bg-neutral-200 dark:bg-neutral-800 dark:hover:bg-neutral-700 border border-neutral-300 dark:border-neutral-700/80 text-neutral-800 dark:text-neutral-200 font-medium text-xs transition-colors"
                       >
-                        GitHub ↗
+                        <span>GitHub</span>
+                        <span className="text-[10px] text-neutral-400 select-none">↗</span>
                       </Link>
                       <Link
                         href="https://github.com/ModLovelace/catjang-sue/releases/latest"
                         target="_blank"
                         rel="noreferrer"
-                        className="text-[var(--muted)] hover:text-[var(--foreground)]"
+                        className="inline-flex items-center gap-1 px-2 py-1.5 rounded-lg bg-neutral-200/60 hover:bg-neutral-200 dark:bg-neutral-800 dark:hover:bg-neutral-700 border border-neutral-300 dark:border-neutral-700/80 text-neutral-800 dark:text-neutral-200 font-medium text-xs transition-colors"
                       >
-                        Releases ↗
+                        <span>Releases</span>
+                        <span className="text-[10px] text-neutral-400 select-none">↗</span>
                       </Link>
                     </div>
                   </div>
@@ -258,17 +271,21 @@ export function LockerHero() {
                 {/* 2. Regala Flores Amarillas (El de las flores) */}
                 <div className="p-4 rounded-xl bg-neutral-50 dark:bg-neutral-900/80 border border-neutral-200 dark:border-neutral-800 flex flex-col justify-between h-full hover:border-blue-500/50 transition-colors shadow-[0_1px_2px_rgba(0,0,0,0.04)]">
                   <div className="space-y-2.5">
-                    {/* Fila superior: Ícono y Badge en extremos opuestos */}
+                    {/* Fila superior: Ícono oficial del casillero y Badge */}
                     <div className="flex items-center justify-between">
-                      <div className="w-8 h-8 rounded-xl bg-yellow-500/10 text-yellow-600 dark:text-yellow-400 flex items-center justify-center font-bold text-base shadow-sm shrink-0">
-                        🌻
+                      <div className="w-9 h-9 rounded-xl bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700/80 flex items-center justify-center p-1 shadow-sm shrink-0 overflow-hidden">
+                        <img
+                          src="/images/sticker-sunflower.png"
+                          alt="Sticker Flores Amarillas"
+                          className="w-full h-full object-contain filter drop-shadow-sm scale-105"
+                        />
                       </div>
                       <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-950/80 text-emerald-700 dark:text-emerald-300 font-medium shrink-0">
                         Open Source
                       </span>
                     </div>
 
-                    {/* Título y Subtítulo con ancho completo (sin truncamiento) */}
+                    {/* Título y Subtítulo con ancho completo */}
                     <div>
                       <h3 className="text-sm font-bold text-[var(--foreground)] leading-tight">
                         Flores Amarillas
@@ -284,23 +301,25 @@ export function LockerHero() {
                     </p>
                   </div>
 
-                  {/* Enlaces de acción anclados a la misma línea base */}
-                  <div className="flex items-center justify-between pt-2.5 mt-3 border-t border-[var(--border)]/60 text-xs font-mono">
+                  {/* Enlaces de acción con estilo y colores 100% unificados */}
+                  <div className="flex flex-wrap items-center justify-between gap-2 pt-3 mt-3 border-t border-[var(--border)]/60 text-xs font-mono">
                     <Link
                       href="https://flores.modlovelace.com"
                       target="_blank"
                       rel="noreferrer"
-                      className="text-blue-600 dark:text-blue-400 hover:underline font-semibold"
+                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-medium text-xs transition-all shadow-sm"
                     >
-                      Ver en vivo ↗
+                      <span>Ver en vivo</span>
+                      <span className="text-[10px] select-none">↗</span>
                     </Link>
                     <Link
                       href="https://github.com/ModLovelace/flores-amarillas-primavera"
                       target="_blank"
                       rel="noreferrer"
-                      className="text-[var(--muted)] hover:text-[var(--foreground)]"
+                      className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg bg-neutral-200/60 hover:bg-neutral-200 dark:bg-neutral-800 dark:hover:bg-neutral-700 border border-neutral-300 dark:border-neutral-700/80 text-neutral-800 dark:text-neutral-200 font-medium text-xs transition-colors"
                     >
-                      GitHub ↗
+                      <span>GitHub</span>
+                      <span className="text-[10px] text-neutral-400 select-none">↗</span>
                     </Link>
                   </div>
                 </div>
