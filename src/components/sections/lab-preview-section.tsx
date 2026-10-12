@@ -8,7 +8,7 @@ export function LabPreviewSection() {
   // Tomamos los 3 experimentos más emblemáticos para el resumen en Home
   const featured = [
     {
-      entry: LAB_ENTRIES.find((e) => e.id === "catjang-wayland") || LAB_ENTRIES[0],
+      entry: LAB_ENTRIES.find((e) => e.id === "catjang-linux-native") || LAB_ENTRIES[0],
       icon: "🐾",
       color: "amber",
     },

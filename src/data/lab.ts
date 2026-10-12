@@ -19,6 +19,57 @@ export interface LabEntry {
 
 export const LAB_ENTRIES: LabEntry[] = [
   {
+    id: "catjang-linux-native",
+    category: "gatito",
+    categoryLabel: "Catjang Lab · Linux Nativo (GNOME 50 & Wayland)",
+    status: "En Desarrollo",
+    date: "Octubre 2026",
+    title: "Implementación nativa en GNOME 50.1 y Wayland: Arquitectura híbrida, 16 segmentos y 115 tests",
+    summary:
+      "Avance en worktree experimental para Linux (validado en Ubuntu 26.04, GNOME 50.1 y Wayland). GNOME dibuja la mascota de forma nativa con cuerpo de 16 segmentos, acordeón elástico, teclado global fuera del visor y termodinámica reactiva; Electron conserva configuración, licencia y audio sin alterar los renderizadores de Windows ni macOS.",
+    tags: [
+      "GNOME 50.1 Nativo",
+      "Wayland & Ubuntu 26.04",
+      "16 Segmentos",
+      "Teclado Global",
+      "Termodinámica",
+      "115 Tests Wayland",
+      "AppImage & .deb",
+    ],
+    metrics: [
+      { label: "Tests Wayland", value: "115 / 115 OK" },
+      { label: "Compositor", value: "GNOME 50.1" },
+      { label: "Física", value: "16 segmentos" },
+      { label: "Empaquetado", value: "AppImage & .deb" },
+    ],
+    details: {
+      problem:
+        "El aislamiento de seguridad de Wayland y la gestión de ventanas flotantes sin marcos limitaban el control de transparencia y eventos continuos de ratón/teclado en Electron puro. Se requería una solución nativa de alto rendimiento sin romper la base de código compartida con Windows y macOS.",
+      solution:
+        "Arquitectura híbrida desacoplada en worktree experimental: GNOME Shell dibuja la mascota de forma nativa mientras Electron gestiona la configuración, licenciamiento y audio. La última iteración incorpora: arrastre con cuerpo de 16 segmentos (movimiento de acordeón, inercia y retorno al soltar); estiramiento grande y centrado con ~50% de opacidad a mitad de la animación; patas sincronizadas con cada pulsación del teclado (incluso fuera del visor); color rojo progresivo según velocidad y actividad acumulada con vapor y enfriamiento; seguimiento ocular, caricias, corazones y ronroneo.",
+      keyTakeaway:
+        "Superó 115 observaciones automatizadas en un compositor Wayland aislado y comprobación obligatoria de recursos de mascotas. AppImage y .deb reconstruidos y validados sin instalarlos en el sistema. Pendiente: revisión humana del acordeón, transparencia y teclado global de esta última versión, y validación en el escritorio habitual con monitores físicos. Soporte acotado por ahora a Catjang y GNOME 50 (sin declarar aún soporte general para Ubuntu). Renderizadores compartidos de Windows y macOS 100% intactos.",
+      codeSnippet: `// Arquitectura Híbrida: GNOME 50.1 Wayland + Electron Core
+// 1. GNOME Shell (Worktree experimental):
+//    - Renderizado nativo del felino con físicas de 16 segmentos
+//    - Movimiento de acordeón, inercia y retorno elástico al soltar
+//    - Estiramiento grande y centrado con ~50% de opacidad intermedia
+//    - Sincronización de patas con teclado global fuera del visor
+//    - Termodinámica: velocidad/pulsaciones -> rojo térmico + vapor + enfriamiento
+//    - Seguimiento ocular, caricias, corazones y ronroneo acústico
+// 2. Electron Core:
+//    - Almacén de configuración, activación de licencia y pipeline de audio
+// 3. QA & Validación:
+//    - 115 tests en compositor Wayland aislado (headless)
+//    - Verificación directa de artefactos AppImage y .deb sin instalar
+//    - Cero regresiones: Windows y macOS permanecen intactos`,
+    },
+    link: {
+      label: "Repositorio Catjang-Sue",
+      url: "https://github.com/ModLovelace/catjang-sue",
+    },
+  },
+  {
     id: "catjang-wayland",
     category: "gatito",
     categoryLabel: "Catjang Lab · Linux Wayland",

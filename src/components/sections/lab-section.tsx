@@ -25,7 +25,7 @@ interface LabSectionProps {
 
 export function LabSection({ isStandalonePage = false }: LabSectionProps) {
   const [activeFilter, setActiveFilter] = useState<string>("todos");
-  const [expandedId, setExpandedId] = useState<string | null>("catjang-wayland");
+  const [expandedId, setExpandedId] = useState<string | null>("catjang-linux-native");
 
   const filteredEntries =
     activeFilter === "todos"

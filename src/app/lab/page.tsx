@@ -7,7 +7,7 @@ import { siteConfig } from "@/config/site";
 export const metadata: Metadata = {
   title: "Laboratorio Técnico & Blog de Ingeniería",
   description:
-    "Bitácora técnica, experimentos activos y soluciones a problemas de bajo nivel: seguimiento DBus en Wayland para Catjang, síntesis de sonido procedural con Web Audio API, orquestación de agentes de IA y sistemas offline-first.",
+    "Bitácora técnica, experimentos activos y soluciones a bajo nivel: implementación nativa de Catjang en GNOME 50/Wayland (16 segmentos, 115 tests), síntesis de sonido procedural con Web Audio API, orquestación de agentes de IA y sistemas offline-first.",
   alternates: {
     canonical: `https://${siteConfig.domain}/lab`,
   },
