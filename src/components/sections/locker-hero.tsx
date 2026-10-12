@@ -182,8 +182,16 @@ export function LockerHero() {
               style={{ perspective: "1400px" }}
               title={isOpen ? "Haz clic para cerrar la puerta" : "Haz clic para abrir el casillero"}
             >
-              {/* Capa de fondo: Interior del casillero (Acto 2: Iluminación reactiva) */}
-              <div className="absolute inset-0 w-full h-full">
+              {/* Capa de fondo: Interior del casillero con ZOOM cinemático enfocado en el gabinete y los datos de Enrique */}
+              <div
+                className={`absolute inset-0 w-full h-full transition-transform ease-[cubic-bezier(0.16,1,0.3,1)] ${
+                  isOpen ? "scale-[1.07]" : "scale-100"
+                }`}
+                style={{
+                  transformOrigin: "32% 42%",
+                  transitionDuration: isOpen ? "900ms" : "780ms",
+                }}
+              >
                 <div
                   className={`relative w-full h-full transition-all duration-700 ease-out ${
                     lightOn
@@ -220,7 +228,34 @@ export function LockerHero() {
                   <div className="absolute top-2 inset-x-12 h-16 bg-gradient-to-b from-white/40 via-amber-100/25 to-transparent blur-md rounded-full" />
                 </div>
 
-                {/* ACTO 3: Salen las pegatinas de los proyectos más relevantes (Die-cut sin cajas, relieve 3D elástico) */}
+                {/* ACTO 3: Salen las pegatinas sobre la puerta limpia (nace vacía y se agregan con relieve 3D elástico) */}
+                {/* Pegatina 0: MODLOVELACE Crest */}
+                <div
+                  className={`absolute transition-all duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] z-20 ${
+                    stickersPopped
+                      ? "opacity-100 scale-100 translate-y-0"
+                      : "opacity-0 scale-0 translate-y-4 pointer-events-none"
+                  }`}
+                  style={{
+                    left: "64.5%",
+                    top: "27.5%",
+                    width: "20%",
+                    aspectRatio: "240/115",
+                    transformOrigin: "center center",
+                    transitionDelay: stickersPopped ? "0ms" : "80ms",
+                  }}
+                  title="MODLOVELACE"
+                >
+                  <div className="relative w-full h-full transition-transform duration-300 ease-out hover:scale-115">
+                    <Image
+                      src="/images/sticker-modlovelace.png"
+                      alt="Sticker MODLOVELACE"
+                      fill
+                      className="object-contain filter drop-shadow-[0_8px_14px_rgba(0,0,0,0.6)]"
+                    />
+                  </div>
+                </div>
+
                 {/* Pegatina 1: Catjang-Sue (El Gato) */}
                 <div
                   onClick={(e) => {
@@ -233,12 +268,12 @@ export function LockerHero() {
                       : "opacity-0 scale-0 translate-y-4 pointer-events-none"
                   }`}
                   style={{
-                    left: "64.8%",
-                    top: "43.0%",
-                    width: "10.5%",
+                    left: "66.5%",
+                    top: "39.5%",
+                    width: "11.5%",
                     aspectRatio: "1/1",
                     transformOrigin: "center center",
-                    transitionDelay: stickersPopped ? "0ms" : "60ms",
+                    transitionDelay: stickersPopped ? "90ms" : "40ms",
                   }}
                   title="Catjang-Sue · Mascota de Escritorio (Abrir proyecto)"
                 >
@@ -268,12 +303,12 @@ export function LockerHero() {
                       : "opacity-0 scale-0 translate-y-4 pointer-events-none"
                   }`}
                   style={{
-                    left: "76.0%",
-                    top: "53.5%",
-                    width: "12.5%",
+                    left: "73.5%",
+                    top: "49.5%",
+                    width: "13.5%",
                     aspectRatio: "1/1",
                     transformOrigin: "center center",
-                    transitionDelay: stickersPopped ? "140ms" : "0ms",
+                    transitionDelay: stickersPopped ? "170ms" : "0ms",
                   }}
                   title="Flores Amarillas · Web Interactiva (Abrir proyecto)"
                 >
