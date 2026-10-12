@@ -239,8 +239,8 @@ export function LockerHero() {
                   style={{
                     left: "64.5%",
                     top: "27.5%",
-                    width: "20%",
-                    aspectRatio: "240/115",
+                    width: "20.5%",
+                    aspectRatio: "243/149",
                     transformOrigin: "center center",
                     transitionDelay: stickersPopped ? "0ms" : "80ms",
                   }}
@@ -269,9 +269,9 @@ export function LockerHero() {
                   }`}
                   style={{
                     left: "66.5%",
-                    top: "39.5%",
-                    width: "11.5%",
-                    aspectRatio: "1/1",
+                    top: "40.5%",
+                    width: "12%",
+                    aspectRatio: "136/127",
                     transformOrigin: "center center",
                     transitionDelay: stickersPopped ? "90ms" : "40ms",
                   }}
@@ -291,7 +291,7 @@ export function LockerHero() {
                   </div>
                 </div>
 
-                {/* Pegatina 2: Flores Amarillas */}
+                {/* Pegatina 2: Regala Flores */}
                 <div
                   onClick={(e) => {
                     e.stopPropagation();
@@ -304,24 +304,24 @@ export function LockerHero() {
                   }`}
                   style={{
                     left: "73.5%",
-                    top: "49.5%",
-                    width: "13.5%",
-                    aspectRatio: "1/1",
+                    top: "51.0%",
+                    width: "12.5%",
+                    aspectRatio: "127/141",
                     transformOrigin: "center center",
                     transitionDelay: stickersPopped ? "170ms" : "0ms",
                   }}
-                  title="Flores Amarillas · Web Interactiva (Abrir proyecto)"
+                  title="Regala Flores · Web Interactiva (Abrir proyecto)"
                 >
                   <div className="relative w-full h-full transition-transform duration-300 ease-out hover:scale-125 hover:rotate-3 active:scale-105">
                     <Image
                       src="/images/sticker-sunflower.png"
-                      alt="Sticker Flores Amarillas"
+                      alt="Sticker Regala Flores"
                       fill
                       className="object-contain filter drop-shadow-[0_8px_14px_rgba(0,0,0,0.6)] group-hover/flower:drop-shadow-[0_12px_22px_rgba(245,158,11,0.65)] scale-110"
                     />
                     {/* Badge flotante tooltip */}
                     <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 px-2.5 py-0.5 rounded-full bg-amber-600/95 text-[10px] font-mono font-semibold text-white whitespace-nowrap opacity-0 group-hover/flower:opacity-100 transition-opacity pointer-events-none shadow-lg shadow-amber-500/25 border border-amber-400/30">
-                      Flores Amarillas ↗
+                      Regala Flores ↗
                     </div>
                   </div>
                 </div>
@@ -424,7 +424,7 @@ export function LockerHero() {
                     <span>El Gato</span>
                     <span className="text-neutral-400">&amp;</span>
                     <img src="/images/sticker-sunflower.png" alt="Flores" className="w-3.5 h-3.5 object-contain inline" />
-                    <span>Las Flores</span>
+                    <span>Regala Flores</span>
                   </span>
                 </div>
               </div>
@@ -503,7 +503,7 @@ export function LockerHero() {
                   </div>
                 </div>
 
-                {/* 2. Regala Flores Amarillas (El de las flores) */}
+                {/* 2. Regala Flores (El de las flores) */}
                 <div className={`p-4 rounded-xl bg-neutral-50 dark:bg-neutral-900/80 border flex flex-col justify-between h-full transition-all duration-500 shadow-[0_1px_2px_rgba(0,0,0,0.04)] ${
                   stickersPopped
                     ? "border-amber-500/60 ring-1 ring-amber-500/20 shadow-md shadow-amber-500/5"
@@ -515,7 +515,7 @@ export function LockerHero() {
                       <div className="w-9 h-9 rounded-xl bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700/80 flex items-center justify-center p-1 shadow-sm shrink-0 overflow-hidden">
                         <img
                           src="/images/sticker-sunflower.png"
-                          alt="Sticker Flores Amarillas"
+                          alt="Sticker Regala Flores"
                           className="w-full h-full object-contain filter drop-shadow-sm scale-105"
                         />
                       </div>
@@ -527,7 +527,7 @@ export function LockerHero() {
                     {/* Título y Subtítulo con ancho completo */}
                     <div>
                       <h3 className="text-sm font-bold text-[var(--foreground)] leading-tight">
-                        Flores Amarillas
+                        Regala Flores
                       </h3>
                       <p className="text-[11px] font-mono text-[var(--muted)] mt-0.5">
                         Web Interactiva con Audio
@@ -567,7 +567,7 @@ export function LockerHero() {
 
               {/* Pie interactivo de la tarjeta */}
               <div className="pt-2 text-[11px] font-mono text-[var(--muted)] flex flex-wrap items-center justify-between gap-x-3 gap-y-1 border-t border-[var(--border)]">
-                <span>{stickersPopped ? "✨ Pegatinas activas: Haz clic en el casillero o aquí" : isOpen ? "✨ Casillero abierto: Catjang, Flores & Modfin en cabina" : "💡 Toca el casillero para abrir y ver los detalles"}</span>
+                <span>{stickersPopped ? "✨ Pegatinas activas: Haz clic en el casillero o aquí" : isOpen ? "✨ Casillero abierto: Catjang, Regala Flores & Modfin en cabina" : "💡 Toca el casillero para abrir y ver los detalles"}</span>
                 <button
                   onClick={toggleLocker}
                   className="text-blue-600 dark:text-blue-400 hover:underline font-medium cursor-pointer"
