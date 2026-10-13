@@ -147,6 +147,21 @@ export function LockerHero() {
     }
   };
 
+  // Manejador inteligente de clics sobre el casillero
+  const handleLockerClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!isOpen) {
+      toggleLocker();
+      return;
+    }
+    // Si está abierto: sólo cerramos si el usuario hace clic en el área de la puerta abierta (derecha, x > 56%)
+    // Si hace clic en el gabinete interior (póster, Modfin, lámpara), NO cerramos accidentalmente
+    const rect = e.currentTarget.getBoundingClientRect();
+    const clickXRatio = (e.clientX - rect.left) / rect.width;
+    if (clickXRatio > 0.56) {
+      toggleLocker();
+    }
+  };
+
   return (
     <section className="pt-6 pb-12 sm:pt-10 sm:pb-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -177,10 +192,10 @@ export function LockerHero() {
           <div className="lg:col-span-6 flex flex-col items-center">
             
             <div
-              onClick={toggleLocker}
+              onClick={handleLockerClick}
               className="relative w-full max-w-[440px] sm:max-w-[500px] lg:max-w-[560px] xl:max-w-[580px] aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl border border-neutral-300 dark:border-neutral-800 bg-neutral-900 cursor-pointer group select-none transition-all duration-300 hover:shadow-2xl"
               style={{ perspective: "1400px" }}
-              title={isOpen ? "Haz clic para cerrar la puerta" : "Haz clic para abrir el casillero"}
+              title={isOpen ? "Haz clic en la puerta para cerrarla" : "Haz clic para abrir el casillero"}
             >
               {/* Capa de fondo: Interior del casillero con ZOOM cinemático enfocado en el gabinete y los datos de Enrique */}
               <div
@@ -231,7 +246,10 @@ export function LockerHero() {
                 {/* ACTO 3: Salen las pegatinas sobre la puerta limpia (nace vacía y se agregan con relieve 3D elástico) */}
                 {/* Pegatina 0: MODLOVELACE Crest */}
                 <div
-                  className={`absolute transition-all duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] z-20 ${
+                  onClick={(e) => {
+                    e.stopPropagation();
+                  }}
+                  className={`absolute transition-all duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] z-30 ${
                     stickersPopped
                       ? "opacity-100 scale-100 translate-y-0"
                       : "opacity-0 scale-0 translate-y-4 pointer-events-none"
@@ -257,14 +275,16 @@ export function LockerHero() {
                 </div>
 
                 {/* Pegatina 1: Catjang-Sue (El Gato) */}
-                <div
+                <a
+                  href="https://catjang.modlovelace.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   onClick={(e) => {
                     e.stopPropagation();
-                    window.open("https://catjang.modlovelace.com", "_blank");
                   }}
-                  className={`absolute transition-all duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] cursor-pointer group/cat z-20 ${
+                  className={`absolute transition-all duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] cursor-pointer group/cat z-30 block ${
                     stickersPopped
-                      ? "opacity-100 scale-100 translate-y-0"
+                      ? "opacity-100 scale-100 translate-y-0 pointer-events-auto"
                       : "opacity-0 scale-0 translate-y-4 pointer-events-none"
                   }`}
                   style={{
@@ -284,22 +304,24 @@ export function LockerHero() {
                       fill
                       className="object-contain filter drop-shadow-[0_8px_14px_rgba(0,0,0,0.6)] group-hover/cat:drop-shadow-[0_12px_22px_rgba(59,130,246,0.65)]"
                     />
-                    {/* Badge flotante tooltip */}
-                    <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 px-2.5 py-0.5 rounded-full bg-blue-600/95 text-[10px] font-mono font-semibold text-white whitespace-nowrap opacity-0 group-hover/cat:opacity-100 transition-opacity pointer-events-none shadow-lg shadow-blue-500/25 border border-blue-400/30">
+                    {/* Badge flotante tooltip clickeable */}
+                    <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 px-2.5 py-0.5 rounded-full bg-blue-600 hover:bg-blue-500 text-[10px] font-mono font-semibold text-white whitespace-nowrap opacity-0 group-hover/cat:opacity-100 transition-opacity shadow-lg shadow-blue-500/25 border border-blue-400/30 pointer-events-auto cursor-pointer z-40">
                       Catjang-Sue ↗
                     </div>
                   </div>
-                </div>
+                </a>
 
                 {/* Pegatina 2: Regala Flores */}
-                <div
+                <a
+                  href="https://flores.modlovelace.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   onClick={(e) => {
                     e.stopPropagation();
-                    window.open("https://flores.modlovelace.com", "_blank");
                   }}
-                  className={`absolute transition-all duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] cursor-pointer group/flower z-20 ${
+                  className={`absolute transition-all duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] cursor-pointer group/flower z-30 block ${
                     stickersPopped
-                      ? "opacity-100 scale-100 translate-y-0"
+                      ? "opacity-100 scale-100 translate-y-0 pointer-events-auto"
                       : "opacity-0 scale-0 translate-y-4 pointer-events-none"
                   }`}
                   style={{
@@ -319,12 +341,12 @@ export function LockerHero() {
                       fill
                       className="object-contain filter drop-shadow-[0_8px_14px_rgba(0,0,0,0.6)] group-hover/flower:drop-shadow-[0_12px_22px_rgba(245,158,11,0.65)] scale-110"
                     />
-                    {/* Badge flotante tooltip */}
-                    <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 px-2.5 py-0.5 rounded-full bg-amber-600/95 text-[10px] font-mono font-semibold text-white whitespace-nowrap opacity-0 group-hover/flower:opacity-100 transition-opacity pointer-events-none shadow-lg shadow-amber-500/25 border border-amber-400/30">
+                    {/* Badge flotante tooltip clickeable */}
+                    <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 px-2.5 py-0.5 rounded-full bg-amber-600 hover:bg-amber-500 text-[10px] font-mono font-semibold text-white whitespace-nowrap opacity-0 group-hover/flower:opacity-100 transition-opacity shadow-lg shadow-amber-500/25 border border-amber-400/30 pointer-events-auto cursor-pointer z-40">
                       Regala Flores ↗
                     </div>
                   </div>
-                </div>
+                </a>
               </div>
 
               {/* ACTO 1: Puerta cerrada amplia pivotando en la bisagra real (62% 50%) hacia la DERECHA */}
