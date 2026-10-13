@@ -21,10 +21,9 @@ export function Header() {
     <header className="sticky top-0 z-50 w-full backdrop-blur-md bg-[var(--background)]/90 border-b border-[var(--border)] transition-colors">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2 sm:py-0 sm:h-14 flex flex-wrap sm:flex-nowrap items-center justify-between gap-x-4 gap-y-1.5">
         
-        {/* Brand tipográfico zen */}
-        <Link href="/" className="shrink-0 whitespace-nowrap font-mono text-xs font-medium tracking-tight text-[var(--foreground)] hover:text-[#e63946] transition-colors">
-          <span>modlovelace</span>
-          <span className="text-[#e63946]">.com</span>
+        {/* Brand tipográfico zen con color del sistema */}
+        <Link href="/" className="shrink-0 whitespace-nowrap font-mono text-xs font-medium tracking-tight text-[var(--foreground)] hover:text-[var(--accent)] transition-colors">
+          <span>modlovelace.com</span>
         </Link>
 
         {/* Nav minimalista: en móvil pasa a su propia fila y no se parte */}
