@@ -81,8 +81,38 @@ export function ProjectsSection() {
 
                 {/* Botones de Acción Claros y Notorios */}
                 <div className="flex flex-wrap items-center gap-3 pt-2">
-                  {/* Botón Principal de Demo o Releases si existe */}
-                  {project.links.live && (
+                  {/* Web Oficial si existe */}
+                  {project.links.official && (
+                    <Link
+                      href={project.links.official}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-medium text-xs transition-all shadow-sm"
+                    >
+                      <span>Web Oficial</span>
+                      <ExternalLink className="w-3.5 h-3.5" />
+                    </Link>
+                  )}
+
+                  {/* Botón de Live / Personalizar en vivo si existe y difiere de official */}
+                  {project.links.live && project.links.live !== project.links.official && (
+                    <Link
+                      href={project.links.live}
+                      target="_blank"
+                      rel="noreferrer"
+                      className={`inline-flex items-center gap-1.5 px-4 py-2 rounded-xl ${
+                        project.links.official
+                          ? "bg-[var(--card)] hover:bg-[var(--border)]/50 border border-[var(--border)] text-[var(--foreground)]"
+                          : "bg-blue-600 hover:bg-blue-500 text-white shadow-sm"
+                      } font-medium text-xs transition-all`}
+                    >
+                      <span>{project.links.official ? "Personalizar en vivo" : (project.title.toLowerCase().includes("catjang") ? "Web Oficial & Demo" : "Ver Demo en vivo")}</span>
+                      <ExternalLink className="w-3.5 h-3.5" />
+                    </Link>
+                  )}
+
+                  {/* Fallback para proyectos con live sin official (ej. demos únicas) */}
+                  {project.links.live && !project.links.official && (
                     <Link
                       href={project.links.live}
                       target="_blank"

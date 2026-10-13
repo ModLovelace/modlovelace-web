@@ -313,7 +313,7 @@ export function LockerHero() {
 
                 {/* Pegatina 2: Regala Flores */}
                 <a
-                  href="https://flores.modlovelace.com"
+                  href="https://regalaflores.modlovelace.com"
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={(e) => {
@@ -332,7 +332,7 @@ export function LockerHero() {
                     transformOrigin: "center center",
                     transitionDelay: stickersPopped ? "170ms" : "0ms",
                   }}
-                  title="Regala Flores · Web Interactiva (Abrir proyecto)"
+                  title="Regala Flores · Web Oficial & Guía (Abrir proyecto)"
                 >
                   <div className="relative w-full h-full transition-transform duration-300 ease-out hover:scale-125 hover:rotate-3 active:scale-105">
                     <Image
@@ -565,23 +565,34 @@ export function LockerHero() {
                   {/* Enlaces de acción con estilo y colores 100% unificados */}
                   <div className="flex flex-wrap items-center justify-between gap-2 pt-3 mt-3 border-t border-[var(--border)]/60 text-xs font-mono">
                     <Link
-                      href="https://flores.modlovelace.com"
+                      href="https://regalaflores.modlovelace.com"
                       target="_blank"
                       rel="noreferrer"
                       className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-medium text-xs transition-all shadow-sm"
                     >
-                      <span>Ver en vivo</span>
+                      <span>Web Oficial</span>
                       <span className="text-[10px] select-none">↗</span>
                     </Link>
-                    <Link
-                      href="https://github.com/ModLovelace/flores-amarillas-primavera"
-                      target="_blank"
-                      rel="noreferrer"
-                      className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg bg-neutral-200/60 hover:bg-neutral-200 dark:bg-neutral-800 dark:hover:bg-neutral-700 border border-neutral-300 dark:border-neutral-700/80 text-neutral-800 dark:text-neutral-200 font-medium text-xs transition-colors"
-                    >
-                      <span>GitHub</span>
-                      <span className="text-[10px] text-neutral-400 select-none">↗</span>
-                    </Link>
+                    <div className="flex items-center gap-1.5">
+                      <Link
+                        href="https://flores.modlovelace.com"
+                        target="_blank"
+                        rel="noreferrer"
+                        className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg bg-neutral-200/60 hover:bg-neutral-200 dark:bg-neutral-800 dark:hover:bg-neutral-700 border border-neutral-300 dark:border-neutral-700/80 text-neutral-800 dark:text-neutral-200 font-medium text-xs transition-colors"
+                      >
+                        <span>Personalizar</span>
+                        <span className="text-[10px] text-neutral-400 select-none">↗</span>
+                      </Link>
+                      <Link
+                        href="https://github.com/ModLovelace/flores-amarillas-primavera"
+                        target="_blank"
+                        rel="noreferrer"
+                        className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg bg-neutral-200/60 hover:bg-neutral-200 dark:bg-neutral-800 dark:hover:bg-neutral-700 border border-neutral-300 dark:border-neutral-700/80 text-neutral-800 dark:text-neutral-200 font-medium text-xs transition-colors"
+                      >
+                        <span>GitHub</span>
+                        <span className="text-[10px] text-neutral-400 select-none">↗</span>
+                      </Link>
+                    </div>
                   </div>
                 </div>
 

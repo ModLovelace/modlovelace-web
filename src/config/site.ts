@@ -8,6 +8,7 @@ export interface Project {
   links: {
     repo?: string;
     live?: string;
+    official?: string;
     playStore?: string;
     appStore?: string;
     releases?: string;
@@ -88,6 +89,7 @@ export const siteConfig = {
       tech: ["Electron", "SVG Animations", "Node.js", "AI Agent Hooks", "CI/CD Actions"],
       links: {
         repo: "https://github.com/ModLovelace/catjang-sue",
+        official: "https://catjang.modlovelace.com",
         live: "https://catjang.modlovelace.com",
         releases: "https://github.com/ModLovelace/catjang-sue/releases/latest",
       },
@@ -106,6 +108,7 @@ export const siteConfig = {
       tech: ["React 19", "Vite", "Tailwind CSS", "Web Audio API", "Vercel"],
       links: {
         repo: "https://github.com/ModLovelace/flores-amarillas-primavera",
+        official: "https://regalaflores.modlovelace.com",
         live: "https://flores.modlovelace.com",
       },
     },
