@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ThemeToggle } from "./theme-toggle";
 import { siteConfig } from "@/config/site";
-import { GithubIcon, LinkedinIcon } from "@/components/icons";
+import { GithubIcon, LinkedinIcon, InstagramIcon } from "@/components/icons";
 
 export function Header() {
   const pathname = usePathname();
@@ -51,6 +51,7 @@ export function Header() {
             rel="noreferrer"
             className="text-[var(--muted)] hover:text-[var(--foreground)] transition-colors"
             aria-label="GitHub de ModLovelace"
+            title="GitHub · @ModLovelace"
           >
             <GithubIcon className="w-3.5 h-3.5" />
           </Link>
@@ -58,10 +59,21 @@ export function Header() {
             href={siteConfig.links.linkedin}
             target="_blank"
             rel="noreferrer"
-            className="hidden sm:inline-block text-[var(--muted)] hover:text-[var(--foreground)] transition-colors"
+            className="text-[var(--muted)] hover:text-[var(--foreground)] transition-colors"
             aria-label="LinkedIn de Enrique Becerra"
+            title="LinkedIn · Enrique Becerra"
           >
             <LinkedinIcon className="w-3.5 h-3.5" />
+          </Link>
+          <Link
+            href={siteConfig.links.instagram}
+            target="_blank"
+            rel="noreferrer"
+            className="text-[var(--muted)] hover:text-[var(--foreground)] transition-colors"
+            aria-label="Instagram oficial del desarrollador (@modfin_lovelace)"
+            title="Instagram Oficial · @modfin_lovelace"
+          >
+            <InstagramIcon className="w-3.5 h-3.5" />
           </Link>
 
           <ThemeToggle />

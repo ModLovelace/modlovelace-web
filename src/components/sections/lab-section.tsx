@@ -70,6 +70,7 @@ export function LabSection({ isStandalonePage = false }: LabSectionProps) {
           {[
             { id: "todos", label: "Todos los Avances" },
             { id: "gatito", label: "🐾 Catjang Lab (Gatito)", icon: Sparkles },
+            { id: "devtools", label: "🛠️ Flutter & DevTools", icon: Terminal },
             { id: "ia", label: "🤖 Agentes de IA", icon: Cpu },
             { id: "audio", label: "🎵 Web Audio & Síntesis", icon: Music },
             { id: "movil", label: "📱 Arquitectura Móvil", icon: Smartphone },

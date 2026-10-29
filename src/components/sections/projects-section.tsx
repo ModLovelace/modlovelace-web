@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { siteConfig } from "@/config/site";
-import { ExternalLink, Smartphone } from "lucide-react";
+import { ExternalLink, Smartphone, Package } from "lucide-react";
 import { GithubIcon } from "@/components/icons";
 
 export function ProjectsSection() {
@@ -81,6 +81,20 @@ export function ProjectsSection() {
 
                 {/* Botones de Acción Claros y Notorios */}
                 <div className="flex flex-wrap items-center gap-3 pt-2">
+                  {/* Paquete en pub.dev si existe */}
+                  {project.links.pubDev && (
+                    <Link
+                      href={project.links.pubDev}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-medium text-xs transition-all shadow-sm"
+                    >
+                      <Package className="w-3.5 h-3.5" />
+                      <span>Paquete pub.dev</span>
+                      <ExternalLink className="w-3.5 h-3.5" />
+                    </Link>
+                  )}
+
                   {/* Web Oficial si existe */}
                   {project.links.official && (
                     <Link

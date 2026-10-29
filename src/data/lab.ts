@@ -1,6 +1,6 @@
 export interface LabEntry {
   id: string;
-  category: "gatito" | "ia" | "audio" | "movil";
+  category: "gatito" | "ia" | "audio" | "movil" | "devtools";
   categoryLabel: string;
   status: "En Desarrollo" | "En Investigación" | "Completado";
   date: string;
@@ -67,6 +67,53 @@ export const LAB_ENTRIES: LabEntry[] = [
     link: {
       label: "Repositorio Catjang-Sue",
       url: "https://github.com/ModLovelace/catjang-sue",
+    },
+  },
+  {
+    id: "network-json-devtools",
+    category: "devtools",
+    categoryLabel: "Flutter & Dart · DevTools Extension",
+    status: "Completado",
+    date: "Octubre 2026",
+    title: "Extensión para Dart DevTools: Inspección HTTP en vivo y descifrado criptográfico local",
+    summary:
+      "Diseño y desarrollo de una extensión oficial para Dart DevTools que captura el tráfico de red de aplicaciones Flutter, renderiza un árbol JSON reactivo y permite descifrar payloads sobre RSA/AES en memoria sin tocar el almacenamiento local.",
+    tags: [
+      "Flutter DevTools",
+      "Dart Extension Protocol",
+      "AES-CBC & RSA-OAEP",
+      "JSON Tree View",
+      "pub.dev Package",
+      "Open Source",
+    ],
+    metrics: [
+      { label: "Versión", value: "v0.1.2" },
+      { label: "Validación DevTools", value: "100% Passed" },
+      { label: "Persistencia", value: "Cero (Solo RAM)" },
+      { label: "Licencia", value: "CC BY-NC 4.0" },
+    ],
+    details: {
+      problem:
+        "Al desarrollar y auditar aplicaciones móviles Flutter con APIs empresariales o financieras que implementan cifrado de extremo a extremo (payload encryption), el inspector estándar de red solo muestra strings Base64 o binarios ilegibles, dificultando enormemente la depuración sin comprometer la seguridad.",
+      solution:
+        "Creé una extensión oficial para Dart DevTools basada en el protocolo devtools_extensions: se conecta a la VM Service de Dart para capturar eventos de dart:io y HttpClient, añade filtrado instantáneo por verbo HTTP y código de respuesta, y cuenta con un motor criptográfico en memoria (AES-CBC + sobre RSA-OAEP) que descifra los payloads en caliente para renderizarlos en un árbol JSON interactivo con selección y copia.",
+      keyTakeaway:
+        "Las extensiones de Dart DevTools desacoplan completamente la lógica de auditoría del código de producción: se consumen como dependencia de desarrollo (dev_dependencies) y eliminan cualquier superficie de ataque en compilaciones release.",
+      codeSnippet: `// Integración en dev_dependencies de Flutter
+// flutter pub add dev:network_json_devtools
+
+dev_dependencies:
+  network_json_devtools: ^0.1.2
+
+// En VS Code / DevTools:
+// 1. Abre Dart DevTools en modo debug
+// 2. Activa la pestaña 'network_json_devtools'
+// 3. Carga la llave privada PEM (RSA) o clave AES en memoria
+// 4. Inspecciona y descifra los cuerpos JSON en tiempo real`,
+    },
+    link: {
+      label: "Paquete en pub.dev",
+      url: "https://pub.dev/packages/network_json_devtools",
     },
   },
   {

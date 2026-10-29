@@ -13,14 +13,14 @@ export function LabPreviewSection() {
       color: "amber",
     },
     {
+      entry: LAB_ENTRIES.find((e) => e.id === "network-json-devtools") || LAB_ENTRIES[1],
+      icon: "🛠️",
+      color: "blue",
+    },
+    {
       entry: LAB_ENTRIES.find((e) => e.id === "flores-web-audio") || LAB_ENTRIES[3],
       icon: "🌻",
       color: "yellow",
-    },
-    {
-      entry: LAB_ENTRIES.find((e) => e.id === "ai-lifecycle-hooks") || LAB_ENTRIES[2],
-      icon: "🤖",
-      color: "blue",
     },
   ];
 

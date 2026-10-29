@@ -12,6 +12,7 @@ export interface Project {
     playStore?: string;
     appStore?: string;
     releases?: string;
+    pubDev?: string;
   };
   badgeColor?: string;
 }
@@ -32,9 +33,14 @@ export const siteConfig = {
     vercel: "https://vercel.com/modlovelace",
   },
   now: {
-    date: "Septiembre 2026",
+    date: "Octubre 2026",
     status: "Resolviendo retos técnicos de ingeniería & Open Source",
     items: [
+      {
+        title: "Developer Tooling & Ecosistema Flutter",
+        description:
+          "Publicación de Network JSON DevTools en pub.dev y GitHub: inspección HTTP y descifrado de payloads en tiempo real para Dart DevTools.",
+      },
       {
         title: "Ecosistema Open Source & Arquitectura",
         description:
@@ -44,11 +50,6 @@ export const siteConfig = {
         title: "Ingeniería Móvil de Alto Rendimiento",
         description:
           "Diseño de arquitecturas móviles resilientes, optimización de consumo de memoria y puentes nativos de bajo nivel.",
-      },
-      {
-        title: "Sistemas & Flujos Aumentados por IA",
-        description:
-          "Diseñando arquitecturas con agentes de IA, guardarraíles estrictos y suites de testing automatizado de alta fidelidad.",
       },
     ],
   },
@@ -92,6 +93,23 @@ export const siteConfig = {
         official: "https://catjang.modlovelace.com",
         live: "https://catjang.modlovelace.com",
         releases: "https://github.com/ModLovelace/catjang-sue/releases/latest",
+      },
+    },
+    {
+      title: "Network JSON · DevTools",
+      category: "DevTools / Flutter & Dart",
+      status: "Open Source",
+      badgeColor: "emerald",
+      description:
+        "Extensión oficial para Dart y Flutter DevTools con descifrado local (RSA/AES), explorador de árbol JSON interactivo, filtros dinámicos y cero impacto en producción.",
+      highlights: [
+        "Captura en tiempo real del tráfico HTTP/HTTPS (dart:io, http, Dio) con filtros avanzados por método, estado y tipo.",
+        "Módulo de descifrado en memoria (AES-CBC + sobre RSA-OAEP) sin persistencia de llaves ni riesgos de seguridad.",
+      ],
+      tech: ["Flutter DevTools Extension", "Dart", "DevTools Protocol", "AES / RSA Crypto", "pub.dev"],
+      links: {
+        pubDev: "https://pub.dev/packages/network_json_devtools",
+        repo: "https://github.com/ModLovelace/network_json_devtools",
       },
     },
     {
