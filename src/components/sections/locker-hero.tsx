@@ -235,10 +235,10 @@ export function LockerHero() {
                     lightOn ? "opacity-100 scale-100" : "opacity-0 scale-95"
                   }`}
                 >
-                  {/* Luz difusa cálida */}
-                  <div className="absolute inset-0 bg-gradient-to-b from-amber-200/35 via-amber-300/10 to-transparent" />
-                  {/* Foco de luz directo sobre la lámpara */}
-                  <div className="absolute top-2 inset-x-12 h-16 bg-gradient-to-b from-white/40 via-amber-100/25 to-transparent blur-md rounded-full" />
+                  {/* Luz difusa de estudio focalizada en el interior del gabinete */}
+                  <div className="absolute inset-x-[12%] top-0 h-44 bg-gradient-to-b from-amber-100/18 via-amber-100/5 to-transparent" />
+                  {/* Foco de luz directo sobre el tubo fluorescente */}
+                  <div className="absolute top-3 left-[18%] right-[44%] h-12 bg-gradient-to-b from-white/35 via-amber-100/20 to-transparent blur-md rounded-full" />
                 </div>
 
                 {/* ACTO 3: Salen las pegatinas sobre la puerta limpia (nace vacía y se agregan con relieve 3D elástico) */}
