@@ -345,6 +345,43 @@ export function LockerHero() {
                     </div>
                   </div>
                 </a>
+
+                {/* Pegatina 3: Network JSON · DevTools */}
+                <a
+                  href="https://pub.dev/packages/network_json_devtools"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                  }}
+                  className={`absolute transition-all duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] cursor-pointer group/netjson z-30 block ${
+                    stickersPopped
+                      ? "opacity-100 scale-100 translate-y-0 pointer-events-auto"
+                      : "opacity-0 scale-0 translate-y-4 pointer-events-none"
+                  }`}
+                  style={{
+                    left: "65.5%",
+                    top: "62.0%",
+                    width: "11.8%",
+                    aspectRatio: "1/1",
+                    transformOrigin: "center center",
+                    transitionDelay: stickersPopped ? "240ms" : "0ms",
+                  }}
+                  title="Network JSON · DevTools Extension en pub.dev (Abrir paquete)"
+                >
+                  <div className="relative w-full h-full transition-transform duration-300 ease-out hover:scale-125 hover:-rotate-3 active:scale-105">
+                    <Image
+                      src="/images/sticker-network-json.png"
+                      alt="Sticker Network JSON DevTools"
+                      fill
+                      className="object-contain filter drop-shadow-[0_8px_14px_rgba(0,0,0,0.6)] group-hover/netjson:drop-shadow-[0_12px_22px_rgba(6,182,212,0.65)]"
+                    />
+                    {/* Badge flotante tooltip clickeable */}
+                    <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 px-2.5 py-0.5 rounded-full bg-cyan-600 hover:bg-cyan-500 text-[10px] font-mono font-semibold text-white whitespace-nowrap opacity-0 group-hover/netjson:opacity-100 transition-opacity shadow-lg shadow-cyan-500/25 border border-cyan-400/30 pointer-events-auto cursor-pointer z-40">
+                      Network JSON ↗
+                    </div>
+                  </div>
+                </a>
               </div>
 
               {/* ACTO 1: Puerta cerrada amplia pivotando en la bisagra real (62% 50%) hacia la DERECHA */}
@@ -439,29 +476,32 @@ export function LockerHero() {
                   </span>
                 </div>
                 <div className="flex items-center gap-2 text-[11px] font-mono text-blue-600 dark:text-blue-400 font-semibold">
-                  <span className="inline-flex items-center gap-1.5">
+                  <span className="inline-flex items-center gap-1.5 flex-wrap justify-end">
                     <img src="/images/sticker-catjang.png" alt="Cat" className="w-3.5 h-3.5 object-contain inline" />
                     <span>El Gato</span>
-                    <span className="text-neutral-400">&amp;</span>
+                    <span className="text-neutral-400">·</span>
                     <img src="/images/sticker-sunflower.png" alt="Flores" className="w-3.5 h-3.5 object-contain inline" />
                     <span>Regala Flores</span>
+                    <span className="text-neutral-400">·</span>
+                    <img src="/images/sticker-network-json.png" alt="Network JSON" className="w-3.5 h-3.5 object-contain inline" />
+                    <span>Network JSON</span>
                   </span>
                 </div>
               </div>
 
-              {/* Grid de 2 Proyectos Personales: Ambos con la misma altura exacta y alineación perfecta */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 items-stretch">
+              {/* Grid de 3 Proyectos Personales: 2 arriba y el paquete pub.dev abajo a ancho completo */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 items-stretch">
                 
                 {/* 1. Catjang-Sue (El del gato) */}
-                <div className={`p-4 rounded-xl bg-neutral-50 dark:bg-neutral-900/80 border flex flex-col justify-between h-full transition-all duration-500 shadow-[0_1px_2px_rgba(0,0,0,0.04)] ${
+                <div className={`p-3.5 rounded-xl bg-neutral-50 dark:bg-neutral-900/80 border flex flex-col justify-between h-full transition-all duration-500 shadow-[0_1px_2px_rgba(0,0,0,0.04)] ${
                   stickersPopped
                     ? "border-blue-500/60 ring-1 ring-blue-500/20 shadow-md shadow-blue-500/5"
                     : "border-neutral-200 dark:border-neutral-800 hover:border-blue-500/50"
                 }`}>
-                  <div className="space-y-2.5">
+                  <div className="space-y-2">
                     {/* Fila superior: Ícono oficial del casillero y Badge */}
                     <div className="flex items-center justify-between">
-                      <div className="w-9 h-9 rounded-xl bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700/80 flex items-center justify-center p-1 shadow-sm shrink-0 overflow-hidden">
+                      <div className="w-8 h-8 rounded-xl bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700/80 flex items-center justify-center p-1 shadow-sm shrink-0 overflow-hidden">
                         <img
                           src="/images/sticker-catjang.png"
                           alt="Sticker Catjang"
@@ -490,7 +530,7 @@ export function LockerHero() {
                   </div>
 
                   {/* Enlaces de acción con estilo y colores 100% unificados */}
-                  <div className="flex flex-wrap items-center justify-between gap-2 pt-3 mt-3 border-t border-[var(--border)]/60 text-xs font-mono">
+                  <div className="flex flex-wrap items-center justify-between gap-2 pt-2.5 mt-2.5 border-t border-[var(--border)]/60 text-xs font-mono">
                     <Link
                       href="https://catjang.modlovelace.com"
                       target="_blank"
@@ -524,15 +564,15 @@ export function LockerHero() {
                 </div>
 
                 {/* 2. Regala Flores (El de las flores) */}
-                <div className={`p-4 rounded-xl bg-neutral-50 dark:bg-neutral-900/80 border flex flex-col justify-between h-full transition-all duration-500 shadow-[0_1px_2px_rgba(0,0,0,0.04)] ${
+                <div className={`p-3.5 rounded-xl bg-neutral-50 dark:bg-neutral-900/80 border flex flex-col justify-between h-full transition-all duration-500 shadow-[0_1px_2px_rgba(0,0,0,0.04)] ${
                   stickersPopped
                     ? "border-amber-500/60 ring-1 ring-amber-500/20 shadow-md shadow-amber-500/5"
                     : "border-neutral-200 dark:border-neutral-800 hover:border-blue-500/50"
                 }`}>
-                  <div className="space-y-2.5">
+                  <div className="space-y-2">
                     {/* Fila superior: Ícono oficial del casillero y Badge */}
                     <div className="flex items-center justify-between">
-                      <div className="w-9 h-9 rounded-xl bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700/80 flex items-center justify-center p-1 shadow-sm shrink-0 overflow-hidden">
+                      <div className="w-8 h-8 rounded-xl bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700/80 flex items-center justify-center p-1 shadow-sm shrink-0 overflow-hidden">
                         <img
                           src="/images/sticker-sunflower.png"
                           alt="Sticker Regala Flores"
@@ -561,7 +601,7 @@ export function LockerHero() {
                   </div>
 
                   {/* Enlaces de acción con estilo y colores 100% unificados */}
-                  <div className="flex flex-wrap items-center justify-between gap-2 pt-3 mt-3 border-t border-[var(--border)]/60 text-xs font-mono">
+                  <div className="flex flex-wrap items-center justify-between gap-2 pt-2.5 mt-2.5 border-t border-[var(--border)]/60 text-xs font-mono">
                     <Link
                       href="https://regalaflores.modlovelace.com"
                       target="_blank"
@@ -594,11 +634,62 @@ export function LockerHero() {
                   </div>
                 </div>
 
+                {/* 3. Network JSON · DevTools (Extensión Flutter/Dart en pub.dev) */}
+                <div className={`sm:col-span-2 p-3.5 rounded-xl bg-neutral-50 dark:bg-neutral-900/80 border flex flex-col sm:flex-row sm:items-center justify-between gap-3 transition-all duration-500 shadow-[0_1px_2px_rgba(0,0,0,0.04)] ${
+                  stickersPopped
+                    ? "border-cyan-500/60 ring-1 ring-cyan-500/20 shadow-md shadow-cyan-500/5"
+                    : "border-neutral-200 dark:border-neutral-800 hover:border-blue-500/50"
+                }`}>
+                  <div className="flex items-start gap-3">
+                    <div className="w-9 h-9 rounded-xl bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700/80 flex items-center justify-center p-1 shadow-sm shrink-0 overflow-hidden mt-0.5">
+                      <img
+                        src="/images/sticker-network-json.png"
+                        alt="Sticker Network JSON DevTools"
+                        className="w-full h-full object-contain filter drop-shadow-sm"
+                      />
+                    </div>
+                    <div className="space-y-1">
+                      <div className="flex flex-wrap items-center gap-2">
+                        <h3 className="text-sm font-bold text-[var(--foreground)] leading-tight">
+                          Network JSON · DevTools
+                        </h3>
+                        <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-cyan-100 dark:bg-cyan-950/80 text-cyan-800 dark:text-cyan-300 font-medium">
+                          pub.dev · v0.1.2
+                        </span>
+                      </div>
+                      <p className="text-xs text-[var(--muted)] leading-relaxed">
+                        Extensión para Dart y Flutter DevTools: inspector HTTP en vivo, árbol JSON interactivo y descifrado local RSA-OAEP/AES-CBC en memoria.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center gap-1.5 shrink-0 font-mono text-xs pt-2 sm:pt-0 border-t sm:border-t-0 border-[var(--border)]/60">
+                    <Link
+                      href="https://pub.dev/packages/network_json_devtools"
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-medium text-xs transition-all shadow-sm"
+                    >
+                      <span>pub.dev</span>
+                      <span className="text-[10px] select-none">↗</span>
+                    </Link>
+                    <Link
+                      href="https://github.com/ModLovelace/network_json_devtools"
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg bg-neutral-200/60 hover:bg-neutral-200 dark:bg-neutral-800 dark:hover:bg-neutral-700 border border-neutral-300 dark:border-neutral-700/80 text-neutral-800 dark:text-neutral-200 font-medium text-xs transition-colors"
+                    >
+                      <span>GitHub</span>
+                      <span className="text-[10px] text-neutral-400 select-none">↗</span>
+                    </Link>
+                  </div>
+                </div>
+
               </div>
 
               {/* Pie interactivo de la tarjeta */}
               <div className="pt-2 text-[11px] font-mono text-[var(--muted)] flex flex-wrap items-center justify-between gap-x-3 gap-y-1 border-t border-[var(--border)]">
-                <span>{stickersPopped ? "✨ Pegatinas activas: Haz clic en el casillero o aquí" : isOpen ? "✨ Casillero abierto: Catjang, Regala Flores & Modfin en cabina" : "💡 Toca el casillero para abrir y ver los detalles"}</span>
+                <span>{stickersPopped ? "✨ Pegatinas activas: Haz clic en el casillero o aquí" : isOpen ? "✨ Casillero abierto: Catjang, Regala Flores, Network JSON & Modfin" : "💡 Toca el casillero para abrir y ver los detalles"}</span>
                 <button
                   onClick={toggleLocker}
                   className="text-blue-600 dark:text-blue-400 hover:underline font-medium cursor-pointer"
