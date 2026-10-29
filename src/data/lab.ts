@@ -72,12 +72,12 @@ export const LAB_ENTRIES: LabEntry[] = [
   {
     id: "network-json-devtools",
     category: "devtools",
-    categoryLabel: "Flutter & Dart · DevTools Extension",
+    categoryLabel: "Contribución Open Source · Dart & Flutter DevTools",
     status: "Completado",
     date: "Octubre 2026",
     title: "Extensión para Dart DevTools: Inspección HTTP en vivo y descifrado criptográfico local",
     summary:
-      "Diseño y desarrollo de una extensión oficial para Dart DevTools que captura el tráfico de red de aplicaciones Flutter, renderiza un árbol JSON reactivo y permite descifrar payloads sobre RSA/AES en memoria sin tocar el almacenamiento local.",
+      "Diseño y desarrollo de una contribución open source al ecosistema Dart & Flutter para DevTools: captura el tráfico de red de aplicaciones, renderiza un árbol JSON reactivo y descifra payloads sobre RSA/AES en memoria sin tocar el almacenamiento local.",
     tags: [
       "Flutter DevTools",
       "Dart Extension Protocol",

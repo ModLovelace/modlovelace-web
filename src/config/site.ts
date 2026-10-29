@@ -39,7 +39,7 @@ export const siteConfig = {
       {
         title: "Developer Tooling & Ecosistema Flutter",
         description:
-          "Publicación de Network JSON DevTools (v0.1.4) en pub.dev y GitHub: herramienta oficial para Flutter y Dart DevTools con inspección HTTP y descifrado de payloads en tiempo real.",
+          "Contribución open source al ecosistema Dart & Flutter: publicación de Network JSON DevTools (v0.1.4) en pub.dev y GitHub con inspección HTTP y descifrado de payloads en tiempo real.",
       },
       {
         title: "Ecosistema Open Source & Arquitectura",
@@ -55,7 +55,7 @@ export const siteConfig = {
   },
   skills: {
     mobile: [
-      { name: "Flutter & Dart", level: "Dominio Profundo", role: "Multiplataforma y creación de tooling para DevTools" },
+      { name: "Flutter & Dart", level: "Dominio Profundo", role: "Multiplataforma y contribución de herramientas para DevTools" },
       { name: "Kotlin (Android)", level: "Nativo", role: "Puentes de hardware y optimización" },
       { name: "Swift (iOS)", level: "Nativo", role: "Arquitecturas móviles nativas" },
       { name: "Mobile DevOps & CI/CD", level: "Avanzado", role: "Publicación en Google Play & App Store" },
@@ -97,18 +97,18 @@ export const siteConfig = {
     },
     {
       title: "Network JSON · DevTools",
-      category: "Herramienta para Flutter / DevTools",
+      category: "Contribución Open Source / Dart & Flutter Tooling",
       status: "Open Source",
       badgeColor: "emerald",
       description:
-        "Herramienta oficial para desarrolladores Flutter y Dart DevTools: inspector de tráfico HTTP/HTTPS en tiempo real con visor de árbol JSON expandible y descifrado criptográfico local (RSA-OAEP / AES-CBC) en memoria sin tocar disco ni alterar compilaciones release.",
+        "Contribución oficial de tooling para desarrolladores Dart & Flutter: extensión para Dart DevTools con inspección HTTP/HTTPS en tiempo real, visor interactivo de árbol JSON y descifrado criptográfico local (RSA-OAEP / AES-CBC) en memoria sin tocar disco ni alterar compilaciones release.",
       highlights: [
-        "Herramienta oficial para Flutter publicada en pub.dev (v0.1.4) con integración directa a Dart DevTools.",
+        "Contribución oficial al ecosistema Dart & Flutter publicada en pub.dev (v0.1.4) con integración directa a Dart DevTools.",
         "Captura en tiempo real del tráfico HTTP/HTTPS (dart:io, package:http y Dio) con filtros avanzados por método, estado y tipo.",
         "Módulo de descifrado en memoria (AES-CBC + sobre RSA-OAEP) sin persistencia de llaves ni riesgos de seguridad.",
         "Instalación como dependencia de desarrollo: 'flutter pub add dev:network_json_devtools' con cero impacto en producción.",
       ],
-      tech: ["Herramienta Flutter", "Dart 3.11+", "DevTools Extension", "PointyCastle", "AES-CBC & RSA-OAEP", "pub.dev v0.1.4", "Licencia MIT"],
+      tech: ["Contribución Dart", "Dart 3.11+", "DevTools Extension", "PointyCastle", "AES-CBC & RSA-OAEP", "pub.dev v0.1.4", "Licencia MIT"],
       links: {
         pubDev: "https://pub.dev/packages/network_json_devtools",
         repo: "https://github.com/ModLovelace/network_json_devtools",
