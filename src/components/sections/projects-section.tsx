@@ -79,6 +79,14 @@ export function ProjectsSection() {
                   ))}
                 </div>
 
+                {/* Instalación rápida con comando si es paquete de herramientas Flutter en pub.dev */}
+                {project.links.pubDev && (
+                  <div className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-neutral-100 dark:bg-neutral-800/80 border border-neutral-200 dark:border-neutral-700/60 font-mono text-[11px] text-[var(--foreground)] w-fit">
+                    <span className="text-blue-600 dark:text-blue-400 font-bold select-none">$</span>
+                    <span className="select-all">flutter pub add dev:network_json_devtools</span>
+                  </div>
+                )}
+
                 {/* Botones de Acción Claros y Notorios */}
                 <div className="flex flex-wrap items-center gap-3 pt-2">
                   {/* Paquete en pub.dev si existe */}

@@ -5,7 +5,7 @@ export function StackSection() {
       subtitle: "Apps móviles nativas y fluidas",
       description: "Aplicaciones que se sienten rápidas, intuitivas y confiables en el bolsillo de cada usuario, con soporte offline y listas para tiendas.",
       items: [
-        { name: "Flutter & Dart", role: "Apps multiplataforma con animaciones fluidas", level: "Principal" },
+        { name: "Flutter & Dart", role: "Apps multiplataforma y tooling para DevTools", level: "Principal" },
         { name: "Android Nativo (Kotlin)", role: "Integración profunda con hardware y sistema", level: "Avanzado" },
         { name: "iOS (Swift)", role: "Experiencias optimizadas para el ecosistema Apple", level: "Sólido" },
         { name: "Publicación en Tiendas", role: "Lanzamientos en Google Play y App Store", level: "Producción" },

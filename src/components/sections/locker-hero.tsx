@@ -654,11 +654,11 @@ export function LockerHero() {
                           Network JSON · DevTools
                         </h3>
                         <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-cyan-100 dark:bg-cyan-950/80 text-cyan-800 dark:text-cyan-300 font-medium">
-                          pub.dev · v0.1.2
+                          Herramienta Flutter · pub.dev v0.1.4
                         </span>
                       </div>
                       <p className="text-xs text-[var(--muted)] leading-relaxed">
-                        Extensión para Dart y Flutter DevTools: inspector HTTP en vivo, árbol JSON interactivo y descifrado local RSA-OAEP/AES-CBC en memoria.
+                        Herramienta oficial para Dart y Flutter DevTools: inspector HTTP en vivo, árbol JSON reactivo y descifrado local RSA-OAEP/AES-CBC en memoria.
                       </p>
                     </div>
                   </div>

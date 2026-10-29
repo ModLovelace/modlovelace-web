@@ -87,10 +87,10 @@ export const LAB_ENTRIES: LabEntry[] = [
       "Open Source",
     ],
     metrics: [
-      { label: "Versión", value: "v0.1.2" },
+      { label: "Versión", value: "v0.1.4" },
       { label: "Validación DevTools", value: "100% Passed" },
       { label: "Persistencia", value: "Cero (Solo RAM)" },
-      { label: "Licencia", value: "CC BY-NC 4.0" },
+      { label: "Licencia", value: "MIT" },
     ],
     details: {
       problem:
@@ -103,7 +103,7 @@ export const LAB_ENTRIES: LabEntry[] = [
 // flutter pub add dev:network_json_devtools
 
 dev_dependencies:
-  network_json_devtools: ^0.1.2
+  network_json_devtools: ^0.1.4
 
 // En VS Code / DevTools:
 // 1. Abre Dart DevTools en modo debug
