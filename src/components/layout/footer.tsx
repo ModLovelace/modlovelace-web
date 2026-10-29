@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { siteConfig } from "@/config/site";
 
 export function Footer() {
@@ -14,43 +13,11 @@ export function Footer() {
         </div>
 
         <div className="flex items-center gap-5">
-          <Link
-            href={siteConfig.links.github}
-            target="_blank"
-            rel="noreferrer"
-            className="hover:text-[var(--foreground)] transition-colors"
-          >
-            GitHub ↗
-          </Link>
-          <Link
-            href={siteConfig.links.linkedin}
-            target="_blank"
-            rel="noreferrer"
-            className="hover:text-[var(--foreground)] transition-colors"
-          >
-            LinkedIn ↗
-          </Link>
-          <Link
-            href={siteConfig.links.youtube}
-            target="_blank"
-            rel="noreferrer"
-            className="hover:text-[var(--foreground)] transition-colors"
-          >
-            YouTube ↗
-          </Link>
-          <Link
-            href={siteConfig.links.instagram}
-            target="_blank"
-            rel="noreferrer"
-            className="hover:text-[var(--foreground)] transition-colors"
-          >
-            Instagram ↗
-          </Link>
           <a
             href={`mailto:${siteConfig.email}`}
             className="hover:text-[var(--foreground)] transition-colors"
           >
-            Correo ↗
+            {siteConfig.email} ↗
           </a>
         </div>
       </div>
