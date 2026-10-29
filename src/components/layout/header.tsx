@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ThemeToggle } from "./theme-toggle";
 import { siteConfig } from "@/config/site";
-import { GithubIcon, LinkedinIcon, InstagramIcon } from "@/components/icons";
+import { GithubIcon, YoutubeIcon, LinkedinIcon, InstagramIcon } from "@/components/icons";
 
 export function Header() {
   const pathname = usePathname();
@@ -54,6 +54,16 @@ export function Header() {
             title="GitHub · @ModLovelace"
           >
             <GithubIcon className="w-3.5 h-3.5" />
+          </Link>
+          <Link
+            href={siteConfig.links.youtube}
+            target="_blank"
+            rel="noreferrer"
+            className="text-[var(--muted)] hover:text-[var(--foreground)] transition-colors"
+            aria-label="YouTube de ModLovelace"
+            title="YouTube · @modlovelace"
+          >
+            <YoutubeIcon className="w-3.5 h-3.5" />
           </Link>
           <Link
             href={siteConfig.links.linkedin}

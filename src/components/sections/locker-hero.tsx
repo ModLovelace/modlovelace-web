@@ -3,8 +3,6 @@
 import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { siteConfig } from "@/config/site";
-import { GithubIcon, LinkedinIcon, YoutubeIcon, InstagramIcon } from "@/components/icons";
 import { ArrowDown, ArrowRight, Sparkles } from "lucide-react";
 
 export function LockerHero() {
@@ -608,47 +606,6 @@ export function LockerHero() {
                   {isOpen ? "Cerrar puerta ✕" : "Abrir casillero ➔"}
                 </button>
               </div>
-            </div>
-
-            {/* Enlaces Sociales Limpios */}
-            <div className="flex flex-wrap items-center gap-x-5 gap-y-2 pt-2 text-xs font-medium text-[var(--muted)]">
-              <Link
-                href={siteConfig.links.github}
-                target="_blank"
-                rel="noreferrer"
-                className="flex items-center gap-1.5 hover:text-[var(--foreground)] transition-colors"
-              >
-                <GithubIcon className="w-4 h-4" />
-                <span>GitHub</span>
-              </Link>
-              <Link
-                href={siteConfig.links.linkedin}
-                target="_blank"
-                rel="noreferrer"
-                className="flex items-center gap-1.5 hover:text-[var(--foreground)] transition-colors"
-              >
-                <LinkedinIcon className="w-4 h-4" />
-                <span>LinkedIn</span>
-              </Link>
-              <Link
-                href={siteConfig.links.youtube}
-                target="_blank"
-                rel="noreferrer"
-                className="flex items-center gap-1.5 hover:text-[var(--foreground)] transition-colors"
-              >
-                <YoutubeIcon className="w-4 h-4" />
-                <span>YouTube</span>
-              </Link>
-              <Link
-                href={siteConfig.links.instagram}
-                target="_blank"
-                rel="noreferrer"
-                className="flex items-center gap-1.5 hover:text-[var(--foreground)] transition-colors"
-                aria-label="Instagram de Modfin y Enrique"
-              >
-                <InstagramIcon className="w-4 h-4" />
-                <span>@modfin_lovelace ↗</span>
-              </Link>
             </div>
 
           </div>
