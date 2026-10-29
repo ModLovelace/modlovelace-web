@@ -213,7 +213,7 @@ export function LockerHero() {
                   }`}
                 >
                   <Image
-                    src="/images/locker-open-taller.jpg"
+                    src="/images/locker-open-v2.jpg"
                     alt="Interior amplio del casillero completo con proyectos, Modfin y pertenencias de Enrique Becerra (ModLovelace)"
                     fill
                     sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 560px"
@@ -398,7 +398,7 @@ export function LockerHero() {
                 }}
               >
                 <Image
-                  src="/images/locker-closed-taller.jpg"
+                  src="/images/locker-closed-v2.jpg"
                   alt="Puerta cerrada del casillero amplio completo con stickers de proyectos"
                   fill
                   sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 560px"
@@ -468,20 +468,20 @@ export function LockerHero() {
             <div className={`p-5 sm:p-6 rounded-2xl bg-[var(--card)] border transition-all duration-300 space-y-3.5 shadow-sm ${
               isOpen ? "border-blue-500/50 ring-1 ring-blue-500/20" : "border-[var(--border)]"
             }`}>
-              <div className="flex items-center justify-between text-xs pb-2.5 border-b border-[var(--border)]">
-                <div className="flex items-center gap-2">
-                  <span className={`w-2 h-2 rounded-full ${isOpen ? "bg-blue-500 animate-pulse" : "bg-emerald-500"}`} />
-                  <span className="font-bold text-[var(--foreground)] uppercase tracking-wider font-mono text-[11px]">
-                    Proyectos Propios en el Casillero
+              <div className="flex flex-wrap items-center justify-between gap-2 text-xs pb-2.5 border-b border-[var(--border)]">
+                <div className="flex items-center gap-2 shrink-0">
+                  <span className={`w-2 h-2 rounded-full shrink-0 ${isOpen ? "bg-blue-500 animate-pulse" : "bg-emerald-500"}`} />
+                  <span className="font-bold text-[var(--foreground)] uppercase tracking-wider font-mono text-[11px] whitespace-nowrap">
+                    Proyectos en el Casillero
                   </span>
                 </div>
-                <div className="flex items-center gap-2 text-[11px] font-mono text-blue-600 dark:text-blue-400 font-semibold">
-                  <span className="inline-flex items-center gap-1.5 flex-wrap justify-end">
+                <div className="flex items-center gap-1.5 text-[11px] font-mono text-blue-600 dark:text-blue-400 font-semibold shrink-0">
+                  <span className="inline-flex items-center gap-1 whitespace-nowrap">
                     <img src="/images/sticker-catjang.png" alt="Cat" className="w-3.5 h-3.5 object-contain inline" />
-                    <span>El Gato</span>
+                    <span>Catjang</span>
                     <span className="text-neutral-400">·</span>
                     <img src="/images/sticker-sunflower.png" alt="Flores" className="w-3.5 h-3.5 object-contain inline" />
-                    <span>Regala Flores</span>
+                    <span>Flores</span>
                     <span className="text-neutral-400">·</span>
                     <img src="/images/sticker-network-json.png" alt="Network JSON" className="w-3.5 h-3.5 object-contain inline" />
                     <span>Network JSON</span>
