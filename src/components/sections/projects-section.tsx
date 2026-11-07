@@ -129,7 +129,7 @@ export function ProjectsSection() {
         <div className="flex flex-col items-center text-center mb-12 space-y-1.5">
           <div className="w-0.5 h-6 bg-pink-500 mx-auto rounded-full" />
           <span className="font-mono text-xs font-bold tracking-widest uppercase text-neutral-400">
-            02 / PROYECTOS
+            01 / PROYECTOS
           </span>
           <h2 className="text-2xl sm:text-4xl font-extrabold tracking-wide uppercase text-[var(--foreground)]">
             PROYECTOS Y SU ESTADO

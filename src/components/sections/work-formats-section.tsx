@@ -85,7 +85,7 @@ export function WorkFormatsSection() {
         <div className="flex flex-col items-center text-center mb-12 sm:mb-16 space-y-2">
           <div className="w-0.5 h-6 bg-pink-500 mx-auto rounded-full" />
           <span className="font-mono text-xs font-bold tracking-widest uppercase text-neutral-400">
-            06 / TRABAJEMOS JUNTOS
+            04 / TRABAJEMOS JUNTOS
           </span>
           <h2 className="text-2xl sm:text-4xl font-extrabold tracking-wide uppercase text-[var(--foreground)]">
             FORMATOS PARA TRABAJAR CONMIGO

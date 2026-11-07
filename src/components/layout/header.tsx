@@ -14,10 +14,9 @@ export function Header() {
 
   const navItems = [
     { label: "Ahora", href: "/#ahora", active: false },
-    { label: "Lab", href: "/#lab", active: isLabActive },
     { label: "Proyectos", href: "/#proyectos", active: false },
     { label: "Investigaciones", href: "/#investigaciones", active: false },
-    { label: "Bitácora", href: "/#bitacora", active: isBlogActive },
+    { label: "Lab", href: "/lab", active: isLabActive },
     { label: "Sobre Mí", href: "/#sobre-mi", active: false },
     { label: "Formatos", href: "/#formatos", active: false },
   ];
