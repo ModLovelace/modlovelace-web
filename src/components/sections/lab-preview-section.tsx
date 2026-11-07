@@ -8,19 +8,19 @@ export function LabPreviewSection() {
   // Tomamos los 3 experimentos más emblemáticos para el resumen en Home
   const featured = [
     {
-      entry: LAB_ENTRIES.find((e) => e.id === "catjang-linux-native") || LAB_ENTRIES[0],
+      entry: LAB_ENTRIES.find((e) => e.id === "starforces-game") || LAB_ENTRIES[0],
+      icon: "🎮",
+      color: "purple",
+    },
+    {
+      entry: LAB_ENTRIES.find((e) => e.id === "catjang-linux-native") || LAB_ENTRIES[1],
       icon: "🐾",
       color: "amber",
     },
     {
-      entry: LAB_ENTRIES.find((e) => e.id === "network-json-devtools") || LAB_ENTRIES[1],
+      entry: LAB_ENTRIES.find((e) => e.id === "network-json-devtools") || LAB_ENTRIES[2],
       icon: "🛠️",
       color: "blue",
-    },
-    {
-      entry: LAB_ENTRIES.find((e) => e.id === "flores-web-audio") || LAB_ENTRIES[3],
-      icon: "🌻",
-      color: "yellow",
     },
   ];
 
@@ -54,7 +54,7 @@ export function LabPreviewSection() {
           {featured.map(({ entry, icon }, idx) => (
             <Link
               key={idx}
-              href="/lab"
+              href={`/lab#${entry.id}`}
               className="p-5 sm:p-6 rounded-2xl bg-[var(--card)] border border-[var(--border)] hover:border-blue-500/50 hover:shadow-md transition-all flex flex-col justify-between group space-y-4"
             >
               <div className="space-y-3">

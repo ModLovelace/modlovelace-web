@@ -13,6 +13,7 @@ export interface Project {
     appStore?: string;
     releases?: string;
     pubDev?: string;
+    lab?: string;
   };
   badgeColor?: string;
 }
@@ -33,9 +34,14 @@ export const siteConfig = {
     vercel: "https://vercel.com/modlovelace",
   },
   now: {
-    date: "Octubre 2026",
+    date: "Noviembre 2026",
     status: "Resolviendo retos técnicos de ingeniería & Open Source",
     items: [
+      {
+        title: "Videojuegos Nativos en Swift 6 & iOS (SceneKit/Metal)",
+        description:
+          "Desarrollo e investigación activa de StarForcesGame: motor 2.5D desacoplado con físicas puras en Swift, cámara ortográfica y despliegue directo por USB desde Linux con xtool.",
+      },
       {
         title: "Developer Tooling & Ecosistema Flutter",
         description:
@@ -46,18 +52,13 @@ export const siteConfig = {
         description:
           "Escalando Catjang-Sue multiplataforma (Linux Wayland/X11, macOS universal y Windows) y conectándolo con agentes de IA.",
       },
-      {
-        title: "Ingeniería Móvil de Alto Rendimiento",
-        description:
-          "Diseño de arquitecturas móviles resilientes, optimización de consumo de memoria y puentes nativos de bajo nivel.",
-      },
     ],
   },
   skills: {
     mobile: [
       { name: "Flutter & Dart", level: "Dominio Profundo", role: "Multiplataforma y contribución de herramientas para DevTools" },
+      { name: "Swift 6 & iOS", level: "Nativo", role: "Arquitecturas móviles nativas, SceneKit 2.5D y toolchains Darwin" },
       { name: "Kotlin (Android)", level: "Nativo", role: "Puentes de hardware y optimización" },
-      { name: "Swift (iOS)", level: "Nativo", role: "Arquitecturas móviles nativas" },
       { name: "Mobile DevOps & CI/CD", level: "Avanzado", role: "Publicación en Google Play & App Store" },
     ],
     fullstack: [
@@ -130,6 +131,24 @@ export const siteConfig = {
         repo: "https://github.com/ModLovelace/flores-amarillas-primavera",
         official: "https://regalaflores.modlovelace.com",
         live: "https://flores.modlovelace.com",
+      },
+    },
+    {
+      title: "StarForces Game",
+      category: "Videojuegos / Mobile Nativo (iOS 17+)",
+      status: "En desarrollo",
+      badgeColor: "amber",
+      description:
+        "Videojuego 2D/2.5D nativo para iPhone (iOS 17+) desarrollado en Swift 6 con SceneKit (Metal) y pipeline de compilación e instalación directa por USB desde Linux mediante xtool. Inspirado en el universo animado de Star vs. Las Fuerzas del Mal con la contundencia de combate y escala táctica de GunboundM.",
+      highlights: [
+        "Arquitectura híbrida desacoplada: física pura en Swift a 60 FPS, colisiones OBB y renderizado 2.5D con cámara ortográfica en SceneKit.",
+        "Toolchain independiente en Linux: compilación nativa con SDK Darwin (iphoneos) e instalación en iPhone físico en < 2 segundos vía xtool sin depender de macOS ni Xcode.",
+        "Jugabilidad horizontal estricta: joystick virtual analógico, auto-pitch inteligente (±35°) hacia enemigos voladores y catálogo de hechizos con carga continua.",
+        "Pipeline de sprites canónicos a 512px, consistencia de escala 1:1, profundidad parallax en 6 capas Z y suite automatizada con 32/32 tests aprobados.",
+      ],
+      tech: ["Swift 6", "iOS 17+", "SceneKit 2.5D", "Metal", "SwiftUI", "xtool (Linux USB)", "Parallax Shaders", "Pure Swift Physics", "En desarrollo"],
+      links: {
+        lab: "/lab#starforces-game",
       },
     },
     {

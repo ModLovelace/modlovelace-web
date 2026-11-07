@@ -7,7 +7,7 @@ export function StackSection() {
       items: [
         { name: "Flutter & Dart", role: "Apps multiplataforma y tooling para DevTools", level: "Principal" },
         { name: "Android Nativo (Kotlin)", role: "Integración profunda con hardware y sistema", level: "Avanzado" },
-        { name: "iOS (Swift)", role: "Experiencias optimizadas para el ecosistema Apple", level: "Sólido" },
+        { name: "iOS Nativo (Swift 6)", role: "SceneKit 2.5D, Metal y arquitecturas nativas", level: "Avanzado" },
         { name: "Publicación en Tiendas", role: "Lanzamientos en Google Play y App Store", level: "Producción" },
       ],
     },

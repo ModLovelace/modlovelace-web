@@ -1,13 +1,14 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { 
   FlaskConical, 
   Terminal, 
   Cpu, 
   Music, 
-  Smartphone, 
+  Smartphone,
+  Gamepad2,
   ArrowUpRight, 
   ChevronDown, 
   ChevronUp, 
@@ -25,7 +26,17 @@ interface LabSectionProps {
 
 export function LabSection({ isStandalonePage = false }: LabSectionProps) {
   const [activeFilter, setActiveFilter] = useState<string>("todos");
-  const [expandedId, setExpandedId] = useState<string | null>("catjang-linux-native");
+  const [expandedId, setExpandedId] = useState<string | null>("starforces-game");
+
+  useEffect(() => {
+    if (typeof window !== "undefined" && window.location.hash) {
+      const hashId = window.location.hash.replace("#", "");
+      if (LAB_ENTRIES.some((e) => e.id === hashId)) {
+        setExpandedId(hashId);
+        setActiveFilter("todos");
+      }
+    }
+  }, []);
 
   const filteredEntries =
     activeFilter === "todos"
@@ -69,6 +80,7 @@ export function LabSection({ isStandalonePage = false }: LabSectionProps) {
         <div className="flex flex-wrap items-center gap-2 mb-8">
           {[
             { id: "todos", label: "Todos los Avances" },
+            { id: "gaming", label: "🎮 Videojuegos (iOS / SceneKit)", icon: Gamepad2 },
             { id: "gatito", label: "🐾 Catjang Lab (Gatito)", icon: Sparkles },
             { id: "devtools", label: "🛠️ Flutter & DevTools", icon: Terminal },
             { id: "ia", label: "🤖 Agentes de IA", icon: Cpu },
@@ -100,7 +112,8 @@ export function LabSection({ isStandalonePage = false }: LabSectionProps) {
             return (
               <article
                 key={entry.id}
-                className={`rounded-2xl border transition-all duration-300 bg-[var(--card)] ${
+                id={entry.id}
+                className={`rounded-2xl border transition-all duration-300 bg-[var(--card)] scroll-mt-24 ${
                   isExpanded
                     ? "border-blue-500/50 shadow-md ring-1 ring-blue-500/20"
                     : "border-[var(--border)] hover:border-neutral-400 dark:hover:border-neutral-700"

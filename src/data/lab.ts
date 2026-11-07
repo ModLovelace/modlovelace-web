@@ -1,6 +1,6 @@
 export interface LabEntry {
   id: string;
-  category: "gatito" | "ia" | "audio" | "movil" | "devtools";
+  category: "gatito" | "ia" | "audio" | "movil" | "devtools" | "gaming";
   categoryLabel: string;
   status: "En Desarrollo" | "En Investigación" | "Completado";
   date: string;
@@ -18,6 +18,54 @@ export interface LabEntry {
 }
 
 export const LAB_ENTRIES: LabEntry[] = [
+  {
+    id: "starforces-game",
+    category: "gaming",
+    categoryLabel: "StarForces Lab · Videojuegos (Swift 6 & iOS 17+)",
+    status: "En Desarrollo",
+    date: "Noviembre 2026",
+    title: "StarForcesGame: Videojuego 2D/2.5D nativo en Swift 6 para iOS con despliegue Linux por USB",
+    summary:
+      "Arquitectura de juego híbrida desacoplada para iPhone (iOS 17+): motor de físicas puro en Swift a 60 FPS, renderizado 2.5D en SceneKit (Metal) con cámara ortográfica y jerarquía parallax en 6 capas Z. Pipeline de compilación independiente en Linux e instalación directa por USB mediante xtool en < 2 segundos.",
+    tags: [
+      "Swift 6 Nativo",
+      "iOS 17+ (iPhone)",
+      "SceneKit & Metal",
+      "Cámara Ortográfica 2.5D",
+      "xtool Linux -> USB",
+      "Parallax Z-Layers",
+      "Pure Swift Physics",
+      "32 Tests Automatizados",
+    ],
+    metrics: [
+      { label: "Rendimiento", value: "60 FPS (<1.5ms loop)" },
+      { label: "Despliegue USB", value: "< 2 seg (Linux)" },
+      { label: "Escenarios", value: "3 Niveles 2.5D" },
+      { label: "Suite de Tests", value: "32 / 32 OK" },
+    ],
+    details: {
+      problem:
+        "Desarrollar videojuegos nativos para iOS habitualmente obliga a trabajar dentro de macOS con Xcode y lidiar con los altos consumos de memoria de motores de propósito general. Además, combinar la estética 2D canónica de la animación tradicional con iluminación dinámica, parallax fluido y respuesta de combate contundente (estilo GunboundM) requiere desacoplar por completo la física del renderizador gráfico.",
+      solution:
+        "Diseñé una arquitectura desacoplada en tres capas en Swift 6: GameEngine gestiona la simulación física (gravedad, salto, proyectiles, auto-pitch ±35° asistido y colisiones OBB con margen de tolerancia) a 60 FPS en puntos 2D estándar; SceneKit2DSceneBridge proyecta el estado al espacio cartesiano 2.5D de SceneKit con cámara ortográfica, suelo sincronizado dinámicamente (groundY = 0.72) y 6 capas de profundidad Z; y GameRootView (SwiftUI) orquesta el HUD, joystick analógico y botones de hechizo (Narval con carga continua, Puño Arcoíris penetrante y Láser Mewbertad). Todo se compila y firma en Linux mediante Darwin SDK y se instala al iPhone por USB vía xtool.",
+      keyTakeaway:
+        "El desacoplamiento entre un motor físico determinista puro en Swift y una proyección ortográfica 2.5D sobre Metal permite lograr 60 FPS estables con menos de 1.5ms por frame, manteniendo un ciclo de iteración ultrarrápido desde Linux sin intermediación de macOS ni Xcode local.",
+      codeSnippet: `// 1. Arquitectura Desacoplada: Física Pura (Swift) -> Proyección 2.5D (SceneKit)
+// GameEngine.swift (Simulación Física 2D a 60 FPS):
+let groundY = screenSize.height * 0.72
+let autoPitchAngle = atan2(target.y - wand.y, target.x - wand.x).clamped(to: -0.61...0.61) // ±35°
+
+// 2. SceneKit2DSceneBridge.swift (Proyección Cartesiana en Metal):
+let yWorld = -(groundY - center.y) * pointToWorldScale // Sincronización exacta de suelo y pies
+let stageZLayers: [(name: String, z: Float)] = [
+    ("Sky", -14.0), ("DistantHills", -9.0), ("MidgroundHouses", -4.5),
+    ("BattleStage", -0.05), ("Characters", 0.0), ("Projectiles", 0.08)
+]
+
+// 3. Toolchain Linux -> iPhone físico por USB (xtool):
+// xtool build --release && xtool install --device <UDID_IPHONE> (< 2s)`,
+    },
+  },
   {
     id: "catjang-linux-native",
     category: "gatito",

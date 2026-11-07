@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { siteConfig } from "@/config/site";
-import { ExternalLink, Smartphone, Package } from "lucide-react";
+import { ExternalLink, Smartphone, Package, FlaskConical } from "lucide-react";
 import { GithubIcon } from "@/components/icons";
 
 export function ProjectsSection() {
@@ -39,7 +39,13 @@ export function ProjectsSection() {
                   <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-neutral-100 dark:bg-neutral-800 text-[11px] font-medium text-neutral-700 dark:text-neutral-300">
                     <span>{project.category}</span>
                   </span>
-                  <span className="text-xs font-mono text-[var(--muted)]">
+                  <span
+                    className={`text-xs font-mono font-medium ${
+                      project.status === "En desarrollo"
+                        ? "text-amber-600 dark:text-amber-400"
+                        : "text-[var(--muted)]"
+                    }`}
+                  >
                     {project.status}
                   </span>
                 </div>
@@ -192,6 +198,25 @@ export function ProjectsSection() {
                       <GithubIcon className="w-3.5 h-3.5" />
                       <span>Código GitHub</span>
                     </Link>
+                  )}
+
+                  {/* Enlace al Laboratorio Técnico si existe */}
+                  {project.links.lab && (
+                    <Link
+                      href={project.links.lab}
+                      className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-medium text-xs transition-all shadow-sm"
+                    >
+                      <FlaskConical className="w-3.5 h-3.5" />
+                      <span>Ver Avances en Lab</span>
+                    </Link>
+                  )}
+
+                  {/* Badge de desarrollo activo sin web pública propia */}
+                  {project.status === "En desarrollo" && (
+                    <span className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-amber-500/10 border border-amber-500/30 text-amber-700 dark:text-amber-300 font-mono text-xs font-medium">
+                      <span className="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse" />
+                      <span>Desarrollo &amp; Tests en iPhone</span>
+                    </span>
                   )}
                 </div>
               </div>
