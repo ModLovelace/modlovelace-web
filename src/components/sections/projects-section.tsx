@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { ExternalLink, FlaskConical, Github } from "lucide-react";
+import { ExternalLink, FlaskConical } from "lucide-react";
 import { siteConfig } from "@/config/site";
 
 export function ProjectsSection() {
@@ -215,18 +215,21 @@ export function ProjectsSection() {
                 </Link>
 
                 <div className="flex items-center gap-2">
-                  {proj.secondaryLinks.map((sLink, sIdx) => (
-                    <Link
-                      key={sIdx}
-                      href={sLink.href}
-                      target={sLink.isInternal ? undefined : "_blank"}
-                      rel={sLink.isInternal ? undefined : "noreferrer"}
-                      className="px-2 py-1 rounded-md bg-neutral-100 hover:bg-neutral-200 dark:bg-neutral-800/80 dark:hover:bg-neutral-700/80 text-[11px] font-mono text-[var(--foreground)] transition-colors inline-flex items-center gap-1"
-                    >
-                      <span>{sLink.label}</span>
-                      {!sLink.isInternal && <span className="text-[10px] text-neutral-400">↗</span>}
-                    </Link>
-                  ))}
+                  {proj.secondaryLinks.map((sLink, sIdx) => {
+                    const isInternal = sLink.href.startsWith("/");
+                    return (
+                      <Link
+                        key={sIdx}
+                        href={sLink.href}
+                        target={isInternal ? undefined : "_blank"}
+                        rel={isInternal ? undefined : "noreferrer"}
+                        className="px-2 py-1 rounded-md bg-neutral-100 hover:bg-neutral-200 dark:bg-neutral-800/80 dark:hover:bg-neutral-700/80 text-[11px] font-mono text-[var(--foreground)] transition-colors inline-flex items-center gap-1"
+                      >
+                        <span>{sLink.label}</span>
+                        {!isInternal && <span className="text-[10px] text-neutral-400">↗</span>}
+                      </Link>
+                    );
+                  })}
                 </div>
               </div>
             </article>
