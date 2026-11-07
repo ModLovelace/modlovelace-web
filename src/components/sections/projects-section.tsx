@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { siteConfig } from "@/config/site";
 import { ExternalLink, Smartphone, Package, FlaskConical } from "lucide-react";
 import { GithubIcon } from "@/components/icons";
@@ -34,6 +35,20 @@ export function ProjectsSection() {
                 className={`p-7 sm:p-8 rounded-2xl bg-[var(--card)] border border-[var(--border)] hover:border-neutral-400 dark:hover:border-neutral-700 transition-all flex flex-col justify-between space-y-6 shadow-sm hover:shadow-md ${isFlores ? "scroll-mt-24" : ""}`}
               >
               <div className="space-y-4">
+                {/* Imagen Preview del Proyecto */}
+                {project.image && (
+                  <div className="relative w-full aspect-[16/9] rounded-xl overflow-hidden bg-neutral-900 border border-[var(--border)] group/img shadow-inner">
+                    <Image
+                      src={project.image}
+                      alt={`Captura e interfaz de ${project.title}`}
+                      fill
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
+                      className="object-cover object-top transition-transform duration-500 ease-out group-hover/img:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-transparent pointer-events-none" />
+                  </div>
+                )}
+
                 {/* Categoría & Estado */}
                 <div className="flex items-center justify-between gap-2">
                   <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-neutral-100 dark:bg-neutral-800 text-[11px] font-medium text-neutral-700 dark:text-neutral-300">

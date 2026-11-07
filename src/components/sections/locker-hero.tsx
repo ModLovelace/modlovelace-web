@@ -3,7 +3,7 @@
 import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowDown, ArrowRight, Sparkles } from "lucide-react";
+import { ArrowDown, ArrowRight, Sparkles, FlaskConical } from "lucide-react";
 
 export function LockerHero() {
   const [isOpen, setIsOpen] = useState(false);
@@ -382,6 +382,41 @@ export function LockerHero() {
                     </div>
                   </div>
                 </a>
+
+                {/* Pegatina 4: StarForces Game (iOS 17+ Swift 6) */}
+                <Link
+                  href="/lab#starforces-game"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                  }}
+                  className={`absolute transition-all duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)] cursor-pointer group/starforces z-30 block ${
+                    stickersPopped
+                      ? "opacity-100 scale-100 translate-y-0 pointer-events-auto"
+                      : "opacity-0 scale-0 translate-y-4 pointer-events-none"
+                  }`}
+                  style={{
+                    left: "72.0%",
+                    top: "72.5%",
+                    width: "11.8%",
+                    aspectRatio: "1/1",
+                    transformOrigin: "center center",
+                    transitionDelay: stickersPopped ? "300ms" : "0ms",
+                  }}
+                  title="StarForces Game · Swift 6 & SceneKit 2.5D (Ver avances)"
+                >
+                  <div className="relative w-full h-full transition-transform duration-300 ease-out hover:scale-125 hover:rotate-3 active:scale-105">
+                    <Image
+                      src="/images/sticker-starforces.png"
+                      alt="Sticker StarForces Game"
+                      fill
+                      className="object-contain filter drop-shadow-[0_8px_14px_rgba(0,0,0,0.6)] group-hover/starforces:drop-shadow-[0_12px_22px_rgba(245,158,11,0.65)]"
+                    />
+                    {/* Badge flotante tooltip clickeable */}
+                    <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 px-2.5 py-0.5 rounded-full bg-amber-600 hover:bg-amber-500 text-[10px] font-mono font-semibold text-white whitespace-nowrap opacity-0 group-hover/starforces:opacity-100 transition-opacity shadow-lg shadow-amber-500/25 border border-amber-400/30 pointer-events-auto cursor-pointer z-40">
+                      StarForces Lab ➔
+                    </div>
+                  </div>
+                </Link>
               </div>
 
               {/* ACTO 1: Puerta cerrada amplia pivotando en la bisagra real (62% 50%) hacia la DERECHA */}
@@ -485,6 +520,9 @@ export function LockerHero() {
                     <span className="text-neutral-400">·</span>
                     <img src="/images/sticker-network-json.png" alt="Network JSON" className="w-3.5 h-3.5 object-contain inline" />
                     <span>Network JSON</span>
+                    <span className="text-neutral-400">·</span>
+                    <img src="/images/sticker-starforces.png" alt="StarForces" className="w-3.5 h-3.5 object-contain inline" />
+                    <span>StarForces</span>
                   </span>
                 </div>
               </div>
@@ -635,35 +673,44 @@ export function LockerHero() {
                 </div>
 
                 {/* 3. Network JSON · DevTools (Extensión Flutter/Dart en pub.dev) */}
-                <div className={`sm:col-span-2 p-3.5 rounded-xl bg-neutral-50 dark:bg-neutral-900/80 border flex flex-col sm:flex-row sm:items-center justify-between gap-3 transition-all duration-500 shadow-[0_1px_2px_rgba(0,0,0,0.04)] ${
+                <div className={`p-3.5 rounded-xl bg-neutral-50 dark:bg-neutral-900/80 border flex flex-col justify-between h-full transition-all duration-500 shadow-[0_1px_2px_rgba(0,0,0,0.04)] ${
                   stickersPopped
                     ? "border-cyan-500/60 ring-1 ring-cyan-500/20 shadow-md shadow-cyan-500/5"
                     : "border-neutral-200 dark:border-neutral-800 hover:border-blue-500/50"
                 }`}>
-                  <div className="flex items-start gap-3">
-                    <div className="w-9 h-9 rounded-xl bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700/80 flex items-center justify-center p-1 shadow-sm shrink-0 overflow-hidden mt-0.5">
-                      <img
-                        src="/images/sticker-network-json.png"
-                        alt="Sticker Network JSON DevTools"
-                        className="w-full h-full object-contain filter drop-shadow-sm"
-                      />
-                    </div>
-                    <div className="space-y-1">
-                      <div className="flex flex-wrap items-center gap-2">
-                        <h3 className="text-sm font-bold text-[var(--foreground)] leading-tight">
-                          Network JSON · DevTools
-                        </h3>
-                        <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-cyan-100 dark:bg-cyan-950/80 text-cyan-800 dark:text-cyan-300 font-medium">
-                          Contribución Dart · pub.dev v0.1.4
-                        </span>
+                  <div className="space-y-2">
+                    {/* Fila superior: Ícono oficial y Badge */}
+                    <div className="flex items-center justify-between">
+                      <div className="w-8 h-8 rounded-xl bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700/80 flex items-center justify-center p-1 shadow-sm shrink-0 overflow-hidden">
+                        <img
+                          src="/images/sticker-network-json.png"
+                          alt="Sticker Network JSON DevTools"
+                          className="w-full h-full object-contain filter drop-shadow-sm"
+                        />
                       </div>
-                      <p className="text-xs text-[var(--muted)] leading-relaxed">
-                        Contribución oficial al ecosistema Dart &amp; Flutter: inspector HTTP en vivo para DevTools, árbol JSON interactivo y descifrado local RSA-OAEP/AES-CBC en memoria.
+                      <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-cyan-100 dark:bg-cyan-950/80 text-cyan-800 dark:text-cyan-300 font-medium shrink-0">
+                        pub.dev v0.1.4
+                      </span>
+                    </div>
+
+                    {/* Título y Subtítulo */}
+                    <div>
+                      <h3 className="text-sm font-bold text-[var(--foreground)] leading-tight">
+                        Network JSON · DevTools
+                      </h3>
+                      <p className="text-[11px] font-mono text-[var(--muted)] mt-0.5">
+                        Dart DevTools Extension
                       </p>
                     </div>
+
+                    {/* Descripción */}
+                    <p className="text-xs text-[var(--muted)] leading-relaxed">
+                      Inspector HTTP en tiempo real con árbol JSON reactivo y descifrado local en memoria (RSA-OAEP / AES-CBC) para Dart y Flutter.
+                    </p>
                   </div>
 
-                  <div className="flex items-center gap-1.5 shrink-0 font-mono text-xs pt-2 sm:pt-0 border-t sm:border-t-0 border-[var(--border)]/60">
+                  {/* Enlaces de acción */}
+                  <div className="flex flex-wrap items-center justify-between gap-2 pt-2.5 mt-2.5 border-t border-[var(--border)]/60 text-xs font-mono">
                     <Link
                       href="https://pub.dev/packages/network_json_devtools"
                       target="_blank"
@@ -685,11 +732,65 @@ export function LockerHero() {
                   </div>
                 </div>
 
+                {/* 4. StarForces Game (Videojuego iOS 17+ Swift 6) */}
+                <div className={`p-3.5 rounded-xl bg-neutral-50 dark:bg-neutral-900/80 border flex flex-col justify-between h-full transition-all duration-500 shadow-[0_1px_2px_rgba(0,0,0,0.04)] ${
+                  stickersPopped
+                    ? "border-amber-500/60 ring-1 ring-amber-500/20 shadow-md shadow-amber-500/5"
+                    : "border-neutral-200 dark:border-neutral-800 hover:border-amber-500/50"
+                }`}>
+                  <div className="space-y-2">
+                    {/* Fila superior: Ícono oficial del casillero y Badge */}
+                    <div className="flex items-center justify-between">
+                      <div className="w-8 h-8 rounded-xl bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700/80 flex items-center justify-center p-1 shadow-sm shrink-0 overflow-hidden">
+                        <img
+                          src="/images/sticker-starforces.png"
+                          alt="Sticker StarForces Game"
+                          className="w-full h-full object-contain filter drop-shadow-sm scale-105"
+                        />
+                      </div>
+                      <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-amber-100 dark:bg-amber-950/80 text-amber-700 dark:text-amber-300 font-medium shrink-0">
+                        En desarrollo
+                      </span>
+                    </div>
+
+                    {/* Título y Subtítulo */}
+                    <div>
+                      <h3 className="text-sm font-bold text-[var(--foreground)] leading-tight">
+                        StarForces Game
+                      </h3>
+                      <p className="text-[11px] font-mono text-[var(--muted)] mt-0.5">
+                        iOS 17+ · Swift 6 &amp; SceneKit 2.5D
+                      </p>
+                    </div>
+
+                    {/* Descripción */}
+                    <p className="text-xs text-[var(--muted)] leading-relaxed">
+                      Videojuego nativo para iPhone con física a 60 FPS, colisiones OBB, cámara ortográfica 2.5D y despliegue USB desde Linux vía xtool.
+                    </p>
+                  </div>
+
+                  {/* Enlaces de acción */}
+                  <div className="flex flex-wrap items-center justify-between gap-2 pt-2.5 mt-2.5 border-t border-[var(--border)]/60 text-xs font-mono">
+                    <Link
+                      href="/lab#starforces-game"
+                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-medium text-xs transition-all shadow-sm"
+                    >
+                      <FlaskConical className="w-3.5 h-3.5" />
+                      <span>Ver en Lab</span>
+                      <span className="text-[10px] select-none">➔</span>
+                    </Link>
+                    <span className="inline-flex items-center gap-1 text-[11px] font-mono text-amber-600 dark:text-amber-400">
+                      <span className="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse" />
+                      <span>32 Tests OK</span>
+                    </span>
+                  </div>
+                </div>
+
               </div>
 
               {/* Pie interactivo de la tarjeta */}
               <div className="pt-2 text-[11px] font-mono text-[var(--muted)] flex flex-wrap items-center justify-between gap-x-3 gap-y-1 border-t border-[var(--border)]">
-                <span>{stickersPopped ? "✨ Pegatinas activas: Haz clic en el casillero o aquí" : isOpen ? "✨ Casillero abierto: Catjang, Regala Flores, Network JSON & Modfin" : "💡 Toca el casillero para abrir y ver los detalles"}</span>
+                <span>{stickersPopped ? "✨ Pegatinas activas: Haz clic en el casillero o aquí" : isOpen ? "✨ Casillero abierto: Catjang, Regala Flores, Network JSON, StarForces & Modfin" : "💡 Toca el casillero para abrir y ver los detalles"}</span>
                 <button
                   onClick={toggleLocker}
                   className="text-blue-600 dark:text-blue-400 hover:underline font-medium cursor-pointer"

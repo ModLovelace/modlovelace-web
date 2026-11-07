@@ -5,6 +5,7 @@ export interface Project {
   description: string;
   highlights: string[];
   tech: string[];
+  image?: string;
   links: {
     repo?: string;
     live?: string;
@@ -82,6 +83,7 @@ export const siteConfig = {
       category: "Desktop / Open Source & AI",
       status: "Open Source",
       badgeColor: "emerald",
+      image: "/images/projects/catjang.jpg",
       description:
         "Mascota virtual de escritorio para desarrolladores con 6 especies y reactividad en tiempo real a 5 agentes de IA (Gemini, Claude, Cursor, Codex y Kiro).",
       highlights: [
@@ -101,6 +103,7 @@ export const siteConfig = {
       category: "Contribución Open Source / Dart & Flutter Tooling",
       status: "Open Source",
       badgeColor: "emerald",
+      image: "/images/projects/network-json-devtools.jpg",
       description:
         "Contribución oficial de tooling para desarrolladores Dart & Flutter: extensión para Dart DevTools con inspección HTTP/HTTPS en tiempo real, visor interactivo de árbol JSON y descifrado criptográfico local (RSA-OAEP / AES-CBC) en memoria sin tocar disco ni alterar compilaciones release.",
       highlights: [
@@ -120,6 +123,7 @@ export const siteConfig = {
       category: "Open Source / Web Interactiva",
       status: "Open Source",
       badgeColor: "emerald",
+      image: "/images/projects/regala-flores.jpg",
       description:
         "Experiencia web interactiva con floración procedural en 4 fases, sintetizador acústico en tiempo real con Web Audio API y generador de tarjetas virales.",
       highlights: [
@@ -138,6 +142,7 @@ export const siteConfig = {
       category: "Videojuegos / Mobile Nativo (iOS 17+)",
       status: "En desarrollo",
       badgeColor: "amber",
+      image: "/images/projects/starforces-game.jpg",
       description:
         "Videojuego 2D/2.5D nativo para iPhone (iOS 17+) desarrollado en Swift 6 con SceneKit (Metal) y pipeline de compilación e instalación directa por USB desde Linux mediante xtool. Inspirado en el universo animado de Star vs. Las Fuerzas del Mal con la contundencia de combate y escala táctica de GunboundM.",
       highlights: [
@@ -156,6 +161,7 @@ export const siteConfig = {
       category: "Mobile / Fintech Cooperativo",
       status: "Producción",
       badgeColor: "blue",
+      image: "/images/projects/santa-isabel.jpg",
       description:
         "Aplicación móvil oficial para socios de la Cooperativa Santa Isabel. Consultas financieras seguras, movimientos de cuentas y votaciones en asambleas.",
       highlights: [
@@ -172,6 +178,7 @@ export const siteConfig = {
       category: "Mobile / Enterprise & Logística",
       status: "Producción",
       badgeColor: "purple",
+      image: "/images/projects/webcontrol.jpg",
       description:
         "Solución móvil empresarial para entornos industriales y mineros de alta exigencia: control de fatiga, credenciales digitales y gestión de accesos.",
       highlights: [
