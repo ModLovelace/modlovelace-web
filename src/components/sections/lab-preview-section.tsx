@@ -1,112 +1,114 @@
 "use client";
 
 import Link from "next/link";
-import { FlaskConical, ArrowRight, Sparkles, Cpu, Music, Terminal } from "lucide-react";
-import { LAB_ENTRIES } from "@/data/lab";
+import Image from "next/image";
 
 export function LabPreviewSection() {
-  // Tomamos los 3 experimentos más emblemáticos para el resumen en Home
-  const featured = [
+  const labItems = [
     {
-      entry: LAB_ENTRIES.find((e) => e.id === "starforces-game") || LAB_ENTRIES[0],
-      icon: "🎮",
-      color: "purple",
+      id: "starforces-game",
+      tag: "JUEGO",
+      tagColor: "bg-purple-900/40 text-purple-300 border-purple-700/50",
+      image: "/images/projects/starforces-game.jpg",
+      title: "StarForces Game: Físicas deterministas en Swift 6 & SceneKit 2.5D",
+      description:
+        "Motor de combate a 60 FPS desacoplado para iPhone (iOS 17+), auto-pitch ±35°, colisiones OBB y pipeline de compilación e instalación directa por USB desde Linux en < 2 segundos vía xtool.",
+      date: "NOVIEMBRE DE 2026",
     },
     {
-      entry: LAB_ENTRIES.find((e) => e.id === "catjang-linux-native") || LAB_ENTRIES[1],
-      icon: "🐾",
-      color: "amber",
+      id: "catjang-linux-native",
+      tag: "SISTEMAS",
+      tagColor: "bg-emerald-900/40 text-emerald-300 border-emerald-700/50",
+      image: "/images/projects/catjang.jpg",
+      title: "Catjang: Mascota de escritorio con Wayland DBus a 50Hz",
+      description:
+        "Seguimiento ocular global a 0.2ms de latencia vía DBus en GNOME Shell, recorte transparente con setShape() en XWayland y reactividad para 5 agentes de IA.",
+      date: "OCTUBRE DE 2026",
     },
     {
-      entry: LAB_ENTRIES.find((e) => e.id === "network-json-devtools") || LAB_ENTRIES[2],
-      icon: "🛠️",
-      color: "blue",
+      id: "network-json-devtools",
+      tag: "TOOLING",
+      tagColor: "bg-cyan-900/40 text-cyan-300 border-cyan-700/50",
+      image: "/images/projects/network-json-devtools.jpg",
+      title: "Network JSON DevTools: Descifrado criptográfico en memoria",
+      description:
+        "Extensión oficial para Dart DevTools: inspección HTTP en tiempo real, visor de árbol JSON reactivo y descifrado local RSA-OAEP / AES-CBC sin persistencia en disco ni alterar binarios release.",
+      date: "OCTUBRE DE 2026",
     },
   ];
 
   return (
-    <section id="lab" className="py-16 sm:py-20 border-t border-[var(--border)]">
+    <section id="lab" className="py-16 sm:py-20 border-b border-[var(--border)] bg-[var(--background)]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Encabezado elegante de sección */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between pb-6 mb-8 border-b border-[var(--border)] gap-4">
-          <div className="space-y-1.5">
-            <div className="inline-flex items-center gap-2 text-xs font-semibold text-blue-600 dark:text-blue-400 uppercase tracking-wider font-mono">
-              <FlaskConical className="w-3.5 h-3.5" />
-              <span>02 / Laboratorio &amp; Blog Técnico</span>
-            </div>
-            <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-[var(--foreground)]">
-              Experimentos, Bitácora &amp; Avances
-            </h2>
-          </div>
-
-          <Link
-            href="/lab"
-            className="inline-flex items-center gap-1.5 text-xs font-mono text-blue-600 dark:text-blue-400 hover:underline font-semibold w-fit"
-          >
-            <span>Ver bitácora completa en modlovelace.com/lab</span>
-            <ArrowRight className="w-3.5 h-3.5" />
-          </Link>
+        {/* Cabecera Estilo Delpaqq: Línea vertical + 01 / LAB + Título condensado */}
+        <div className="flex flex-col items-center text-center mb-12 space-y-1.5">
+          <div className="w-0.5 h-6 bg-pink-500 mx-auto rounded-full" />
+          <span className="font-mono text-xs font-bold tracking-widest uppercase text-neutral-400">
+            01 / LAB
+          </span>
+          <h2 className="text-2xl sm:text-4xl font-extrabold tracking-wide uppercase text-[var(--foreground)]">
+            EXPERIMENTOS Y PÁGINAS SUELTAS
+          </h2>
         </div>
 
-        {/* Grid de 3 Tarjetas Resumen */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-8">
-          {featured.map(({ entry, icon }, idx) => (
+        {/* Grid de 3 Cards Delpaqq */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 mb-10">
+          {labItems.map((item) => (
             <Link
-              key={idx}
-              href={`/lab#${entry.id}`}
-              className="p-5 sm:p-6 rounded-2xl bg-[var(--card)] border border-[var(--border)] hover:border-blue-500/50 hover:shadow-md transition-all flex flex-col justify-between group space-y-4"
+              key={item.id}
+              href={`/lab#${item.id}`}
+              className="group flex flex-col justify-between rounded-2xl bg-[var(--card)] border border-[var(--border)] hover:border-violet-500/50 hover:shadow-xl transition-all duration-300 overflow-hidden shadow-sm"
             >
-              <div className="space-y-3">
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-2">
-                    <span className="text-xl">{icon}</span>
-                    <span className="text-[11px] font-mono text-[var(--muted)]">
-                      {entry.categoryLabel.split("·")[0]}
+              <div className="space-y-4">
+                {/* Imagen Preview con borde suave */}
+                <div className="relative w-full aspect-[16/10] bg-neutral-900 overflow-hidden">
+                  <Image
+                    src={item.image}
+                    alt={item.title}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                    className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+                  
+                  {/* Badge de Categoría Delpaqq */}
+                  <div className="absolute bottom-3 left-3">
+                    <span className={`px-2.5 py-0.5 rounded-md text-[10px] font-mono font-bold tracking-wider uppercase border backdrop-blur-md ${item.tagColor}`}>
+                      {item.tag}
                     </span>
                   </div>
-                  <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-neutral-100 dark:bg-neutral-800 text-[var(--muted)] font-medium">
-                    {entry.status}
-                  </span>
                 </div>
 
-                <h3 className="text-sm font-bold text-[var(--foreground)] group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors leading-snug line-clamp-2">
-                  {entry.title}
-                </h3>
-
-                <p className="text-xs text-[var(--muted)] line-clamp-3 leading-relaxed">
-                  {entry.summary}
-                </p>
+                {/* Contenido */}
+                <div className="px-5 pb-2 space-y-2.5">
+                  <h3 className="font-bold text-base text-[var(--foreground)] group-hover:text-violet-500 dark:group-hover:text-violet-400 transition-colors leading-snug">
+                    {item.title}
+                  </h3>
+                  <p className="text-xs text-[var(--muted)] leading-relaxed line-clamp-3">
+                    {item.description}
+                  </p>
+                </div>
               </div>
 
-              <div className="pt-3 border-t border-[var(--border)]/60 flex items-center justify-between text-xs font-mono">
-                <span className="text-[11px] text-[var(--muted)]">
-                  {entry.metrics[0]?.label}: <strong>{entry.metrics[0]?.value}</strong>
-                </span>
-                <span className="text-blue-600 dark:text-blue-400 group-hover:translate-x-0.5 transition-transform">
-                  Leer caso ➔
+              {/* Fecha al pie */}
+              <div className="px-5 pb-5 pt-3 border-t border-[var(--border)]/50">
+                <span className="font-mono text-[10px] font-bold tracking-wider uppercase text-[var(--muted)]">
+                  {item.date}
                 </span>
               </div>
             </Link>
           ))}
         </div>
 
-        {/* Tarjeta CTA destacada para explorar la página dedicada /lab */}
-        <div className="p-5 sm:p-6 rounded-2xl bg-gradient-to-r from-blue-500/10 via-indigo-500/5 to-transparent border border-blue-500/20 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div className="space-y-1 text-center sm:text-left">
-            <span className="text-xs font-mono font-bold text-blue-600 dark:text-blue-400 uppercase tracking-wider block">
-              Página Independiente de Investigación
-            </span>
-            <p className="text-xs sm:text-sm text-[var(--foreground)]/85">
-              Accede a la bitácora completa con snippets de código, retos de bajo nivel y conclusiones de arquitectura.
-            </p>
-          </div>
-
+        {/* Enlace Inferior Estilo Delpaqq */}
+        <div className="text-center pt-2">
           <Link
             href="/lab"
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-semibold text-xs transition-all shadow-md shadow-blue-600/20 shrink-0 hover:-translate-y-0.5"
+            className="inline-flex items-center gap-2 text-sm sm:text-base font-semibold text-violet-500 hover:text-violet-400 dark:text-violet-400 dark:hover:text-violet-300 transition-colors group"
           >
-            <span>Explorar Laboratorio Completo ➔</span>
+            <span>Ver todo el Lab →</span>
+            <span className="text-xs font-normal text-[var(--muted)]">Juegos, experimentos, shaders, audio y repositorios.</span>
           </Link>
         </div>
 

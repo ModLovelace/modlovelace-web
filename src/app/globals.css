@@ -11,30 +11,36 @@
   --color-card-border: var(--card-border);
   --color-accent: var(--accent);
   --color-accent-hover: var(--accent-hover);
+  --color-accent-purple: var(--accent-purple);
+  --color-accent-coral: var(--accent-coral);
 }
 
 :root {
-  /* Modo Claro: Acero Suave Ejecutivo, Menos Blanco, Más Profundo & Confortable */
-  --background: #eaeef3;
+  /* Modo Claro Delpaqq: Fondo Limpio, Cards Blancas y Acentos Coral / Violeta */
+  --background: #f8fafc;
   --foreground: #0f172a;
-  --muted: #526071;
-  --border: #ccd6e0;
-  --card: #f4f6f9;
-  --card-border: #ccd6e0;
-  --accent: #2563eb;       /* Azul Eléctrico Ejecutivo */
-  --accent-hover: #1d4ed8;
+  --muted: #64748b;
+  --border: #e2e8f0;
+  --card: #ffffff;
+  --card-border: #e2e8f0;
+  --accent: #ff6b4a;            /* Coral Primario Delpaqq */
+  --accent-hover: #ea580c;
+  --accent-purple: #7c3aed;     /* Violeta Delpaqq */
+  --accent-coral: #ff6b4a;
 }
 
 .dark {
-  /* Modo Oscuro: Grafito Plano Profundo & Acento de Alto Contraste */
-  --background: #090a0f;
-  --foreground: #f8fafc;
+  /* Modo Oscuro Delpaqq: Deep Slate Navy, Cards de Alto Contraste y Acentos Coral / Violeta */
+  --background: #0d1117;
+  --foreground: #f1f5f9;
   --muted: #94a3b8;
-  --border: #1e2430;
-  --card: #11141c;
-  --card-border: #1e2430;
-  --accent: #3b82f6;       /* Azul Eléctrico en Modo Oscuro */
-  --accent-hover: #60a5fa;
+  --border: #1e2638;
+  --card: #131926;
+  --card-border: #1e2638;
+  --accent: #ff6b4a;            /* Coral Primario Delpaqq */
+  --accent-hover: #ff5733;
+  --accent-purple: #8b5cf6;     /* Violeta Eléctrico Delpaqq */
+  --accent-coral: #ff6b4a;
 }
 
 html {
