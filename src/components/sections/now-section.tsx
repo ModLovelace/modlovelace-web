@@ -31,8 +31,8 @@ export function NowSection() {
       title: "DISPONIBILIDAD",
       description:
         "Abierto a conversar sobre arquitectura de software de alto impacto, desarrollo móvil nativo/multiplataforma y retos técnicos de ingeniería compleja. Escríbeme sobre lo que estás intentando resolver.",
-      linkText: "Escríbeme un mensaje →",
-      linkHref: "/#contacto",
+      linkText: "Formatos y precios →",
+      linkHref: "/#formatos",
     },
   ];
 

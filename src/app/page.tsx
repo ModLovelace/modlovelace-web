@@ -5,6 +5,7 @@ import { ProjectsSection } from "@/components/sections/projects-section";
 import { InvestigationsSection } from "@/components/sections/investigations-section";
 import { LearningSection } from "@/components/sections/learning-section";
 import { AboutSection } from "@/components/sections/about-section";
+import { WorkFormatsSection } from "@/components/sections/work-formats-section";
 import { ContactSection } from "@/components/sections/contact-section";
 
 export default function Home() {
@@ -17,6 +18,7 @@ export default function Home() {
       <InvestigationsSection />
       <LearningSection />
       <AboutSection />
+      <WorkFormatsSection />
       <ContactSection />
     </div>
   );

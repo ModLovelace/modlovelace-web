@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { siteConfig } from "@/config/site";
 import { ArrowRight, Check } from "lucide-react";
 
@@ -8,13 +8,32 @@ export function ContactSection() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    subject: "Soluciones Móviles (Android / iOS / Flutter)",
+    subject: "Primera conversación (20 min · Gratis)",
     message: "",
     website: "", // Honeypot anti-spam
   });
 
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [errorMessage, setErrorMessage] = useState("");
+
+  // Escuchar selección de formatos desde WorkFormatsSection
+  useEffect(() => {
+    const handleFormatSelect = (e: Event) => {
+      const customEvent = e as CustomEvent<{ subject: string; hint: string }>;
+      if (customEvent.detail?.subject) {
+        setFormData((prev) => ({
+          ...prev,
+          subject: customEvent.detail.subject,
+          message: prev.message.trim() ? prev.message : customEvent.detail.hint || prev.message,
+        }));
+      }
+    };
+
+    window.addEventListener("modlovelace:select-format", handleFormatSelect);
+    return () => {
+      window.removeEventListener("modlovelace:select-format", handleFormatSelect);
+    };
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -41,7 +60,13 @@ export function ContactSection() {
       }
 
       setStatus("success");
-      setFormData({ name: "", email: "", subject: "Soluciones Móviles (Android / iOS / Flutter)", message: "", website: "" });
+      setFormData({
+        name: "",
+        email: "",
+        subject: "Primera conversación (20 min · Gratis)",
+        message: "",
+        website: "",
+      });
     } catch (err: unknown) {
       console.error(err);
       setStatus("error");
@@ -54,40 +79,37 @@ export function ContactSection() {
   };
 
   return (
-    <section id="contacto" className="py-12 sm:py-16">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="contacto" className="py-16 sm:py-20 border-b border-[var(--border)] bg-[var(--background)]">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Encabezado industrial */}
-        <div className="flex flex-col sm:flex-row sm:items-baseline justify-between border-b border-[var(--border)] pb-3 mb-8 gap-2">
-          <div className="flex items-center gap-2">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
-            <h2 className="text-xs font-mono uppercase tracking-wider text-[var(--foreground)] font-bold">
-              03 // Canal de Contacto Directo &amp; Consultoría
-            </h2>
-          </div>
-          <span className="text-[11px] font-mono text-[var(--muted)]">
-            Respuesta directa · Sin intermediarios
+        {/* Cabecera Estilo Delpaqq */}
+        <div className="flex flex-col items-center text-center mb-10 space-y-1.5">
+          <div className="w-0.5 h-6 bg-pink-500 mx-auto rounded-full" />
+          <span className="font-mono text-xs font-bold tracking-widest uppercase text-neutral-400">
+            07 / CONTACTO
           </span>
+          <h2 className="text-2xl sm:text-4xl font-extrabold tracking-wide uppercase text-[var(--foreground)]">
+            HABLEMOS DE TU PROYECTO
+          </h2>
+          <p className="text-xs sm:text-sm text-[var(--muted)] max-w-xl mx-auto leading-relaxed pt-1">
+            Respuesta directa y sin intermediarios. Cuéntame sobre el reto técnico que buscas resolver.
+          </p>
         </div>
 
-        <div className="space-y-6">
-          <p className="text-xs sm:text-sm text-[var(--muted)] leading-relaxed max-w-2xl">
-            ¿Tienes un reto técnico complejo, necesitas diseñar o construir una solución para móvil, web o desktop, o deseas consultoría sobre arquitectura y agentes de IA? Envíame un mensaje directo.
-          </p>
-
+        <div className="rounded-2xl border border-[var(--border)] bg-[var(--card)] p-6 sm:p-8 shadow-sm">
           {status === "success" ? (
-            <div className="p-6 border border-[var(--border)] rounded-[2px] space-y-3">
-              <div className="flex items-center gap-2 text-xs font-mono text-[var(--foreground)]">
-                <Check className="w-4 h-4 text-[#e63946]" />
+            <div className="p-6 border border-emerald-500/30 bg-emerald-500/5 rounded-xl space-y-3 text-center">
+              <div className="inline-flex items-center gap-2 text-sm font-semibold text-emerald-600 dark:text-emerald-400">
+                <Check className="w-5 h-5 text-emerald-500" />
                 <span>Mensaje recibido correctamente.</span>
               </div>
-              <p className="text-xs text-[var(--muted)]">
-                Te responderé al correo indicado a la brevedad.
+              <p className="text-xs text-[var(--muted)] max-w-md mx-auto">
+                Reviso todos los mensajes directamente y te responderé al correo indicado a la brevedad.
               </p>
               <button
                 type="button"
                 onClick={() => setStatus("idle")}
-                className="text-xs font-mono text-[#e63946] hover:underline"
+                className="text-xs font-mono font-semibold text-[#ff6b4a] hover:underline pt-2 block mx-auto cursor-pointer"
               >
                 Enviar otro mensaje →
               </button>
@@ -95,7 +117,7 @@ export function ContactSection() {
           ) : (
             <form onSubmit={handleSubmit} className="space-y-5">
               
-              {/* Honeypot */}
+              {/* Honeypot anti-spam */}
               <div className="hidden" aria-hidden="true">
                 <input
                   type="text"
@@ -116,46 +138,54 @@ export function ContactSection() {
                     type="text"
                     id="name"
                     required
-                    placeholder="Tu nombre"
+                    placeholder="Tu nombre o empresa"
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    className="w-full px-4 py-2.5 text-sm bg-[var(--card)] border border-[var(--border)] rounded-xl text-[var(--foreground)] placeholder:text-[var(--muted)]/50 focus:outline-none focus:border-blue-600 transition-colors"
+                    className="w-full px-4 py-2.5 text-sm bg-[var(--background)] border border-[var(--border)] rounded-xl text-[var(--foreground)] placeholder:text-[var(--muted)]/50 focus:outline-none focus:border-violet-500 transition-colors"
                   />
                 </div>
 
                 <div className="space-y-1.5">
                   <label htmlFor="email" className="text-xs font-medium text-[var(--foreground)]">
-                    Correo
+                    Correo electrónico
                   </label>
                   <input
                     type="email"
                     id="email"
                     required
-                    placeholder="tu@correo.com"
+                    placeholder="tu@empresa.com"
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="w-full px-4 py-2.5 text-sm bg-[var(--card)] border border-[var(--border)] rounded-xl text-[var(--foreground)] placeholder:text-[var(--muted)]/50 focus:outline-none focus:border-blue-600 transition-colors"
+                    className="w-full px-4 py-2.5 text-sm bg-[var(--background)] border border-[var(--border)] rounded-xl text-[var(--foreground)] placeholder:text-[var(--muted)]/50 focus:outline-none focus:border-violet-500 transition-colors"
                   />
                 </div>
               </div>
 
               <div className="space-y-1.5">
                 <label htmlFor="subject" className="text-xs font-medium text-[var(--foreground)]">
-                  Motivo de contacto
+                  Formato o motivo de contacto
                 </label>
                 <select
                   id="subject"
                   value={formData.subject}
                   onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                  className="w-full px-4 py-2.5 text-sm bg-[var(--card)] border border-[var(--border)] rounded-xl text-[var(--foreground)] focus:outline-none focus:border-blue-600 transition-colors cursor-pointer"
+                  className="w-full px-4 py-2.5 text-sm bg-[var(--background)] border border-[var(--border)] rounded-xl text-[var(--foreground)] focus:outline-none focus:border-violet-500 transition-colors cursor-pointer"
                 >
-                  <option value="Soluciones Móviles (Android / iOS / Flutter)">Soluciones Móviles (Android / iOS / Flutter)</option>
-                  <option value="Desarrollo Web & Plataformas Cloud">Desarrollo Web &amp; Plataformas Cloud</option>
-                  <option value="Software de Escritorio (Desktop Linux/Win/Mac)">Software de Escritorio (Desktop Linux/Win/Mac)</option>
-                  <option value="Backend & APIs (.NET Core / Docker)">Backend &amp; APIs (.NET Core / Docker)</option>
-                  <option value="Flujos de Agentes de IA & QA Automatizado">Flujos de Agentes de IA &amp; QA Automatizado</option>
-                  <option value="Propuesta laboral / Consultoría">Propuesta laboral / Consultoría</option>
-                  <option value="Otro motivo">Otro motivo</option>
+                  <optgroup label="Formatos de Trabajo (Precios con 20% off)">
+                    <option value="Primera conversación (20 min · Gratis)">Primera conversación (20 min · Gratis)</option>
+                    <option value="Formato #1: Revisión puntual (USD 72–120)">Formato #1: Revisión puntual (USD 72–120)</option>
+                    <option value="Formato #2: Mini proyecto (Desde USD 480)">Formato #2: Mini proyecto (Desde USD 480)</option>
+                    <option value="Formato #3: Acompañamiento (Desde USD 320/mes)">Formato #3: Acompañamiento (Desde USD 320/mes)</option>
+                  </optgroup>
+                  <optgroup label="Otros Motivos">
+                    <option value="Soluciones Móviles (Android / iOS / Flutter)">Soluciones Móviles (Android / iOS / Flutter)</option>
+                    <option value="Desarrollo Web & Plataformas Cloud">Desarrollo Web &amp; Plataformas Cloud</option>
+                    <option value="Software de Escritorio (Desktop Linux/Win/Mac)">Software de Escritorio (Desktop Linux/Win/Mac)</option>
+                    <option value="Backend & APIs (.NET Core / Docker)">Backend &amp; APIs (.NET Core / Docker)</option>
+                    <option value="Flujos de Agentes de IA & QA Automatizado">Flujos de Agentes de IA &amp; QA Automatizado</option>
+                    <option value="Propuesta laboral / Consultoría">Propuesta laboral / Consultoría</option>
+                    <option value="Otro motivo">Otro motivo</option>
+                  </optgroup>
                 </select>
               </div>
 
@@ -167,10 +197,10 @@ export function ContactSection() {
                   id="message"
                   required
                   rows={4}
-                  placeholder="Describe el proyecto o reto técnico..."
+                  placeholder="Describe el reto técnico, proyecto o lo que intentas resolver..."
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  className="w-full px-4 py-2.5 text-sm bg-[var(--card)] border border-[var(--border)] rounded-xl text-[var(--foreground)] placeholder:text-[var(--muted)]/50 focus:outline-none focus:border-blue-600 transition-colors resize-y"
+                  className="w-full px-4 py-2.5 text-sm bg-[var(--background)] border border-[var(--border)] rounded-xl text-[var(--foreground)] placeholder:text-[var(--muted)]/50 focus:outline-none focus:border-violet-500 transition-colors resize-y"
                 />
               </div>
 
@@ -184,15 +214,15 @@ export function ContactSection() {
                 <button
                   type="submit"
                   disabled={status === "loading"}
-                  className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-medium text-sm transition-all shadow-md shadow-blue-600/25 disabled:opacity-50 cursor-pointer"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-[#ff6b4a] hover:bg-[#ea580c] text-white font-semibold text-xs tracking-wide transition-all shadow-md shadow-orange-500/20 active:scale-95 disabled:opacity-50 cursor-pointer"
                 >
-                  <span>{status === "loading" ? "Enviando..." : "Enviar mensaje"}</span>
+                  <span>{status === "loading" ? "Enviando mensaje..." : "Enviar mensaje"}</span>
                   <ArrowRight className="w-4 h-4" />
                 </button>
 
                 <a
                   href={`mailto:${siteConfig.email}`}
-                  className="text-xs text-[var(--muted)] hover:text-[var(--foreground)] transition-colors font-mono"
+                  className="text-xs text-[var(--muted)] hover:text-[#ff6b4a] transition-colors font-mono"
                 >
                   {siteConfig.email}
                 </a>

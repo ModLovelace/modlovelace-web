@@ -19,6 +19,7 @@ export function Header() {
     { label: "Investigaciones", href: "/#investigaciones", active: false },
     { label: "Bitácora", href: "/#bitacora", active: isBlogActive },
     { label: "Sobre Mí", href: "/#sobre-mi", active: false },
+    { label: "Formatos", href: "/#formatos", active: false },
   ];
 
   return (
