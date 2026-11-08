@@ -42,8 +42,8 @@ export function NowSection() {
         
         {/* Cabecera estilo Delpaqq: Título + Última Actualización */}
         <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 pb-6 border-b border-[var(--border)] mb-8">
-          <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-[var(--foreground)]">
-            Ahora <span className="text-violet-500 dark:text-violet-400 font-semibold">· Noviembre 2026</span>
+          <h2 className="font-display text-3xl sm:text-4xl font-extrabold tracking-wide uppercase text-[var(--foreground)]">
+            Ahora <span className="text-violet-600 dark:text-violet-400 font-bold">· Noviembre 2026</span>
           </h2>
           <span className="text-[11px] font-mono tracking-widest uppercase text-[var(--muted)]">
             ÚLTIMA ACTUALIZACIÓN: 07/11/2026
@@ -69,7 +69,7 @@ export function NowSection() {
               <div className="pt-2">
                 <Link
                   href={col.linkHref}
-                  className="inline-flex items-center gap-1.5 text-xs font-semibold text-violet-500 hover:text-violet-400 dark:text-violet-400 dark:hover:text-violet-300 transition-colors group"
+                  className="inline-flex items-center gap-1.5 text-xs font-semibold text-violet-600 hover:text-violet-500 dark:text-violet-400 dark:hover:text-violet-300 transition-colors group"
                 >
                   <span>{col.linkText}</span>
                 </Link>

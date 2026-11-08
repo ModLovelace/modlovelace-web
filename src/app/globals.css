@@ -13,33 +13,36 @@
   --color-accent-hover: var(--accent-hover);
   --color-accent-purple: var(--accent-purple);
   --color-accent-coral: var(--accent-coral);
+  --font-sans: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  --font-display: var(--font-display), var(--font-geist-sans), sans-serif;
 }
 
 :root {
-  /* Modo Claro Delpaqq: Fondo Limpio, Cards Blancas y Acentos Coral / Violeta */
+  /* Modo Claro Uniforme (Inspiración Delpaqq): Fondo Slate 50, Cards Blancas, Acentos Coral y Violeta */
   --background: #f8fafc;
   --foreground: #0f172a;
-  --muted: #64748b;
+  --muted: #475569;
   --border: #e2e8f0;
   --card: #ffffff;
   --card-border: #e2e8f0;
-  --accent: #ff6b4a;            /* Coral Primario Delpaqq */
+  --accent: #ff6b4a;            /* Coral Primario */
   --accent-hover: #ea580c;
-  --accent-purple: #7c3aed;     /* Violeta Delpaqq */
+  --accent-purple: #7c3aed;     /* Violeta Interactivo */
   --accent-coral: #ff6b4a;
 }
 
 .dark {
-  /* Modo Oscuro Delpaqq: Deep Slate Navy, Cards de Alto Contraste y Acentos Coral / Violeta */
+  /* Modo Oscuro Uniforme (Inspiración Delpaqq): Deep Slate Navy, Cards #131926, Acentos Coral y Violeta */
   --background: #0d1117;
   --foreground: #f1f5f9;
   --muted: #94a3b8;
   --border: #1e2638;
   --card: #131926;
   --card-border: #1e2638;
-  --accent: #ff6b4a;            /* Coral Primario Delpaqq */
+  --accent: #ff6b4a;            /* Coral Primario */
   --accent-hover: #ff5733;
-  --accent-purple: #8b5cf6;     /* Violeta Eléctrico Delpaqq */
+  --accent-purple: #8b5cf6;     /* Violeta Eléctrico */
   --accent-coral: #ff6b4a;
 }
 
@@ -52,9 +55,14 @@ body {
   color: var(--foreground);
   font-family: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   min-height: 100vh;
-  letter-spacing: -0.015em;
+  letter-spacing: -0.012em;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
+}
+
+.font-display {
+  font-family: var(--font-display), var(--font-geist-sans), sans-serif;
+  letter-spacing: 0.02em;
 }
 
 code, kbd, samp, pre {

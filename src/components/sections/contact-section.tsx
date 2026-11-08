@@ -1,8 +1,47 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { siteConfig } from "@/config/site";
-import { Inbox, Cpu, CheckCircle2, Check, ArrowRight } from "lucide-react";
+import { Inbox, Cpu, CheckCircle2, Check, ArrowRight, ChevronDown } from "lucide-react";
+
+const CONVERSATION_TOPICS = [
+  {
+    value: "Primera conversación (20 min, gratis)",
+    label: "Primera conversación (20 min, gratis)",
+    badge: "Gratis",
+    badgeColor: "text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 border-emerald-500/30",
+  },
+  {
+    value: "Revisión puntual (USD 50–100)",
+    label: "Revisión puntual",
+    badge: "USD 50–100",
+    badgeColor: "text-violet-600 dark:text-violet-300 bg-violet-500/10 border-violet-500/30",
+  },
+  {
+    value: "Mini proyecto (USD 200–400)",
+    label: "Mini proyecto (Mobile, Web o Desktop)",
+    badge: "USD 200–400",
+    badgeColor: "text-[#ff6b4a] bg-[#ff6b4a]/10 border-[#ff6b4a]/30",
+  },
+  {
+    value: "Acompañamiento mensual (Desde USD 350/mes)",
+    label: "Acompañamiento técnico mensual",
+    badge: "USD 350/mes",
+    badgeColor: "text-violet-600 dark:text-violet-300 bg-violet-500/10 border-violet-500/30",
+  },
+  {
+    value: "Proyecto a medida (Mobile · Web · Desktop)",
+    label: "Proyecto a medida (Mobile · Web · Desktop)",
+    badge: "Full-Stack",
+    badgeColor: "text-sky-600 dark:text-sky-300 bg-sky-500/10 border-sky-500/30",
+  },
+  {
+    value: "Otro tema / Colaboración",
+    label: "Otro tema / Colaboración",
+    badge: "General",
+    badgeColor: "text-[var(--muted)] bg-[var(--border)]/40 border-[var(--border)]",
+  },
+];
 
 export function ContactSection() {
   const [formData, setFormData] = useState({
@@ -15,8 +54,21 @@ export function ContactSection() {
     website: "", // Honeypot anti-spam
   });
 
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [errorMessage, setErrorMessage] = useState("");
+
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
+        setDropdownOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
 
   // Escuchar selección interactiva desde WorkFormatsSection
   useEffect(() => {
@@ -101,17 +153,17 @@ export function ContactSection() {
   };
 
   return (
-    <section id="contacto" className="py-16 sm:py-24 border-b border-[var(--border)] bg-[var(--background)]">
+    <section id="contacto" className="py-16 sm:py-20 border-b border-[var(--border)] bg-[var(--background)]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Layout en 2 Columnas Delpaqq: "CONVERSEMOS" + Pasos y Formulario */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-stretch">
           
           {/* Columna Izquierda: Manifiesto y 3 Pasos de Proceso */}
-          <div className="lg:col-span-5 rounded-2xl border border-[var(--border)] bg-[var(--card)] p-7 sm:p-9 shadow-sm space-y-6">
+          <div className="lg:col-span-5 rounded-2xl border border-[var(--border)] bg-[var(--card)] p-7 sm:p-9 shadow-sm flex flex-col justify-between h-full gap-6">
             <div className="space-y-3">
-              <div className="w-0.5 h-6 bg-pink-500 rounded-full" />
-              <h2 className="text-2xl sm:text-3xl font-extrabold tracking-wide uppercase text-[var(--foreground)]">
+              <div className="w-0.5 h-6 bg-gradient-to-b from-violet-500 to-[#ff6b4a] rounded-full" />
+              <h2 className="font-display text-3xl sm:text-4xl font-extrabold tracking-wide uppercase text-[var(--foreground)]">
                 CONVERSEMOS
               </h2>
               <p className="text-xs sm:text-sm text-[var(--muted)] leading-relaxed">
@@ -125,7 +177,7 @@ export function ContactSection() {
             {/* 3 Pasos de Proceso */}
             <div className="space-y-3.5 pt-2">
               <div className="p-4 rounded-xl border border-[var(--border)] bg-[var(--background)]/60 flex items-start gap-3.5 transition-colors">
-                <div className="w-9 h-9 rounded-lg bg-pink-500/10 border border-pink-500/20 flex items-center justify-center shrink-0 text-pink-500 mt-0.5">
+                <div className="w-9 h-9 rounded-lg bg-violet-500/10 border border-violet-500/20 flex items-center justify-center shrink-0 text-[#ff6b4a] mt-0.5">
                   <Inbox className="w-4 h-4" />
                 </div>
                 <div className="space-y-0.5">
@@ -139,7 +191,7 @@ export function ContactSection() {
               </div>
 
               <div className="p-4 rounded-xl border border-[var(--border)] bg-[var(--background)]/60 flex items-start gap-3.5 transition-colors">
-                <div className="w-9 h-9 rounded-lg bg-purple-500/10 border border-purple-500/20 flex items-center justify-center shrink-0 text-purple-400 mt-0.5">
+                <div className="w-9 h-9 rounded-lg bg-violet-500/10 border border-violet-500/20 flex items-center justify-center shrink-0 text-violet-500 dark:text-violet-400 mt-0.5">
                   <Cpu className="w-4 h-4" />
                 </div>
                 <div className="space-y-0.5">
@@ -153,7 +205,7 @@ export function ContactSection() {
               </div>
 
               <div className="p-4 rounded-xl border border-[var(--border)] bg-[var(--background)]/60 flex items-start gap-3.5 transition-colors">
-                <div className="w-9 h-9 rounded-lg bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center shrink-0 text-emerald-400 mt-0.5">
+                <div className="w-9 h-9 rounded-lg bg-violet-500/10 border border-violet-500/20 flex items-center justify-center shrink-0 text-emerald-500 dark:text-emerald-400 mt-0.5">
                   <CheckCircle2 className="w-4 h-4" />
                 </div>
                 <div className="space-y-0.5">
@@ -169,9 +221,9 @@ export function ContactSection() {
           </div>
 
           {/* Columna Derecha: Formulario Estilo Delpaqq */}
-          <div className="lg:col-span-7 rounded-2xl border border-[var(--border)] bg-[var(--card)] p-7 sm:p-9 shadow-sm">
+          <div className="lg:col-span-7 rounded-2xl border border-[var(--border)] bg-[var(--card)] p-7 sm:p-9 shadow-sm flex flex-col h-full">
             {status === "success" ? (
-              <div className="py-12 px-6 border border-emerald-500/30 bg-emerald-500/5 rounded-xl space-y-3 text-center">
+              <div className="my-auto py-12 px-6 border border-emerald-500/30 bg-emerald-500/5 rounded-xl space-y-3 text-center">
                 <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-emerald-500/10 text-emerald-500 mb-2">
                   <Check className="w-6 h-6" />
                 </div>
@@ -193,7 +245,7 @@ export function ContactSection() {
                 </div>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-5">
+              <form onSubmit={handleSubmit} className="flex flex-col justify-between h-full gap-5">
                 
                 {/* Honeypot anti-spam */}
                 <div className="hidden" aria-hidden="true">
@@ -208,9 +260,9 @@ export function ContactSection() {
                 </div>
 
                 {/* Fila 1: NOMBRE + EMPRESA U ORGANIZACIÓN */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 items-end">
                   <div className="space-y-1.5">
-                    <label htmlFor="name" className="text-[10px] font-mono font-bold tracking-wider uppercase text-neutral-400 block">
+                    <label htmlFor="name" className="text-[10px] leading-4 font-mono font-bold tracking-wider uppercase text-[var(--muted)] block">
                       NOMBRE
                     </label>
                     <input
@@ -225,7 +277,7 @@ export function ContactSection() {
                   </div>
 
                   <div className="space-y-1.5">
-                    <label htmlFor="company" className="text-[10px] font-mono font-bold tracking-wider uppercase text-neutral-400 block">
+                    <label htmlFor="company" className="text-[10px] leading-4 font-mono font-bold tracking-wider uppercase text-[var(--muted)] block">
                       EMPRESA U ORGANIZACIÓN <span className="text-[9px] lowercase opacity-80">(opcional)</span>
                     </label>
                     <input
@@ -240,10 +292,10 @@ export function ContactSection() {
                 </div>
 
                 {/* Fila 2: EMAIL + WHATSAPP */}
-                <div className="space-y-1">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="space-y-1.5">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 items-end">
                     <div className="space-y-1.5">
-                      <label htmlFor="email" className="text-[10px] font-mono font-bold tracking-wider uppercase text-neutral-400 block">
+                      <label htmlFor="email" className="text-[10px] leading-4 font-mono font-bold tracking-wider uppercase text-[var(--muted)] block">
                         EMAIL
                       </label>
                       <input
@@ -257,7 +309,7 @@ export function ContactSection() {
                     </div>
 
                     <div className="space-y-1.5">
-                      <label htmlFor="whatsapp" className="text-[10px] font-mono font-bold tracking-wider uppercase text-neutral-400 block">
+                      <label htmlFor="whatsapp" className="text-[10px] leading-4 font-mono font-bold tracking-wider uppercase text-[var(--muted)] block">
                         WHATSAPP
                       </label>
                       <input
@@ -275,48 +327,84 @@ export function ContactSection() {
                   </p>
                 </div>
 
-                {/* Fila 3: SOBRE QUÉ QUIERES CONVERSAR */}
-                <div className="space-y-1.5">
-                  <label htmlFor="subject" className="text-[10px] font-mono font-bold tracking-wider uppercase text-neutral-400 block">
+                {/* Fila 3: SOBRE QUÉ QUIERES CONVERSAR (Selector personalizado con la identidad de la web) */}
+                <div className="space-y-1.5 relative" ref={dropdownRef}>
+                  <label htmlFor="subject-trigger" className="text-[10px] leading-4 font-mono font-bold tracking-wider uppercase text-[var(--muted)] block">
                     SOBRE QUÉ QUIERES CONVERSAR
                   </label>
-                  <select
-                    id="subject"
-                    value={formData.subject}
-                    onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                    className="w-full px-4 py-2.5 text-xs sm:text-sm bg-[var(--background)] border border-[var(--border)] rounded-xl text-[var(--foreground)] focus:outline-none focus:border-violet-500 transition-colors cursor-pointer"
+                  <button
+                    type="button"
+                    id="subject-trigger"
+                    onClick={() => setDropdownOpen((prev) => !prev)}
+                    className={`w-full px-4 py-2.5 text-xs sm:text-sm bg-[var(--background)] border rounded-xl text-[var(--foreground)] flex items-center justify-between gap-2 transition-colors cursor-pointer text-left ${
+                      dropdownOpen ? "border-violet-500 ring-1 ring-violet-500/20" : "border-[var(--border)] hover:border-violet-500/50"
+                    }`}
                   >
-                    <optgroup label="Formatos de Trabajo (20% OFF)">
-                      <option value="Primera conversación (20 min, gratis)">Primera conversación (20 min, gratis)</option>
-                      <option value="Formato #1: Revisión puntual (USD 72–120)">Formato #1: Revisión puntual (USD 72–120)</option>
-                      <option value="Formato #2: Mini proyecto (Desde USD 480)">Formato #2: Mini proyecto (Desde USD 480)</option>
-                      <option value="Formato #3: Acompañamiento (Desde USD 320/mes)">Formato #3: Acompañamiento (Desde USD 320/mes)</option>
-                    </optgroup>
-                    <optgroup label="Especialidades &amp; Consultoría">
-                      <option value="Soluciones Móviles (Android / iOS / Flutter)">Soluciones Móviles (Android / iOS / Flutter)</option>
-                      <option value="Desarrollo Web & Plataformas Cloud">Desarrollo Web &amp; Plataformas Cloud</option>
-                      <option value="Software de Escritorio (Desktop Linux/Win/Mac)">Software de Escritorio (Desktop Linux/Win/Mac)</option>
-                      <option value="Backend & APIs (.NET Core / Docker)">Backend &amp; APIs (.NET Core / Docker)</option>
-                      <option value="Flujos de Agentes de IA & QA Automatizado">Flujos de Agentes de IA &amp; QA Automatizado</option>
-                      <option value="Propuesta laboral / Consultoría">Propuesta laboral / Consultoría</option>
-                      <option value="Otro motivo">Otro motivo</option>
-                    </optgroup>
-                  </select>
+                    <span className="truncate font-medium">
+                      {CONVERSATION_TOPICS.find((t) => t.value === formData.subject)?.label || formData.subject}
+                    </span>
+                    <div className="flex items-center gap-2 shrink-0">
+                      {CONVERSATION_TOPICS.find((t) => t.value === formData.subject)?.badge && (
+                        <span
+                          className={`text-[10px] font-mono font-bold uppercase tracking-wider px-2 py-0.5 rounded-full border ${
+                            CONVERSATION_TOPICS.find((t) => t.value === formData.subject)?.badgeColor
+                          }`}
+                        >
+                          {CONVERSATION_TOPICS.find((t) => t.value === formData.subject)?.badge}
+                        </span>
+                      )}
+                      <ChevronDown
+                        className={`w-4 h-4 text-[var(--muted)] transition-transform duration-200 ${
+                          dropdownOpen ? "rotate-180 text-violet-500" : ""
+                        }`}
+                      />
+                    </div>
+                  </button>
+
+                  {dropdownOpen && (
+                    <div className="absolute z-30 left-0 right-0 mt-1.5 rounded-xl border border-[var(--border)] bg-[var(--card)] shadow-2xl p-1.5 space-y-1">
+                      {CONVERSATION_TOPICS.map((topic) => {
+                        const isSelected = formData.subject === topic.value;
+                        return (
+                          <button
+                            key={topic.value}
+                            type="button"
+                            onClick={() => {
+                              setFormData({ ...formData, subject: topic.value });
+                              setDropdownOpen(false);
+                            }}
+                            className={`w-full px-3 py-2 rounded-lg text-xs sm:text-sm flex items-center justify-between gap-2 text-left transition-colors cursor-pointer ${
+                              isSelected
+                                ? "bg-violet-500/15 text-violet-600 dark:text-violet-300 font-semibold"
+                                : "text-[var(--foreground)] hover:bg-[var(--background)]/80"
+                            }`}
+                          >
+                            <span className="truncate">{topic.label}</span>
+                            <span
+                              className={`text-[10px] font-mono font-bold uppercase tracking-wider px-2 py-0.5 rounded-full border shrink-0 ${topic.badgeColor}`}
+                            >
+                              {topic.badge}
+                            </span>
+                          </button>
+                        );
+                      })}
+                    </div>
+                  )}
                 </div>
 
                 {/* Fila 4: MENSAJE */}
-                <div className="space-y-1.5">
-                  <label htmlFor="message" className="text-[10px] font-mono font-bold tracking-wider uppercase text-neutral-400 block">
+                <div className="space-y-1.5 flex-1 flex flex-col">
+                  <label htmlFor="message" className="text-[10px] leading-4 font-mono font-bold tracking-wider uppercase text-[var(--muted)] block">
                     MENSAJE
                   </label>
                   <textarea
                     id="message"
                     required
-                    rows={4}
+                    rows={5}
                     placeholder="Qué intentas resolver, qué has probado y dónde se traba."
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    className="w-full px-4 py-2.5 text-xs sm:text-sm bg-[var(--background)] border border-[var(--border)] rounded-xl text-[var(--foreground)] placeholder:text-[var(--muted)]/50 focus:outline-none focus:border-violet-500 transition-colors resize-y"
+                    className="w-full flex-1 min-h-[120px] px-4 py-2.5 text-xs sm:text-sm bg-[var(--background)] border border-[var(--border)] rounded-xl text-[var(--foreground)] placeholder:text-[var(--muted)]/50 focus:outline-none focus:border-violet-500 transition-colors resize-y"
                   />
                 </div>
 
@@ -327,7 +415,7 @@ export function ContactSection() {
                 )}
 
                 {/* Fila de Acción: Botón Violeta + Nota "El mensaje me llega directo." */}
-                <div className="flex flex-wrap items-center gap-4 pt-2">
+                <div className="flex flex-wrap items-center gap-4 pt-1">
                   <button
                     type="submit"
                     disabled={status === "loading"}

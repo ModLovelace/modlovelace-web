@@ -23,18 +23,18 @@ export function WorkFormatsSection() {
       title: "Revisión puntual",
       description:
         "Tienes una app móvil, un sistema web/desktop o una idea con IA y necesitas una auditoría técnica externa y honesta.",
-      usdPrice: "USD 72–120",
-      penPrice: "≈ S/ 280–440",
+      usdPrice: "USD 50–100",
+      penPrice: "≈ S/ 190–375",
       isFeatured: false,
       duration: "Una sesión de 60–90 min",
       payment: "100 % por adelantado",
       bullets: [
-        "Revisión de arquitectura, código móvil (Flutter/iOS/Android) o flujos de IA.",
+        "Revisión de arquitectura, código (Mobile, Web o Desktop) o flujos de IA.",
         "Diagnóstico de causa raíz y documento técnico con 3 pasos concretos.",
         "Si luego contratas un mini proyecto, te descuento el 100% de lo pagado.",
       ],
       ctaText: "Pedir una revisión",
-      subjectVal: "Formato #1: Revisión puntual (USD 72–120)",
+      subjectVal: "Revisión puntual (USD 50–100)",
       hintVal: "Hola Enrique, me gustaría coordinar una revisión puntual para mi proyecto sobre...",
     },
     {
@@ -42,8 +42,8 @@ export function WorkFormatsSection() {
       title: "Mini proyecto",
       description:
         "Necesitas algo construido y funcionando en producción: un prototipo, una extensión de tooling o una integración robusta.",
-      usdPrice: "Desde USD 480",
-      penPrice: "≈ S/ 1 760",
+      usdPrice: "USD 200–400",
+      penPrice: "≈ S/ 750–1,500",
       isFeatured: true, // Tarjeta destacada con borde violeta estilo Delpaqq
       duration: "1 a 3 semanas",
       payment: "50 % al empezar, 50 % al entregar",
@@ -53,7 +53,7 @@ export function WorkFormatsSection() {
         "Código probado, limpio, con documentación técnica de entrega.",
       ],
       ctaText: "Contar mi proyecto",
-      subjectVal: "Formato #2: Mini proyecto (Desde USD 480)",
+      subjectVal: "Mini proyecto (USD 200–400)",
       hintVal: "Hola Enrique, tengo en mente un mini proyecto con las siguientes características...",
     },
     {
@@ -61,8 +61,8 @@ export function WorkFormatsSection() {
       title: "Acompañamiento",
       description:
         "Tu equipo ya está construyendo y buscas una mirada senior externa para decisiones de arquitectura, entregas o agentes de IA.",
-      usdPrice: "Desde USD 320/mes",
-      penPrice: "≈ S/ 1 200/mes",
+      usdPrice: "USD 350/mes",
+      penPrice: "≈ S/ 1,300/mes",
       isFeatured: false,
       duration: "Mensual, sin permanencia",
       payment: "Mes por adelantado",
@@ -72,25 +72,25 @@ export function WorkFormatsSection() {
         "Notas y lineamientos escritos después de cada sesión técnica.",
       ],
       ctaText: "Hablar del acompañamiento",
-      subjectVal: "Formato #3: Acompañamiento (Desde USD 320/mes)",
+      subjectVal: "Acompañamiento mensual (Desde USD 350/mes)",
       hintVal: "Hola Enrique, nos interesa contar con acompañamiento técnico mensual para nuestro equipo...",
     },
   ];
 
   return (
-    <section id="formatos" className="py-16 sm:py-24 border-b border-[var(--border)] bg-[var(--background)]">
+    <section id="formatos" className="pb-16 sm:pb-20 border-b border-[var(--border)] bg-[var(--background)]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Cabecera Estilo Delpaqq */}
-        <div className="flex flex-col items-center text-center mb-12 sm:mb-16 space-y-2">
-          <div className="w-0.5 h-6 bg-pink-500 mx-auto rounded-full" />
-          <span className="font-mono text-xs font-bold tracking-widest uppercase text-neutral-400">
+        {/* Cabecera Uniforme Estilo Delpaqq: Línea conectada al borde + Numerador + Título */}
+        <div className="flex flex-col items-center text-center mb-10 sm:mb-12">
+          <div className="w-0.5 h-10 sm:h-12 bg-gradient-to-b from-violet-500 to-[#ff6b4a] mx-auto mb-3.5" />
+          <span className="font-mono text-xs font-bold tracking-widest uppercase text-violet-600 dark:text-violet-400 mb-1.5">
             04 / TRABAJEMOS JUNTOS
           </span>
-          <h2 className="text-2xl sm:text-4xl font-extrabold tracking-wide uppercase text-[var(--foreground)]">
+          <h2 className="font-display text-3xl sm:text-4xl font-extrabold tracking-wide uppercase text-[var(--foreground)]">
             FORMATOS PARA TRABAJAR CONMIGO
           </h2>
-          <p className="text-xs sm:text-sm text-[var(--muted)] max-w-2xl mx-auto leading-relaxed pt-1">
+          <p className="text-xs sm:text-sm text-[var(--muted)] max-w-2xl mx-auto leading-relaxed pt-1.5">
             Tres maneras de empezar, de menos a más compromiso. Si no sabes cuál te sirve, la primera conversación es para eso.
           </p>
         </div>
@@ -113,7 +113,7 @@ export function WorkFormatsSection() {
             type="button"
             onClick={() =>
               handleSelectFormat(
-                "Primera conversación (20 min · Gratis)",
+                "Primera conversación (20 min, gratis)",
                 "Hola Enrique, me gustaría agendar la primera conversación de 20 minutos para conversar sobre..."
               )
             }
@@ -140,8 +140,8 @@ export function WorkFormatsSection() {
                 
                 {/* Cabecera de la Tarjeta */}
                 <div className="space-y-1.5">
-                  <div className="flex items-center justify-between">
-                    <span className="font-mono text-[10px] font-bold tracking-widest uppercase text-neutral-400">
+                  <div className="flex items-center justify-between min-h-[24px]">
+                    <span className="font-mono text-[10px] font-bold tracking-widest uppercase text-[var(--muted)]">
                       {fmt.number}
                     </span>
                     {fmt.isFeatured && (
@@ -153,18 +153,18 @@ export function WorkFormatsSection() {
                   <h3 className="text-xl sm:text-2xl font-extrabold text-[var(--foreground)] tracking-tight">
                     {fmt.title}
                   </h3>
-                  <p className="text-xs text-[var(--muted)] leading-relaxed min-h-[38px]">
+                  <p className="text-xs text-[var(--muted)] leading-relaxed min-h-[60px]">
                     {fmt.description}
                   </p>
                 </div>
 
-                {/* Precios (-20% Ajustado a Enrique Becerra) */}
-                <div className="pt-1">
-                  <div className="flex flex-wrap items-baseline gap-x-2 gap-y-1">
-                    <span className="text-2xl sm:text-3xl font-black font-mono text-[var(--foreground)] tracking-tight">
+                {/* Precios Uniformes en 1 sola línea */}
+                <div className="pt-1 min-h-[44px] flex items-center">
+                  <div className="flex items-baseline justify-between w-full gap-2">
+                    <span className="text-2xl sm:text-[26px] font-black font-mono text-[var(--foreground)] tracking-tight whitespace-nowrap">
                       {fmt.usdPrice}
                     </span>
-                    <span className="text-xs font-mono text-[var(--muted)] font-semibold">
+                    <span className="px-2.5 py-1 rounded-lg bg-[var(--background)]/80 border border-[var(--border)] text-[11px] font-mono text-[var(--muted)] font-semibold whitespace-nowrap">
                       {fmt.penPrice}
                     </span>
                   </div>
@@ -174,9 +174,9 @@ export function WorkFormatsSection() {
                 <div className="border-b border-dashed border-[var(--border)]" />
 
                 {/* Ficha Técnica: Duración y Pago */}
-                <div className="grid grid-cols-2 gap-2 text-xs py-1">
+                <div className="grid grid-cols-2 gap-2 text-xs py-1 lg:min-h-[52px] items-start">
                   <div className="space-y-0.5">
-                    <span className="font-mono text-[10px] font-bold tracking-wider uppercase text-neutral-400 block">
+                    <span className="font-mono text-[10px] font-bold tracking-wider uppercase text-[var(--muted)] block">
                       DURACIÓN
                     </span>
                     <span className="text-[11px] sm:text-xs font-semibold text-[var(--foreground)] block">
@@ -184,7 +184,7 @@ export function WorkFormatsSection() {
                     </span>
                   </div>
                   <div className="space-y-0.5">
-                    <span className="font-mono text-[10px] font-bold tracking-wider uppercase text-neutral-400 block">
+                    <span className="font-mono text-[10px] font-bold tracking-wider uppercase text-[var(--muted)] block">
                       PAGO
                     </span>
                     <span className="text-[11px] sm:text-xs font-semibold text-[var(--foreground)] block">

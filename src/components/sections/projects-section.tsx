@@ -10,8 +10,8 @@ export function ProjectsSection() {
     {
       title: "StarForces Game",
       status: "EN DESARROLLO",
-      statusColor: "text-violet-400 border-violet-500/50 bg-violet-950/30",
-      dotColor: "bg-violet-400 animate-pulse",
+      statusColor: "text-violet-700 dark:text-violet-300 border-violet-500/30 bg-violet-500/10",
+      dotColor: "bg-violet-500 animate-pulse",
       image: "/images/projects/starforces-game.jpg",
       problem:
         "Desarrollar videojuegos nativos para iOS habitualmente obliga a trabajar dentro de macOS con Xcode y lidiar con los altos consumos de memoria de motores de propósito general.",
@@ -28,8 +28,8 @@ export function ProjectsSection() {
     {
       title: "Network JSON · DevTools",
       status: "OPEN SOURCE",
-      statusColor: "text-emerald-400 border-emerald-500/50 bg-emerald-950/30",
-      dotColor: "bg-emerald-400",
+      statusColor: "text-emerald-700 dark:text-emerald-300 border-emerald-500/30 bg-emerald-500/10",
+      dotColor: "bg-emerald-500",
       image: "/images/projects/network-json-devtools.jpg",
       problem:
         "Inspeccionar tráfico seguro HTTPS en aplicaciones Flutter durante depuración exponía credenciales en logs o requería alterar el código antes de compilar para producción.",
@@ -47,8 +47,8 @@ export function ProjectsSection() {
     {
       title: "Catjang-Sue",
       status: "OPEN SOURCE",
-      statusColor: "text-emerald-400 border-emerald-500/50 bg-emerald-950/30",
-      dotColor: "bg-emerald-400",
+      statusColor: "text-emerald-700 dark:text-emerald-300 border-emerald-500/30 bg-emerald-500/10",
+      dotColor: "bg-emerald-500",
       image: "/images/projects/catjang.jpg",
       problem:
         "Las mascotas virtuales de escritorio consumían demasiada CPU y en entornos modernos de Linux Wayland el seguimiento de cursor se congelaba al interactuar con otras ventanas.",
@@ -66,9 +66,9 @@ export function ProjectsSection() {
     {
       title: "Regala Flores Amarillas",
       status: "OPEN SOURCE",
-      statusColor: "text-emerald-400 border-emerald-500/50 bg-emerald-950/30",
-      dotColor: "bg-emerald-400",
-      image: "/images/projects/regala-flores.jpg",
+      statusColor: "text-emerald-700 dark:text-emerald-300 border-emerald-500/30 bg-emerald-500/10",
+      dotColor: "bg-emerald-500",
+      image: "/images/projects/regala-flores-v2.jpg",
       problem:
         "Las plataformas de felicitaciones digitales usaban vídeos pregrabados lentos de descargar o imágenes estáticas sin interactividad real ni personalización emocional.",
       whatIDid:
@@ -85,9 +85,9 @@ export function ProjectsSection() {
     {
       title: "Santa Isabel Socia",
       status: "EN PRODUCCIÓN",
-      statusColor: "text-blue-400 border-blue-500/50 bg-blue-950/30",
-      dotColor: "bg-blue-400",
-      image: "/images/projects/santa-isabel.jpg",
+      statusColor: "text-sky-700 dark:text-sky-300 border-sky-500/30 bg-sky-500/10",
+      dotColor: "bg-sky-500",
+      image: "/images/projects/santa-isabel-store.jpg",
       problem:
         "Los miles de socios de la cooperativa necesitaban consultar sus finanzas, transferir y votar en asambleas institucionales de forma remota y con máxima seguridad.",
       whatIDid:
@@ -103,9 +103,9 @@ export function ProjectsSection() {
     {
       title: "WebControl App",
       status: "EN PRODUCCIÓN",
-      statusColor: "text-blue-400 border-blue-500/50 bg-blue-950/30",
-      dotColor: "bg-blue-400",
-      image: "/images/projects/webcontrol.jpg",
+      statusColor: "text-sky-700 dark:text-sky-300 border-sky-500/30 bg-sky-500/10",
+      dotColor: "bg-sky-500",
+      image: "/images/projects/webcontrol-store.jpg",
       problem:
         "El control de fatiga laboral y la validación de accesos en faenas mineras remotas fallaban frecuentemente por la falta total de señal o conectividad a internet.",
       whatIDid:
@@ -122,18 +122,21 @@ export function ProjectsSection() {
   ];
 
   return (
-    <section id="proyectos" className="py-16 sm:py-20 border-b border-[var(--border)] bg-[var(--background)]">
+    <section id="proyectos" className="pb-16 sm:pb-20 border-b border-[var(--border)] bg-[var(--background)]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Cabecera Estilo Delpaqq: Línea vertical + 02 / PROYECTOS + Título condensado */}
-        <div className="flex flex-col items-center text-center mb-12 space-y-1.5">
-          <div className="w-0.5 h-6 bg-pink-500 mx-auto rounded-full" />
-          <span className="font-mono text-xs font-bold tracking-widest uppercase text-neutral-400">
+        {/* Cabecera Uniforme Estilo Delpaqq: Línea conectada al borde + Numerador + Título */}
+        <div className="flex flex-col items-center text-center mb-10 sm:mb-12">
+          <div className="w-0.5 h-10 sm:h-12 bg-gradient-to-b from-violet-500 to-[#ff6b4a] mx-auto mb-3.5" />
+          <span className="font-mono text-xs font-bold tracking-widest uppercase text-violet-600 dark:text-violet-400 mb-1.5">
             01 / PROYECTOS
           </span>
-          <h2 className="text-2xl sm:text-4xl font-extrabold tracking-wide uppercase text-[var(--foreground)]">
+          <h2 className="font-display text-3xl sm:text-4xl font-extrabold tracking-wide uppercase text-[var(--foreground)]">
             PROYECTOS Y SU ESTADO
           </h2>
+          <p className="text-xs font-mono text-[var(--muted)] pt-1.5">
+            Sistemas en producción, herramientas open source y desarrollo nativo
+          </p>
         </div>
 
         {/* Grid de Cards Estilo Delpaqq (3 Campos Estructurados: PROBLEMA, QUÉ HICE, RESULTADO) */}
@@ -144,8 +147,8 @@ export function ProjectsSection() {
               className="flex flex-col justify-between rounded-2xl bg-[var(--card)] border border-[var(--border)] hover:border-violet-500/50 hover:shadow-xl transition-all duration-300 overflow-hidden shadow-sm"
             >
               <div className="space-y-4">
-                {/* Imagen / Diagrama Preview a ancho completo */}
-                <div className="relative w-full aspect-[16/10] bg-neutral-900 overflow-hidden">
+                {/* Imagen / Diagrama Preview a ancho completo (16:9 exacto para 1200x675 sin recortes laterales) */}
+                <div className="relative w-full aspect-video bg-neutral-900 overflow-hidden">
                   <Image
                     src={proj.image}
                     alt={proj.title}
@@ -153,7 +156,7 @@ export function ProjectsSection() {
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
                 </div>
 
                 {/* Contenido Estructurado Delpaqq */}
@@ -167,13 +170,13 @@ export function ProjectsSection() {
                   </div>
 
                   {/* Título */}
-                  <h3 className="font-extrabold text-lg text-[var(--foreground)] leading-snug">
+                  <h3 className="font-bold text-lg text-[var(--foreground)] leading-snug">
                     {proj.title}
                   </h3>
 
                   {/* Campo 1: PROBLEMA */}
-                  <div className="space-y-1">
-                    <span className="font-mono text-[10px] font-bold tracking-widest uppercase text-neutral-400 block">
+                  <div className="space-y-1 lg:min-h-[76px]">
+                    <span className="font-mono text-[10px] font-bold tracking-widest uppercase text-[var(--muted)] block">
                       PROBLEMA
                     </span>
                     <p className="text-xs text-[var(--muted)] leading-relaxed">
@@ -182,8 +185,8 @@ export function ProjectsSection() {
                   </div>
 
                   {/* Campo 2: QUÉ HICE */}
-                  <div className="space-y-1">
-                    <span className="font-mono text-[10px] font-bold tracking-widest uppercase text-neutral-400 block">
+                  <div className="space-y-1 lg:min-h-[92px]">
+                    <span className="font-mono text-[10px] font-bold tracking-widest uppercase text-[var(--muted)] block">
                       QUÉ HICE
                     </span>
                     <p className="text-xs text-[var(--muted)] leading-relaxed">
@@ -192,11 +195,11 @@ export function ProjectsSection() {
                   </div>
 
                   {/* Campo 3: RESULTADO */}
-                  <div className="space-y-1">
-                    <span className="font-mono text-[10px] font-bold tracking-widest uppercase text-neutral-400 block">
+                  <div className="space-y-1 lg:min-h-[76px]">
+                    <span className="font-mono text-[10px] font-bold tracking-widest uppercase text-[var(--muted)] block">
                       RESULTADO
                     </span>
-                    <p className="text-xs text-[var(--muted)] leading-relaxed font-medium text-[var(--foreground)]/90">
+                    <p className="text-xs text-[var(--foreground)]/90 leading-relaxed font-medium">
                       {proj.result}
                     </p>
                   </div>
@@ -209,7 +212,7 @@ export function ProjectsSection() {
                   href={proj.linkHref}
                   target={proj.linkHref.startsWith("http") ? "_blank" : undefined}
                   rel={proj.linkHref.startsWith("http") ? "noreferrer" : undefined}
-                  className="inline-flex items-center gap-1.5 text-xs font-semibold text-violet-500 hover:text-violet-400 dark:text-violet-400 dark:hover:text-violet-300 transition-colors"
+                  className="inline-flex items-center gap-1.5 text-xs font-semibold text-violet-600 hover:text-violet-500 dark:text-violet-400 dark:hover:text-violet-300 transition-colors"
                 >
                   <span>{proj.linkText}</span>
                 </Link>
@@ -223,10 +226,10 @@ export function ProjectsSection() {
                         href={sLink.href}
                         target={isInternal ? undefined : "_blank"}
                         rel={isInternal ? undefined : "noreferrer"}
-                        className="px-2 py-1 rounded-md bg-neutral-100 hover:bg-neutral-200 dark:bg-neutral-800/80 dark:hover:bg-neutral-700/80 text-[11px] font-mono text-[var(--foreground)] transition-colors inline-flex items-center gap-1"
+                        className="px-2.5 py-1 rounded-lg bg-[var(--background)] hover:bg-[var(--border)]/60 border border-[var(--border)] text-[11px] font-mono text-[var(--foreground)] transition-colors inline-flex items-center gap-1"
                       >
                         <span>{sLink.label}</span>
-                        {!isInternal && <span className="text-[10px] text-neutral-400">↗</span>}
+                        {!isInternal && <span className="text-[10px] text-[var(--muted)]">↗</span>}
                       </Link>
                     );
                   })}

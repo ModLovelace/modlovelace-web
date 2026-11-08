@@ -36,7 +36,7 @@ export function Header() {
               sizes="32px"
             />
           </div>
-          <span className="font-bold text-sm tracking-wider uppercase text-[var(--foreground)] group-hover:text-[#ff6b4a] transition-colors">
+          <span className="font-display font-extrabold text-base tracking-wider uppercase text-[var(--foreground)] group-hover:text-[#ff6b4a] transition-colors">
             MODLOVELACE
           </span>
         </Link>

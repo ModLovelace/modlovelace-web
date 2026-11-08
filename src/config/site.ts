@@ -123,7 +123,7 @@ export const siteConfig = {
       category: "Open Source / Web Interactiva",
       status: "Open Source",
       badgeColor: "emerald",
-      image: "/images/projects/regala-flores.jpg",
+      image: "/images/projects/regala-flores-v2.jpg",
       description:
         "Experiencia web interactiva con floración procedural en 4 fases, sintetizador acústico en tiempo real con Web Audio API y generador de tarjetas virales.",
       highlights: [
@@ -161,7 +161,7 @@ export const siteConfig = {
       category: "Mobile / Fintech Cooperativo",
       status: "Producción",
       badgeColor: "blue",
-      image: "/images/projects/santa-isabel.jpg",
+      image: "/images/projects/santa-isabel-store.jpg",
       description:
         "Aplicación móvil oficial para socios de la Cooperativa Santa Isabel. Consultas financieras seguras, movimientos de cuentas y votaciones en asambleas.",
       highlights: [
@@ -178,7 +178,7 @@ export const siteConfig = {
       category: "Mobile / Enterprise & Logística",
       status: "Producción",
       badgeColor: "purple",
-      image: "/images/projects/webcontrol.jpg",
+      image: "/images/projects/webcontrol-store.jpg",
       description:
         "Solución móvil empresarial para entornos industriales y mineros de alta exigencia: control de fatiga, credenciales digitales y gestión de accesos.",
       highlights: [

@@ -64,7 +64,7 @@ export function ThemeToggle() {
         aria-label="Seleccionar tema visual"
         aria-expanded={isOpen}
       >
-        <CurrentIcon className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" />
+        <CurrentIcon className="w-3.5 h-3.5 text-violet-600 dark:text-violet-400" />
         <span className="hidden sm:inline">{currentOption.label}</span>
         <ChevronDown
           className={`w-3 h-3 text-[var(--muted)] transition-transform duration-200 ${
@@ -93,7 +93,7 @@ export function ThemeToggle() {
                 }}
                 className={`w-full px-2.5 py-1.5 flex items-center justify-between text-xs transition-colors cursor-pointer ${
                   isSelected
-                    ? "bg-blue-50 dark:bg-blue-950/40 text-blue-600 dark:text-blue-400 font-medium"
+                    ? "bg-violet-500/10 text-violet-600 dark:text-violet-400 font-semibold"
                     : "text-[var(--foreground)] hover:bg-[var(--border)]/40"
                 }`}
               >

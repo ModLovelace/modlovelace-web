@@ -38,7 +38,7 @@ export function LearningSection() {
         
         {/* Cabecera Estilo Delpaqq */}
         <div className="flex flex-col items-center text-center mb-12 space-y-1.5">
-          <div className="w-0.5 h-6 bg-pink-500 mx-auto rounded-full" />
+          <div className="w-0.5 h-6 bg-[#ff6b4a] mx-auto rounded-full" />
           <span className="font-mono text-xs font-bold tracking-widest uppercase text-neutral-400">
             04 / BITÁCORA
           </span>

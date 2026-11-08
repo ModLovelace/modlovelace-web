@@ -30,11 +30,11 @@ export default function LabPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="p-8 sm:p-10 rounded-2xl bg-[var(--card)] border border-[var(--border)] flex flex-col md:flex-row items-center justify-between gap-6 shadow-sm">
             <div className="space-y-2 text-center md:text-left">
-              <div className="inline-flex items-center gap-2 text-xs font-mono text-blue-600 dark:text-blue-400 font-semibold">
+              <div className="inline-flex items-center gap-2 text-xs font-mono text-violet-600 dark:text-violet-400 font-semibold">
                 <Terminal className="w-3.5 h-3.5" />
                 <span>¿Tienes un reto técnico o quieres intercambiar ideas?</span>
               </div>
-              <h3 className="text-xl sm:text-2xl font-bold text-[var(--foreground)]">
+              <h3 className="font-display text-2xl sm:text-3xl font-extrabold uppercase tracking-wide text-[var(--foreground)]">
                 Construyamos software sólido juntos
               </h3>
               <p className="text-xs sm:text-sm text-[var(--muted)] max-w-xl leading-relaxed">
@@ -45,14 +45,14 @@ export default function LabPage() {
             <div className="flex items-center gap-3 shrink-0">
               <Link
                 href="/#contacto"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-semibold text-sm transition-all shadow-md shadow-blue-600/25 hover:-translate-y-0.5"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[#ff6b4a] hover:bg-[#ea580c] text-white font-semibold text-sm transition-all shadow-md shadow-orange-500/20 hover:-translate-y-0.5"
               >
                 <span>Iniciar Contacto</span>
                 <ArrowRight className="w-4 h-4" />
               </Link>
               <Link
                 href="/"
-                className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-[var(--background)] hover:bg-[var(--border)]/40 border border-[var(--border)] text-[var(--foreground)] text-sm font-medium transition-all"
+                className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-[var(--background)] hover:bg-[var(--border)]/40 border border-[var(--border)] text-[var(--foreground)] text-sm font-semibold transition-all"
               >
                 <span>Ver Portafolio</span>
               </Link>

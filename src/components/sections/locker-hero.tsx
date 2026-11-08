@@ -3,12 +3,13 @@
 import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowDown, ArrowRight, Sparkles, FlaskConical } from "lucide-react";
+import { ArrowDown, ArrowRight, Sparkles, FlaskConical, ChevronDown } from "lucide-react";
 
 export function LockerHero() {
   const [isOpen, setIsOpen] = useState(false);
   const [lightOn, setLightOn] = useState(false);
   const [stickersPopped, setStickersPopped] = useState(false);
+  const [activeProject, setActiveProject] = useState<number>(0);
   const timersRef = useRef<NodeJS.Timeout[]>([]);
 
   // Limpiar temporizadores al desmontar
@@ -184,10 +185,10 @@ export function LockerHero() {
         </div>
 
         {/* Grid principal ancho: Casillero 3D + Ficha ejecutiva */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-stretch">
           
           {/* COLUMNA 1: Casillero Estable con animación en 3 actos */}
-          <div className="lg:col-span-6 flex flex-col items-center">
+          <div className="lg:col-span-6 flex flex-col justify-between items-center h-full">
             
             <div
               onClick={handleLockerClick}
@@ -448,7 +449,7 @@ export function LockerHero() {
               <span>{isOpen ? "Puerta abierta · Modfin & stickers interactivos" : "Casillero cerrado"}</span>
               <button
                 onClick={toggleLocker}
-                className="text-blue-600 dark:text-blue-400 hover:underline font-medium cursor-pointer"
+                className="text-violet-600 dark:text-violet-400 hover:underline font-semibold cursor-pointer"
               >
                 {isOpen ? "Cerrar puerta ✕" : "Tocar para abrir ➔"}
               </button>
@@ -457,335 +458,220 @@ export function LockerHero() {
           </div>
 
           {/* COLUMNA 2: Información Ejecutiva & Proyectos */}
-          <div className="lg:col-span-6 space-y-4 sm:space-y-5 flex flex-col justify-between">
+          <div className="lg:col-span-6 flex flex-col justify-between h-full gap-4">
             
-            {/* Tag de Posicionamiento */}
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-neutral-100 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 text-xs text-neutral-700 dark:text-neutral-300 font-medium w-fit">
-              <Sparkles className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" />
-              <span>Desarrollo de Software &amp; Soluciones Integrales</span>
-            </div>
+            <div className="space-y-4">
+              {/* Tag de Posicionamiento */}
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[var(--card)] border border-[var(--border)] text-xs text-[var(--foreground)] font-medium w-fit shadow-xs">
+                <Sparkles className="w-3.5 h-3.5 text-[#ff6b4a]" />
+                <span>Desarrollo de Software &amp; Soluciones Integrales</span>
+              </div>
 
-            {/* Nombre & Titular */}
-            <div className="space-y-1.5">
-              <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-[var(--foreground)]">
-                Enrique Becerra
-              </h1>
-              <p className="text-base text-[var(--muted)] font-medium">
-                Android · iOS · Web · Desktop
+              {/* Nombre & Titular */}
+              <div className="space-y-1">
+                <h1 className="font-display text-4xl sm:text-5xl font-extrabold tracking-wide uppercase text-[var(--foreground)]">
+                  Enrique Becerra
+                </h1>
+                <p className="font-mono text-xs sm:text-sm text-[var(--muted)] font-semibold tracking-wider uppercase">
+                  Mobile · Web · Desktop
+                </p>
+              </div>
+
+              {/* Propuesta de valor en lenguaje natural y humano */}
+              <p className="text-sm sm:text-base text-[var(--muted)] leading-relaxed font-normal">
+                Me apasiona crear aplicaciones y experiencias digitales que la gente realmente disfrute usar. Transformo ideas y necesidades cotidianas en productos sólidos, rápidos y bien cuidados para <strong className="text-[var(--foreground)] font-semibold">Mobile</strong>, <strong className="text-[var(--foreground)] font-semibold">Web</strong> y <strong className="text-[var(--foreground)] font-semibold">Desktop</strong>.
               </p>
+
+              {/* BOTONES PRINCIPALES DE ALTO CONTRASTE */}
+              <div className="flex flex-wrap items-center gap-3.5 pt-0.5">
+                <Link
+                  href="#proyectos"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[#ff6b4a] hover:bg-[#ea580c] text-white font-semibold text-sm transition-all shadow-md shadow-orange-500/20 hover:shadow-orange-500/30 hover:-translate-y-0.5 active:translate-y-0"
+                >
+                  <span>Ver Proyectos Seleccionados</span>
+                  <ArrowDown className="w-4 h-4" />
+                </Link>
+
+                <Link
+                  href="#contacto"
+                  className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-[var(--card)] hover:bg-[var(--border)]/50 border border-[var(--border)] text-[var(--foreground)] font-semibold text-sm transition-all hover:-translate-y-0.5"
+                >
+                  <span>Iniciar Contacto</span>
+                  <ArrowRight className="w-4 h-4 text-[var(--muted)]" />
+                </Link>
+              </div>
             </div>
 
-            {/* Propuesta de valor en lenguaje natural y humano */}
-            <p className="text-sm sm:text-base text-[var(--foreground)]/85 leading-relaxed font-normal">
-              Me apasiona crear aplicaciones y experiencias digitales que la gente realmente disfrute usar. Transformo ideas y necesidades cotidianas en productos sólidos, rápidos y bien cuidados para <strong>Android</strong>, <strong>iOS</strong>, <strong>Web</strong> y <strong>Desktop</strong>.
-            </p>
-
-            {/* BOTONES PRINCIPALES DE ALTO CONTRASTE */}
-            <div className="flex flex-wrap items-center gap-3.5 pt-0.5">
-              <Link
-                href="#proyectos"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-semibold text-sm transition-all shadow-md shadow-blue-600/25 hover:shadow-blue-500/35 hover:-translate-y-0.5 active:translate-y-0"
-              >
-                <span>Ver Proyectos Seleccionados</span>
-                <ArrowDown className="w-4 h-4" />
-              </Link>
-
-              <Link
-                href="#contacto"
-                className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-[var(--card)] hover:bg-[var(--border)]/50 border border-[var(--border)] text-[var(--foreground)] font-medium text-sm transition-all hover:-translate-y-0.5"
-              >
-                <span>Iniciar Contacto</span>
-                <ArrowRight className="w-4 h-4 text-[var(--muted)]" />
-              </Link>
-            </div>
-
-            {/* BANDEJA DERECHA: PROYECTOS PROPIOS (Exactamente a la misma altura) */}
-            <div className={`p-5 sm:p-6 rounded-2xl bg-[var(--card)] border transition-all duration-300 space-y-3.5 shadow-sm ${
-              isOpen ? "border-blue-500/50 ring-1 ring-blue-500/20" : "border-[var(--border)]"
+            {/* BANDEJA DERECHA: ACORDEÓN DE 4 PROYECTOS EN EL CASILLERO (Siempre 1 abierto para altura fija y alineada) */}
+            <div className={`p-4 sm:p-5 rounded-2xl bg-[var(--card)] border transition-all duration-300 flex flex-col justify-between gap-3 shadow-sm ${
+              isOpen ? "border-violet-500/50 ring-1 ring-violet-500/20" : "border-[var(--border)]"
             }`}>
               <div className="flex flex-wrap items-center justify-between gap-2 text-xs pb-2.5 border-b border-[var(--border)]">
                 <div className="flex items-center gap-2 shrink-0">
-                  <span className={`w-2 h-2 rounded-full shrink-0 ${isOpen ? "bg-blue-500 animate-pulse" : "bg-emerald-500"}`} />
+                  <span className={`w-2 h-2 rounded-full shrink-0 ${isOpen ? "bg-violet-500 animate-pulse" : "bg-emerald-500"}`} />
                   <span className="font-bold text-[var(--foreground)] uppercase tracking-wider font-mono text-[11px] whitespace-nowrap">
                     Proyectos en el Casillero
                   </span>
                 </div>
-                <div className="flex items-center gap-1.5 text-[11px] font-mono text-blue-600 dark:text-blue-400 font-semibold shrink-0">
-                  <span className="inline-flex items-center gap-1 whitespace-nowrap">
-                    <img src="/images/sticker-catjang.png" alt="Cat" className="w-3.5 h-3.5 object-contain inline" />
-                    <span>Catjang</span>
-                    <span className="text-neutral-400">·</span>
-                    <img src="/images/sticker-sunflower.png" alt="Flores" className="w-3.5 h-3.5 object-contain inline" />
-                    <span>Flores</span>
-                    <span className="text-neutral-400">·</span>
-                    <img src="/images/sticker-network-json.png" alt="Network JSON" className="w-3.5 h-3.5 object-contain inline" />
-                    <span>Network JSON</span>
-                    <span className="text-neutral-400">·</span>
-                    <img src="/images/sticker-starforces.png" alt="StarForces" className="w-3.5 h-3.5 object-contain inline" />
-                    <span>StarForces</span>
-                  </span>
-                </div>
+                <span className="text-[10px] font-mono text-[var(--muted)]">
+                  Selecciona un proyecto para ver detalles
+                </span>
               </div>
 
-              {/* Grid de 3 Proyectos Personales: 2 arriba y el paquete pub.dev abajo a ancho completo */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 items-stretch">
-                
-                {/* 1. Catjang-Sue (El del gato) */}
-                <div className={`p-3.5 rounded-xl bg-neutral-50 dark:bg-neutral-900/80 border flex flex-col justify-between h-full transition-all duration-500 shadow-[0_1px_2px_rgba(0,0,0,0.04)] ${
-                  stickersPopped
-                    ? "border-blue-500/60 ring-1 ring-blue-500/20 shadow-md shadow-blue-500/5"
-                    : "border-neutral-200 dark:border-neutral-800 hover:border-blue-500/50"
-                }`}>
-                  <div className="space-y-2">
-                    {/* Fila superior: Ícono oficial del casillero y Badge */}
-                    <div className="flex items-center justify-between">
-                      <div className="w-8 h-8 rounded-xl bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700/80 flex items-center justify-center p-1 shadow-sm shrink-0 overflow-hidden">
-                        <img
-                          src="/images/sticker-catjang.png"
-                          alt="Sticker Catjang"
-                          className="w-full h-full object-contain filter drop-shadow-sm"
-                        />
-                      </div>
-                      <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-950/80 text-emerald-700 dark:text-emerald-300 font-medium shrink-0">
-                        Open Source
-                      </span>
-                    </div>
-
-                    {/* Título y Subtítulo con ancho completo */}
-                    <div>
-                      <h3 className="text-sm font-bold text-[var(--foreground)] leading-tight">
-                        Catjang-Sue
-                      </h3>
-                      <p className="text-[11px] font-mono text-[var(--muted)] mt-0.5">
-                        Desktop · Linux / Mac / Win
-                      </p>
-                    </div>
-
-                    {/* Descripción con altura y espaciado consistente */}
-                    <p className="text-xs text-[var(--muted)] leading-relaxed">
-                      Mascota virtual de escritorio con física elástica, seguimiento ocular DBus en Wayland y reactividad para desarrollo.
-                    </p>
-                  </div>
-
-                  {/* Enlaces de acción con estilo y colores 100% unificados */}
-                  <div className="flex flex-wrap items-center justify-between gap-2 pt-2.5 mt-2.5 border-t border-[var(--border)]/60 text-xs font-mono">
-                    <Link
-                      href="https://catjang.modlovelace.com"
-                      target="_blank"
-                      rel="noreferrer"
-                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-medium text-xs transition-all shadow-sm"
+              {/* Acordeón exclusivo de los 4 proyectos (siempre se abre uno y se cierran los demás) */}
+              <div className="space-y-2">
+                {[
+                  {
+                    id: 0,
+                    title: "Catjang-Sue",
+                    subtitle: "Desktop · Linux / Mac / Win",
+                    icon: "/images/sticker-catjang.png",
+                    badge: "Open Source",
+                    badgeClass: "bg-emerald-500/10 border-emerald-500/30 text-emerald-700 dark:text-emerald-300",
+                    description:
+                      "Mascota virtual de escritorio con física elástica de 16 segmentos, seguimiento ocular DBus a 50Hz en Linux Wayland y reactividad para desarrollo.",
+                    primaryAction: { label: "Web Oficial", href: "https://catjang.modlovelace.com", external: true },
+                    secondaryActions: [
+                      { label: "GitHub", href: "https://github.com/ModLovelace/catjang-sue" },
+                      { label: "Releases", href: "https://github.com/ModLovelace/catjang-sue/releases/latest" },
+                    ],
+                  },
+                  {
+                    id: 1,
+                    title: "Regala Flores",
+                    subtitle: "Web Interactiva con Audio",
+                    icon: "/images/sticker-sunflower.png",
+                    badge: "Open Source",
+                    badgeClass: "bg-emerald-500/10 border-emerald-500/30 text-emerald-700 dark:text-emerald-300",
+                    description:
+                      "Floración procedural interactiva en 4 fases con sintetizador acústico en tiempo real (Web Audio API) y dedicatorias compartibles 9:16 y 1:1.",
+                    primaryAction: { label: "Web Oficial", href: "https://regalaflores.modlovelace.com", external: true },
+                    secondaryActions: [
+                      { label: "Personalizar", href: "https://flores.modlovelace.com" },
+                      { label: "GitHub", href: "https://github.com/ModLovelace/flores-amarillas-primavera" },
+                    ],
+                  },
+                  {
+                    id: 2,
+                    title: "Network JSON · DevTools",
+                    subtitle: "Dart DevTools Extension",
+                    icon: "/images/sticker-network-json.png",
+                    badge: "pub.dev v0.1.4",
+                    badgeClass: "bg-sky-500/10 border-sky-500/30 text-sky-700 dark:text-sky-300",
+                    description:
+                      "Inspector HTTP en tiempo real con árbol JSON reactivo y descifrado local en memoria (RSA-OAEP / AES-CBC) para aplicaciones Dart y Flutter.",
+                    primaryAction: { label: "pub.dev", href: "https://pub.dev/packages/network_json_devtools", external: true },
+                    secondaryActions: [
+                      { label: "GitHub", href: "https://github.com/ModLovelace/network_json_devtools" },
+                    ],
+                  },
+                  {
+                    id: 3,
+                    title: "StarForces Game",
+                    subtitle: "iOS 17+ · Swift 6 & SceneKit 2.5D",
+                    icon: "/images/sticker-starforces.png",
+                    badge: "En desarrollo",
+                    badgeClass: "bg-violet-500/10 border-violet-500/30 text-violet-700 dark:text-violet-300",
+                    description:
+                      "Videojuego nativo para iPhone con física determinista a 60 FPS, colisiones OBB, cámara ortográfica 2.5D y despliegue USB desde Linux vía xtool.",
+                    primaryAction: { label: "Ver en Lab", href: "/lab#starforces-game", external: false, isLab: true },
+                    secondaryActions: [],
+                    statusNote: "32 Tests OK",
+                  },
+                ].map((proj) => {
+                  const isExpanded = activeProject === proj.id;
+                  return (
+                    <div
+                      key={proj.id}
+                      className={`rounded-xl border transition-all duration-200 overflow-hidden ${
+                        isExpanded
+                          ? "bg-[var(--background)]/80 border-violet-500/60 shadow-sm"
+                          : "bg-[var(--background)]/40 border-[var(--border)] hover:border-violet-500/40"
+                      }`}
                     >
-                      <span>Web Oficial</span>
-                      <span className="text-[10px] select-none">↗</span>
-                    </Link>
-                    <div className="flex items-center gap-1.5">
-                      <Link
-                        href="https://github.com/ModLovelace/catjang-sue"
-                        target="_blank"
-                        rel="noreferrer"
-                        className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg bg-neutral-200/60 hover:bg-neutral-200 dark:bg-neutral-800 dark:hover:bg-neutral-700 border border-neutral-300 dark:border-neutral-700/80 text-neutral-800 dark:text-neutral-200 font-medium text-xs transition-colors"
+                      <button
+                        type="button"
+                        onClick={() => setActiveProject(proj.id)}
+                        className="w-full px-3.5 py-2.5 flex items-center justify-between gap-3 text-left cursor-pointer select-none"
                       >
-                        <span>GitHub</span>
-                        <span className="text-[10px] text-neutral-400 select-none">↗</span>
-                      </Link>
-                      <Link
-                        href="https://github.com/ModLovelace/catjang-sue/releases/latest"
-                        target="_blank"
-                        rel="noreferrer"
-                        className="inline-flex items-center gap-1 px-2 py-1.5 rounded-lg bg-neutral-200/60 hover:bg-neutral-200 dark:bg-neutral-800 dark:hover:bg-neutral-700 border border-neutral-300 dark:border-neutral-700/80 text-neutral-800 dark:text-neutral-200 font-medium text-xs transition-colors"
-                      >
-                        <span>Releases</span>
-                        <span className="text-[10px] text-neutral-400 select-none">↗</span>
-                      </Link>
+                        <div className="flex items-center gap-3 min-w-0">
+                          <div className="w-7 h-7 rounded-lg bg-[var(--card)] border border-[var(--border)] flex items-center justify-center p-1 shrink-0 overflow-hidden">
+                            <img
+                              src={proj.icon}
+                              alt={proj.title}
+                              className="w-full h-full object-contain"
+                            />
+                          </div>
+                          <div className="min-w-0">
+                            <div className="flex items-center gap-2 min-w-0">
+                              <h3 className="text-xs sm:text-sm font-bold text-[var(--foreground)] shrink-0">
+                                {proj.title}
+                              </h3>
+                              <span className="hidden sm:inline-block text-[11px] font-mono text-[var(--muted)] truncate">
+                                · {proj.subtitle}
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div className="flex items-center gap-2 shrink-0">
+                          <span className={`text-[10px] font-mono font-bold uppercase tracking-wider px-2 py-0.5 rounded-full border ${proj.badgeClass}`}>
+                            {proj.badge}
+                          </span>
+                          <ChevronDown
+                            className={`w-4 h-4 text-[var(--muted)] transition-transform duration-200 ${
+                              isExpanded ? "rotate-180 text-violet-500" : ""
+                            }`}
+                          />
+                        </div>
+                      </button>
+
+                      {isExpanded && (
+                        <div className="px-3.5 pb-3.5 pt-1 border-t border-[var(--border)]/50 space-y-3">
+                          <p className="text-xs text-[var(--muted)] leading-relaxed">
+                            {proj.description}
+                          </p>
+
+                          <div className="flex flex-wrap items-center justify-between gap-2 text-xs font-mono">
+                            <Link
+                              href={proj.primaryAction.href}
+                              target={proj.primaryAction.external ? "_blank" : undefined}
+                              rel={proj.primaryAction.external ? "noreferrer" : undefined}
+                              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-violet-600 hover:bg-violet-500 text-white font-semibold text-xs transition-all shadow-xs"
+                            >
+                              {proj.primaryAction.isLab && <FlaskConical className="w-3.5 h-3.5" />}
+                              <span>{proj.primaryAction.label}</span>
+                              <span className="text-[10px] select-none">
+                                {proj.primaryAction.external ? "↗" : "➔"}
+                              </span>
+                            </Link>
+
+                            <div className="flex items-center gap-1.5">
+                              {proj.secondaryActions.map((sec, sIdx) => (
+                                <Link
+                                  key={sIdx}
+                                  href={sec.href}
+                                  target="_blank"
+                                  rel="noreferrer"
+                                  className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg bg-[var(--card)] hover:bg-[var(--border)]/60 border border-[var(--border)] text-[var(--foreground)] font-medium text-xs transition-colors"
+                                >
+                                  <span>{sec.label}</span>
+                                  <span className="text-[10px] text-[var(--muted)] select-none">↗</span>
+                                </Link>
+                              ))}
+                              {proj.statusNote && (
+                                <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-[11px] font-mono text-emerald-600 dark:text-emerald-400 font-semibold">
+                                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                                  <span>{proj.statusNote}</span>
+                                </span>
+                              )}
+                            </div>
+                          </div>
+                        </div>
+                      )}
                     </div>
-                  </div>
-                </div>
-
-                {/* 2. Regala Flores (El de las flores) */}
-                <div className={`p-3.5 rounded-xl bg-neutral-50 dark:bg-neutral-900/80 border flex flex-col justify-between h-full transition-all duration-500 shadow-[0_1px_2px_rgba(0,0,0,0.04)] ${
-                  stickersPopped
-                    ? "border-amber-500/60 ring-1 ring-amber-500/20 shadow-md shadow-amber-500/5"
-                    : "border-neutral-200 dark:border-neutral-800 hover:border-blue-500/50"
-                }`}>
-                  <div className="space-y-2">
-                    {/* Fila superior: Ícono oficial del casillero y Badge */}
-                    <div className="flex items-center justify-between">
-                      <div className="w-8 h-8 rounded-xl bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700/80 flex items-center justify-center p-1 shadow-sm shrink-0 overflow-hidden">
-                        <img
-                          src="/images/sticker-sunflower.png"
-                          alt="Sticker Regala Flores"
-                          className="w-full h-full object-contain filter drop-shadow-sm scale-105"
-                        />
-                      </div>
-                      <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-950/80 text-emerald-700 dark:text-emerald-300 font-medium shrink-0">
-                        Open Source
-                      </span>
-                    </div>
-
-                    {/* Título y Subtítulo con ancho completo */}
-                    <div>
-                      <h3 className="text-sm font-bold text-[var(--foreground)] leading-tight">
-                        Regala Flores
-                      </h3>
-                      <p className="text-[11px] font-mono text-[var(--muted)] mt-0.5">
-                        Web Interactiva con Audio
-                      </p>
-                    </div>
-
-                    {/* Descripción con altura y espaciado consistente */}
-                    <p className="text-xs text-[var(--muted)] leading-relaxed">
-                      Floración procedural interactiva con sintetizador acústico en tiempo real (Web Audio API) y dedicatorias compartibles.
-                    </p>
-                  </div>
-
-                  {/* Enlaces de acción con estilo y colores 100% unificados */}
-                  <div className="flex flex-wrap items-center justify-between gap-2 pt-2.5 mt-2.5 border-t border-[var(--border)]/60 text-xs font-mono">
-                    <Link
-                      href="https://regalaflores.modlovelace.com"
-                      target="_blank"
-                      rel="noreferrer"
-                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-medium text-xs transition-all shadow-sm"
-                    >
-                      <span>Web Oficial</span>
-                      <span className="text-[10px] select-none">↗</span>
-                    </Link>
-                    <div className="flex items-center gap-1.5">
-                      <Link
-                        href="https://flores.modlovelace.com"
-                        target="_blank"
-                        rel="noreferrer"
-                        className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg bg-neutral-200/60 hover:bg-neutral-200 dark:bg-neutral-800 dark:hover:bg-neutral-700 border border-neutral-300 dark:border-neutral-700/80 text-neutral-800 dark:text-neutral-200 font-medium text-xs transition-colors"
-                      >
-                        <span>Personalizar</span>
-                        <span className="text-[10px] text-neutral-400 select-none">↗</span>
-                      </Link>
-                      <Link
-                        href="https://github.com/ModLovelace/flores-amarillas-primavera"
-                        target="_blank"
-                        rel="noreferrer"
-                        className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg bg-neutral-200/60 hover:bg-neutral-200 dark:bg-neutral-800 dark:hover:bg-neutral-700 border border-neutral-300 dark:border-neutral-700/80 text-neutral-800 dark:text-neutral-200 font-medium text-xs transition-colors"
-                      >
-                        <span>GitHub</span>
-                        <span className="text-[10px] text-neutral-400 select-none">↗</span>
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-
-                {/* 3. Network JSON · DevTools (Extensión Flutter/Dart en pub.dev) */}
-                <div className={`p-3.5 rounded-xl bg-neutral-50 dark:bg-neutral-900/80 border flex flex-col justify-between h-full transition-all duration-500 shadow-[0_1px_2px_rgba(0,0,0,0.04)] ${
-                  stickersPopped
-                    ? "border-cyan-500/60 ring-1 ring-cyan-500/20 shadow-md shadow-cyan-500/5"
-                    : "border-neutral-200 dark:border-neutral-800 hover:border-blue-500/50"
-                }`}>
-                  <div className="space-y-2">
-                    {/* Fila superior: Ícono oficial y Badge */}
-                    <div className="flex items-center justify-between">
-                      <div className="w-8 h-8 rounded-xl bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700/80 flex items-center justify-center p-1 shadow-sm shrink-0 overflow-hidden">
-                        <img
-                          src="/images/sticker-network-json.png"
-                          alt="Sticker Network JSON DevTools"
-                          className="w-full h-full object-contain filter drop-shadow-sm"
-                        />
-                      </div>
-                      <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-cyan-100 dark:bg-cyan-950/80 text-cyan-800 dark:text-cyan-300 font-medium shrink-0">
-                        pub.dev v0.1.4
-                      </span>
-                    </div>
-
-                    {/* Título y Subtítulo */}
-                    <div>
-                      <h3 className="text-sm font-bold text-[var(--foreground)] leading-tight">
-                        Network JSON · DevTools
-                      </h3>
-                      <p className="text-[11px] font-mono text-[var(--muted)] mt-0.5">
-                        Dart DevTools Extension
-                      </p>
-                    </div>
-
-                    {/* Descripción */}
-                    <p className="text-xs text-[var(--muted)] leading-relaxed">
-                      Inspector HTTP en tiempo real con árbol JSON reactivo y descifrado local en memoria (RSA-OAEP / AES-CBC) para Dart y Flutter.
-                    </p>
-                  </div>
-
-                  {/* Enlaces de acción */}
-                  <div className="flex flex-wrap items-center justify-between gap-2 pt-2.5 mt-2.5 border-t border-[var(--border)]/60 text-xs font-mono">
-                    <Link
-                      href="https://pub.dev/packages/network_json_devtools"
-                      target="_blank"
-                      rel="noreferrer"
-                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-medium text-xs transition-all shadow-sm"
-                    >
-                      <span>pub.dev</span>
-                      <span className="text-[10px] select-none">↗</span>
-                    </Link>
-                    <Link
-                      href="https://github.com/ModLovelace/network_json_devtools"
-                      target="_blank"
-                      rel="noreferrer"
-                      className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg bg-neutral-200/60 hover:bg-neutral-200 dark:bg-neutral-800 dark:hover:bg-neutral-700 border border-neutral-300 dark:border-neutral-700/80 text-neutral-800 dark:text-neutral-200 font-medium text-xs transition-colors"
-                    >
-                      <span>GitHub</span>
-                      <span className="text-[10px] text-neutral-400 select-none">↗</span>
-                    </Link>
-                  </div>
-                </div>
-
-                {/* 4. StarForces Game (Videojuego iOS 17+ Swift 6) */}
-                <div className={`p-3.5 rounded-xl bg-neutral-50 dark:bg-neutral-900/80 border flex flex-col justify-between h-full transition-all duration-500 shadow-[0_1px_2px_rgba(0,0,0,0.04)] ${
-                  stickersPopped
-                    ? "border-amber-500/60 ring-1 ring-amber-500/20 shadow-md shadow-amber-500/5"
-                    : "border-neutral-200 dark:border-neutral-800 hover:border-amber-500/50"
-                }`}>
-                  <div className="space-y-2">
-                    {/* Fila superior: Ícono oficial del casillero y Badge */}
-                    <div className="flex items-center justify-between">
-                      <div className="w-8 h-8 rounded-xl bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700/80 flex items-center justify-center p-1 shadow-sm shrink-0 overflow-hidden">
-                        <img
-                          src="/images/sticker-starforces.png"
-                          alt="Sticker StarForces Game"
-                          className="w-full h-full object-contain filter drop-shadow-sm scale-105"
-                        />
-                      </div>
-                      <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-amber-100 dark:bg-amber-950/80 text-amber-700 dark:text-amber-300 font-medium shrink-0">
-                        En desarrollo
-                      </span>
-                    </div>
-
-                    {/* Título y Subtítulo */}
-                    <div>
-                      <h3 className="text-sm font-bold text-[var(--foreground)] leading-tight">
-                        StarForces Game
-                      </h3>
-                      <p className="text-[11px] font-mono text-[var(--muted)] mt-0.5">
-                        iOS 17+ · Swift 6 &amp; SceneKit 2.5D
-                      </p>
-                    </div>
-
-                    {/* Descripción */}
-                    <p className="text-xs text-[var(--muted)] leading-relaxed">
-                      Videojuego nativo para iPhone con física a 60 FPS, colisiones OBB, cámara ortográfica 2.5D y despliegue USB desde Linux vía xtool.
-                    </p>
-                  </div>
-
-                  {/* Enlaces de acción */}
-                  <div className="flex flex-wrap items-center justify-between gap-2 pt-2.5 mt-2.5 border-t border-[var(--border)]/60 text-xs font-mono">
-                    <Link
-                      href="/lab#starforces-game"
-                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-medium text-xs transition-all shadow-sm"
-                    >
-                      <FlaskConical className="w-3.5 h-3.5" />
-                      <span>Ver en Lab</span>
-                      <span className="text-[10px] select-none">➔</span>
-                    </Link>
-                    <span className="inline-flex items-center gap-1 text-[11px] font-mono text-amber-600 dark:text-amber-400">
-                      <span className="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse" />
-                      <span>32 Tests OK</span>
-                    </span>
-                  </div>
-                </div>
-
+                  );
+                })}
               </div>
 
               {/* Pie interactivo de la tarjeta */}
@@ -793,7 +679,7 @@ export function LockerHero() {
                 <span>{stickersPopped ? "✨ Pegatinas activas: Haz clic en el casillero o aquí" : isOpen ? "✨ Casillero abierto: Catjang, Regala Flores, Network JSON, StarForces & Modfin" : "💡 Toca el casillero para abrir y ver los detalles"}</span>
                 <button
                   onClick={toggleLocker}
-                  className="text-blue-600 dark:text-blue-400 hover:underline font-medium cursor-pointer"
+                  className="text-violet-600 dark:text-violet-400 hover:underline font-semibold cursor-pointer"
                 >
                   {isOpen ? "Cerrar puerta ✕" : "Abrir casillero ➔"}
                 </button>

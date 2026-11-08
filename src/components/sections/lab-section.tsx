@@ -52,7 +52,7 @@ export function LabSection({ isStandalonePage = false }: LabSectionProps) {
           <div className="mb-8 flex flex-wrap items-center justify-between gap-4 pb-6 border-b border-[var(--border)] text-xs font-mono text-[var(--muted)]">
             <Link
               href="/"
-              className="inline-flex items-center gap-2 hover:text-[var(--foreground)] transition-colors text-blue-600 dark:text-blue-400 font-semibold"
+              className="inline-flex items-center gap-2 hover:text-[var(--foreground)] transition-colors text-violet-600 dark:text-violet-400 font-semibold"
             >
               <span>← Volver al Portafolio (modlovelace.com)</span>
             </Link>
@@ -66,11 +66,11 @@ export function LabSection({ isStandalonePage = false }: LabSectionProps) {
         {/* Encabezado del Laboratorio & Blog */}
         <div className="flex flex-col md:flex-row md:items-end justify-between pb-8 mb-10 border-b border-[var(--border)] gap-6">
           <div className="space-y-2">
-            <div className="inline-flex items-center gap-2 text-xs font-semibold text-blue-600 dark:text-blue-400 uppercase tracking-wider">
+            <div className="inline-flex items-center gap-2 text-xs font-mono font-bold text-[#ff6b4a] uppercase tracking-widest">
               <FlaskConical className="w-3.5 h-3.5" />
-              <span>02 / Laboratorio &amp; Blog Técnico</span>
+              <span>LAB / BITÁCORA TÉCNICA</span>
             </div>
-            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-[var(--foreground)]">
+            <h2 className="font-display text-3xl sm:text-4xl font-extrabold tracking-wide uppercase text-[var(--foreground)]">
               Experimentos, Bitácora &amp; Avances
             </h2>
           </div>
@@ -94,7 +94,7 @@ export function LabSection({ isStandalonePage = false }: LabSectionProps) {
                 onClick={() => setActiveFilter(tab.id)}
                 className={`px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all cursor-pointer ${
                   isActive
-                    ? "bg-blue-600 text-white shadow-sm font-semibold"
+                    ? "bg-violet-600 text-white shadow-sm font-semibold"
                     : "bg-[var(--card)] hover:bg-[var(--border)]/50 border border-[var(--border)] text-[var(--muted)] hover:text-[var(--foreground)]"
                 }`}
               >
@@ -115,8 +115,8 @@ export function LabSection({ isStandalonePage = false }: LabSectionProps) {
                 id={entry.id}
                 className={`rounded-2xl border transition-all duration-300 bg-[var(--card)] scroll-mt-24 ${
                   isExpanded
-                    ? "border-blue-500/50 shadow-md ring-1 ring-blue-500/20"
-                    : "border-[var(--border)] hover:border-neutral-400 dark:hover:border-neutral-700"
+                    ? "border-violet-500/50 shadow-md ring-1 ring-violet-500/20"
+                    : "border-[var(--border)] hover:border-violet-500/40"
                 }`}
               >
                 {/* Cabecera / Vista Previa del Experimento */}
@@ -126,7 +126,7 @@ export function LabSection({ isStandalonePage = false }: LabSectionProps) {
                 >
                   <div className="flex flex-wrap items-center justify-between gap-3 text-xs">
                     <div className="flex items-center gap-2.5">
-                      <span className="font-mono text-xs font-semibold text-blue-600 dark:text-blue-400">
+                      <span className="font-mono text-xs font-semibold text-violet-600 dark:text-violet-400">
                         {entry.categoryLabel}
                       </span>
                       <span className="text-[var(--border)] font-mono">/</span>
@@ -137,12 +137,12 @@ export function LabSection({ isStandalonePage = false }: LabSectionProps) {
 
                     <div className="flex items-center gap-3">
                       <span
-                        className={`text-[11px] font-mono px-2.5 py-0.5 rounded-full font-medium ${
+                        className={`text-[10px] font-mono font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full border ${
                           entry.status === "En Desarrollo"
-                            ? "bg-amber-100 dark:bg-amber-950/80 text-amber-700 dark:text-amber-300"
+                            ? "bg-orange-500/10 border-orange-500/30 text-orange-700 dark:text-orange-300"
                             : entry.status === "En Investigación"
-                            ? "bg-purple-100 dark:bg-purple-950/80 text-purple-700 dark:text-purple-300"
-                            : "bg-emerald-100 dark:bg-emerald-950/80 text-emerald-700 dark:text-emerald-300"
+                            ? "bg-violet-500/10 border-violet-500/30 text-violet-700 dark:text-violet-300"
+                            : "bg-emerald-500/10 border-emerald-500/30 text-emerald-700 dark:text-emerald-300"
                         }`}
                       >
                         {entry.status}
@@ -221,9 +221,9 @@ export function LabSection({ isStandalonePage = false }: LabSectionProps) {
                     </div>
 
                     {/* Conclusión clave */}
-                    <div className="p-3.5 rounded-xl bg-blue-50/70 dark:bg-blue-950/30 border border-blue-200/80 dark:border-blue-900/50 flex items-start gap-3">
-                      <CheckCircle2 className="w-4 h-4 text-blue-600 dark:text-blue-400 shrink-0 mt-0.5" />
-                      <p className="text-xs text-blue-950 dark:text-blue-200 leading-relaxed font-medium">
+                    <div className="p-3.5 rounded-xl bg-violet-500/10 border border-violet-500/30 flex items-start gap-3">
+                      <CheckCircle2 className="w-4 h-4 text-violet-600 dark:text-violet-400 shrink-0 mt-0.5" />
+                      <p className="text-xs text-[var(--foreground)] leading-relaxed font-medium">
                         <strong>Conclusión de ingeniería:</strong> {entry.details.keyTakeaway}
                       </p>
                     </div>
@@ -247,7 +247,7 @@ export function LabSection({ isStandalonePage = false }: LabSectionProps) {
                           href={entry.link.url}
                           target="_blank"
                           rel="noreferrer"
-                          className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-medium text-xs transition-colors shadow-sm"
+                          className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-violet-600 hover:bg-violet-500 text-white font-semibold text-xs transition-colors shadow-sm"
                         >
                           <span>{entry.link.label}</span>
                           <ExternalLink className="w-3.5 h-3.5" />

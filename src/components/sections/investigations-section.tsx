@@ -4,8 +4,8 @@ export function InvestigationsSection() {
   const investigations = [
     {
       badge: "EN CURSO",
-      badgeColor: "text-orange-400 border-orange-500/40 bg-orange-950/20",
-      dotColor: "bg-orange-400",
+      badgeColor: "text-orange-700 dark:text-orange-300 border-orange-500/30 bg-orange-500/10",
+      dotColor: "bg-[#ff6b4a]",
       question: "¿Cuándo conviene Swift 6 nativo frente a motores genéricos?",
       whatITried:
         "Comparé el loop budget y consumo de memoria de un motor de físicas deterministas puro en Swift frente a engines de propósito general para iPhone, compilando de forma independiente desde Linux con SDK Darwin y firma USB vía xtool.",
@@ -16,8 +16,8 @@ export function InvestigationsSection() {
     },
     {
       badge: "EN CURSO",
-      badgeColor: "text-orange-400 border-orange-500/40 bg-orange-950/20",
-      dotColor: "bg-orange-400",
+      badgeColor: "text-orange-700 dark:text-orange-300 border-orange-500/30 bg-orange-500/10",
+      dotColor: "bg-[#ff6b4a]",
       question: "¿Cómo lograr 0.2ms de latencia en seguimiento ocular bajo Wayland sin IPC pesado?",
       whatITried:
         "En Electron bajo Wayland el puntero se congela fuera de la ventana. Evalué polling continuo a XWayland vs. un daemon DBus asíncrono consultando directamente al compositor GNOME Shell.",
@@ -28,8 +28,8 @@ export function InvestigationsSection() {
     },
     {
       badge: "NUEVA · NOVIEMBRE 2026",
-      badgeColor: "text-emerald-400 border-emerald-500/40 bg-emerald-950/20",
-      dotColor: "bg-emerald-400",
+      badgeColor: "text-emerald-700 dark:text-emerald-300 border-emerald-500/30 bg-emerald-500/10",
+      dotColor: "bg-emerald-500",
       question: "¿Cómo descifrar payloads criptográficos en memoria sin alterar compilaciones release?",
       whatITried:
         "Interceptar HttpClient en Dart e inyectar un módulo de descifrado local (RSA-OAEP + AES-CBC) en DevTools sin persistir llaves privadas en disco ni tocar binarios release.",
@@ -41,21 +41,21 @@ export function InvestigationsSection() {
   ];
 
   return (
-    <section id="investigaciones" className="py-16 sm:py-20 border-b border-[var(--border)] bg-[var(--background)]">
+    <section id="investigaciones" className="pb-16 sm:pb-20 border-b border-[var(--border)] bg-[var(--background)]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Cabecera Estilo Delpaqq: Línea vertical + 03 / INVESTIGACIONES + PREGUNTAS EN CURSO */}
-        <div className="flex flex-col items-center text-center mb-12 space-y-1.5">
-          <div className="w-0.5 h-6 bg-pink-500 mx-auto rounded-full" />
-          <span className="font-mono text-xs font-bold tracking-widest uppercase text-neutral-400">
+        {/* Cabecera Uniforme Estilo Delpaqq: Línea conectada al borde + Numerador + Título */}
+        <div className="flex flex-col items-center text-center mb-10 sm:mb-12">
+          <div className="w-0.5 h-10 sm:h-12 bg-gradient-to-b from-violet-500 to-[#ff6b4a] mx-auto mb-3.5" />
+          <span className="font-mono text-xs font-bold tracking-widest uppercase text-violet-600 dark:text-violet-400 mb-1.5">
             02 / INVESTIGACIONES
           </span>
-          <h2 className="text-2xl sm:text-4xl font-extrabold tracking-wide uppercase text-[var(--foreground)]">
+          <h2 className="font-display text-3xl sm:text-4xl font-extrabold tracking-wide uppercase text-[var(--foreground)]">
             PREGUNTAS EN CURSO
           </h2>
-          <span className="text-[11px] font-mono tracking-widest uppercase text-[var(--muted)] pt-1 block">
+          <p className="text-xs font-mono tracking-widest uppercase text-[var(--muted)] pt-1.5">
             ACTUALIZADO EL 07/11/2026
-          </span>
+          </p>
         </div>
 
         {/* Grid de 3 Cards de Preguntas Delpaqq */}
@@ -75,14 +75,14 @@ export function InvestigationsSection() {
                 </div>
 
                 {/* Pregunta en negrita */}
-                <h3 className="font-bold text-base sm:text-lg text-[var(--foreground)] leading-snug">
+                <h3 className="font-bold text-base sm:text-lg text-[var(--foreground)] leading-snug lg:min-h-[76px]">
                   {item.question}
                 </h3>
 
                 {/* Qué probé */}
-                <div className="space-y-1">
-                  <span className="font-mono text-[11px] font-semibold text-[var(--foreground)] block">
-                    Qué probé:
+                <div className="space-y-1 lg:min-h-[96px]">
+                  <span className="font-mono text-[10px] font-bold tracking-widest uppercase text-[var(--muted)] block">
+                    QUÉ PROBÉ
                   </span>
                   <p className="text-xs text-[var(--muted)] leading-relaxed">
                     {item.whatITried}
@@ -90,11 +90,11 @@ export function InvestigationsSection() {
                 </div>
 
                 {/* Hasta ahora */}
-                <div className="space-y-1">
-                  <span className="font-mono text-[11px] font-semibold text-[var(--foreground)] block">
-                    Hasta ahora:
+                <div className="space-y-1 lg:min-h-[84px]">
+                  <span className="font-mono text-[10px] font-bold tracking-widest uppercase text-[var(--muted)] block">
+                    HASTA AHORA
                   </span>
-                  <p className="text-xs text-[var(--muted)] leading-relaxed font-medium">
+                  <p className="text-xs text-[var(--foreground)]/90 leading-relaxed font-medium">
                     {item.soFar}
                   </p>
                 </div>
@@ -104,7 +104,7 @@ export function InvestigationsSection() {
               <div className="pt-3 border-t border-[var(--border)]/60">
                 <Link
                   href={item.linkHref}
-                  className="inline-flex items-center gap-1.5 text-xs font-semibold text-violet-500 hover:text-violet-400 dark:text-violet-400 dark:hover:text-violet-300 transition-colors"
+                  className="inline-flex items-center gap-1.5 text-xs font-semibold text-violet-600 hover:text-violet-500 dark:text-violet-400 dark:hover:text-violet-300 transition-colors"
                 >
                   <span>{item.linkText}</span>
                 </Link>
