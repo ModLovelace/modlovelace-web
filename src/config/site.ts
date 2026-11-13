@@ -119,16 +119,16 @@ export const siteConfig = {
       },
     },
     {
-      title: "Regala Flores Amarillas",
+      title: "Regala Flores · Dedicatorias",
       category: "Open Source / Web Interactiva",
       status: "Open Source",
       badgeColor: "emerald",
       image: "/images/projects/regala-flores-v2.jpg",
       description:
-        "Experiencia web interactiva con floración procedural en 4 fases, sintetizador acústico en tiempo real con Web Audio API y generador de tarjetas virales.",
+        "Experiencia multitemática (Flores Amarillas, Cumpleaños, Logros y Aniversario) con configurador e información oficial en regalaflores.modlovelace.com, melodías continuas Web Audio API y tarjetas 9:16 y 1:1.",
       highlights: [
-        "Motor de floración procedural con mariposas orbitales y audio acústico sintetizado.",
-        "Generador y exportador de tarjetas HD en formato 9:16 y 1:1 con cartas personalizadas.",
+        "Configurador independiente con enlaces cortos /s y /r y recorrido limpio para quien recibe el detalle.",
+        "Audio procedural completo sin cortes, animaciones Safari-safe y exportador HD instantáneo Presumir 9:16 y 1:1.",
       ],
       tech: ["React 19", "Vite", "Tailwind CSS", "Web Audio API", "Vercel"],
       links: {

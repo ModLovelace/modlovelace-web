@@ -331,7 +331,7 @@ export function LockerHero() {
                     transformOrigin: "center center",
                     transitionDelay: stickersPopped ? "170ms" : "0ms",
                   }}
-                  title="Regala Flores · Web Oficial & Guía (Abrir proyecto)"
+                  title="Regala Flores · Configurador de Dedicatorias & Info (Abrir)"
                 >
                   <div className="relative w-full h-full transition-transform duration-300 ease-out hover:scale-125 hover:rotate-3 active:scale-105">
                     <Image
@@ -342,7 +342,7 @@ export function LockerHero() {
                     />
                     {/* Badge flotante tooltip clickeable */}
                     <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 px-2.5 py-0.5 rounded-full bg-amber-600 hover:bg-amber-500 text-[10px] font-mono font-semibold text-white whitespace-nowrap opacity-0 group-hover/flower:opacity-100 transition-opacity shadow-lg shadow-amber-500/25 border border-amber-400/30 pointer-events-auto cursor-pointer z-40">
-                      Regala Flores ↗
+                      Configurar Flores ↗
                     </div>
                   </div>
                 </a>
@@ -539,15 +539,15 @@ export function LockerHero() {
                   {
                     id: 1,
                     title: "Regala Flores",
-                    subtitle: "Web Interactiva con Audio",
+                    subtitle: "Configurador, Info & Audio Web",
                     icon: "/images/sticker-sunflower.png",
                     badge: "Open Source",
                     badgeClass: "bg-emerald-500/10 border-emerald-500/30 text-emerald-700 dark:text-emerald-300",
                     description:
-                      "Floración procedural interactiva en 4 fases con sintetizador acústico en tiempo real (Web Audio API) y dedicatorias compartibles 9:16 y 1:1.",
-                    primaryAction: { label: "Web Oficial", href: "https://regalaflores.modlovelace.com", external: true },
+                      "Experiencia interactiva para Flores, Cumpleaños, Logros y Aniversario con música Web Audio sin cortes y cartas 9:16 y 1:1. Configura tu dedicatoria e infórmate en la web oficial.",
+                    primaryAction: { label: "Configurar & Info", href: "https://regalaflores.modlovelace.com", external: true },
                     secondaryActions: [
-                      { label: "Personalizar", href: "https://flores.modlovelace.com" },
+                      { label: "Ver Demo", href: "https://flores.modlovelace.com" },
                       { label: "GitHub", href: "https://github.com/ModLovelace/flores-amarillas-primavera" },
                     ],
                   },

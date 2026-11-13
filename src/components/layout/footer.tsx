@@ -21,7 +21,7 @@ export function Footer() {
           </Link>
           <span className="text-neutral-600">·</span>
           <Link href="https://regalaflores.modlovelace.com" target="_blank" rel="noreferrer" className="hover:text-[var(--foreground)] transition-colors">
-            Regala Flores ↗
+            Regala Flores · Configurar ↗
           </Link>
           <span className="text-neutral-600">·</span>
           <Link href="https://pub.dev/packages/network_json_devtools" target="_blank" rel="noreferrer" className="hover:text-[var(--foreground)] transition-colors">

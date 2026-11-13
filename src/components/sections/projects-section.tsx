@@ -64,22 +64,22 @@ export function ProjectsSection() {
       ],
     },
     {
-      title: "Regala Flores Amarillas",
+      title: "Regala Flores · Dedicatorias",
       status: "OPEN SOURCE",
       statusColor: "text-emerald-700 dark:text-emerald-300 border-emerald-500/30 bg-emerald-500/10",
       dotColor: "bg-emerald-500",
       image: "/images/projects/regala-flores-v2.jpg",
       problem:
-        "Las plataformas de felicitaciones digitales usaban vídeos pregrabados lentos de descargar o imágenes estáticas sin interactividad real ni personalización emocional.",
+        "Las felicitaciones digitales dependían de vídeos pesados o mostraban botones de edición dentro de la tarjeta que recibía el destinatario.",
       whatIDid:
-        "Desarrollé un motor de floración procedural en 4 fases animado en React 19, con sintetizador acústico en tiempo real (Web Audio API) y exportador de cartas virales 9:16 y 1:1.",
+        "Separé el configurador e información oficial (regalaflores.modlovelace.com) de la vista limpia del destinatario, con 4 temáticas (Flores, Cumpleaños, Logro y Aniversario), enlaces /s y audio Web Audio API continuo.",
       result:
-        "Carga instantánea sin depender de vídeos en la nube, miles de tarjetas compartidas y experiencia con sonido dinámico 100% sintetizado en el cliente.",
+        "Carga instantánea sin vídeos MP4/MP3, animaciones optimizadas para Safari/iOS, recorrido guiado libre de distracciones y exportación rápida 9:16 y 1:1.",
       linkText: "Cómo funciona →",
       linkHref: "/lab#flores-web-audio",
       secondaryLinks: [
-        { label: "Web Oficial", href: "https://regalaflores.modlovelace.com" },
-        { label: "Personalizar", href: "https://flores.modlovelace.com" },
+        { label: "Configurar & Info", href: "https://regalaflores.modlovelace.com" },
+        { label: "Ver Demo", href: "https://flores.modlovelace.com" },
       ],
     },
     {

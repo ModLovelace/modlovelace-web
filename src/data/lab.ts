@@ -261,11 +261,11 @@ x, y = proxy.GetWMInfo()["cursor"]`,
     date: "Septiembre 2026",
     title: "Síntesis acústica en tiempo real con Web Audio API (Cero archivos MP3)",
     summary:
-      "Cómo generar una experiencia musical armónica sintetizada en vivo por el navegador a través de curvas de ganancia exponenciales, reduciendo el peso de la experiencia interactiva a menos de 150KB totales.",
-    tags: ["Web Audio API", "GainNode Curves", "React 18", "Audio Síntesis"],
+      "Cómo generar 4 melodías completas en bucle continuo sintetizadas en vivo por el navegador mediante curvas exponenciales, sin archivos MP3 ni reinicios al tocar elementos interactivos.",
+    tags: ["Web Audio API", "GainNode Curves", "React 19", "Audio Síntesis"],
     metrics: [
       { label: "Archivos Audio", value: "0 bytes" },
-      { label: "Bundle Total", value: "< 150 KB" },
+      { label: "Melodías Completas", value: "4 Temas" },
       { label: "Rendimiento", value: "60 FPS" },
     ],
     details: {
@@ -286,8 +286,8 @@ osc.connect(gain);
 gain.connect(ctx.destination);`,
     },
     link: {
-      label: "Demo de Flores Amarillas",
-      url: "https://flores.modlovelace.com",
+      label: "Configurar Dedicatoria & Info",
+      url: "https://regalaflores.modlovelace.com",
     },
   },
   {
